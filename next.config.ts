@@ -5,8 +5,11 @@ const nextConfig = {
       bodySizeLimit: '2mb'
     },
   },
+  env: {
+    JWT_SECRET: 'your-jwt-secret-key',
+  },
   images: {
-    domains: ['res.cloudinary.com', 'localhost', 'hikvisionuae.ae', 'hikvisionuae.vercel.app'],
+    domains: ['res.cloudinary.com', 'localhost', 'hikvisionuae.ae',],
   },
   eslint: {
     ignoreDuringBuilds: true,
