@@ -6,8 +6,8 @@ const CustomerSupport: React.FC = () => {
   const schema = {
     "@context": "https://schema.org",
     "@type": "SecuritySystem",
-    "name": "Hikvision-Dubai Customer Support",
-    "description": "24/7 professional customer support and after-sale services for Hikvision security systems in Dubai, UAE and Middle East",
+    "name": "Security Systems Customer Support",
+    "description": "24/7 professional customer support and after-sale services for security systems in Dubai, UAE and Middle East",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "No. 12, Al khabaisi, Abu hail",
@@ -23,13 +23,13 @@ const CustomerSupport: React.FC = () => {
   return (
     <>
       <Head>
-        <title>24/7 Hikvision Customer Support in Dubai | Professional CCTV Service</title>
-        <meta name="description" content="Get expert 24/7 customer support for Hikvision cameras in Dubai. Professional installation, maintenance & after-sales service. Best security camera solutions in UAE." />
+        <title>24/7 Security Systems Customer Support in Dubai | Professional CCTV Service</title>
+        <meta name="description" content="Get expert 24/7 customer support for security cameras in Dubai. Professional installation, maintenance & after-sales service. Best security solutions in UAE." />
         <meta name="keywords" content="Hikvision UAE, Hikvision Dubai, best cameras in UAE, best cameras in Dubai, Hikvision Middle East, CCTV installation Dubai, security camera support UAE" />
         
         {/* Open Graph tags */}
-        <meta property="og:title" content="24/7 Hikvision Customer Support in Dubai | Professional CCTV Service" />
-        <meta property="og:description" content="Get expert 24/7 customer support for Hikvision cameras in Dubai. Professional installation, maintenance & after-sales service." />
+        <meta property="og:title" content="24/7 Security Systems Customer Support in Dubai | Professional CCTV Service" />
+        <meta property="og:description" content="Get expert 24/7 customer support for security cameras in Dubai. Professional installation, maintenance & after-sales service." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_AE" />
         
@@ -61,28 +61,28 @@ const CustomerSupport: React.FC = () => {
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-4 text-red-600">24/7 Support Available</h3>
               <p className="text-gray-700 leading-relaxed">
-                We totally get how crucial awesome customer support and thorough after-sale services are for making sure you&apos;re happy. We&apos;re all about giving you a personalized service experience. Our super dedicated support team is always on standby, ready to jump in and help you with any questions or issues you might bump into.
+                We understand the importance of reliable customer support and comprehensive after-sale services for your satisfaction. Our dedicated support team is available around the clock to assist you with any questions or concerns you may encounter.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-4 text-red-600">Multiple Contact Options</h3>
               <p className="text-gray-700 leading-relaxed">
-                We&apos;ve made it super easy for you to get in touch with us—call, email, or just drop by our place in Dubai. Plus, we&apos;re here for you with extended support times that even include 24/7 help because we know problems don&apos;t stick to a 9-to-5 schedule.
+                Reaching us is convenient through multiple channels—phone, email, or visit our location in Dubai. We offer extended support hours including 24/7 assistance for urgent matters.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-4 text-red-600">Professional Installation</h3>
               <p className="text-gray-700 leading-relaxed">
-                Choosing Hikvision-Dubai means more than just buying a product. You get our top-notch installation services to make sure your security setup is spot on for effectiveness and efficiency.
+                Our service goes beyond product delivery. We provide expert installation services to ensure your security system operates at peak performance and efficiency.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <h3 className="text-xl font-semibold mb-4 text-red-600">Comprehensive Resources</h3>
               <p className="text-gray-700 leading-relaxed">
-                And we don&apos;t stop there. We load you up with tons of resources like user guides and training sessions so you can really get the most out of your Hikvision gear. And if you ever need to return something, no sweat—our return and refund process is clear and simple. At Hikvision-Dubai, we&apos;re more than just your supplier; we&apos;re your partner in security.
+                We provide extensive resources including user guides and training sessions to help you maximize your security system&apos;s potential. Our straightforward return and refund process ensures your peace of mind. We&apos;re not just your supplier; we&apos;re your security partner.
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@ export const WhyChooseUs: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
             <span className="text-red-600">Why Choose</span>
-            <span className="text-black"> Hikvision-Dubai?</span>
+            <span className="text-black"> Our Services?</span>
           </h2>
           <div className="w-24 h-1 bg-red-600 mx-auto mt-4"></div>
           <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export const WhyChooseUs: React.FC = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Premium Quality</h3>
             <p className="text-gray-600">
-              We offer only genuine Hikvision products, ensuring you get the highest quality security solutions available in the market.
+              We offer only genuine, high-quality products, ensuring you get the finest security solutions available in the market.
             </p>
           </div>
 

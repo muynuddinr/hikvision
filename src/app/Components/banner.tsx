@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: 'https://www.hikvisionuae.com',
     siteName: 'Hikvision UAE Official Distributor',
     title: 'Hikvision UAE - Official Distributor & Security Solutions Provider',
-    description: 'Authorized Hikvision distributor in UAE. Expert supplier of CCTV cameras, security systems & technical support in Dubai. Get official Hikvision products & solutions.',
+    description: 'Authorized Hikvision distributor in UAE. Expert supplier of CCTV cameras, security systems & technical support in UAE. Get official Hikvision products & solutions.',
 
     images: [{
       url: banner.src,
@@ -145,7 +145,7 @@ export default function Banner() {
         <div className="max-w-2xl space-y-6">
           <h1 className="text-5xl font-medium">
             <span className="text-red-600">Profess</span><span className="text-gray-900">ional Security</span><br />
-            <span className="text-red-600">Solut</span><span className="text-gray-900">ions in Dubai</span>
+            <span className="text-red-600">Solut</span><span className="text-gray-900">ions in UAE</span>
           </h1>
           
           <p className="text-lg">

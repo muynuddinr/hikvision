@@ -26,20 +26,20 @@ const TextImage = () => {
           {/* Content Section */}
           <div className="w-full md:w-1/2 space-y-6">
             <h2 className="text-3xl font-bold">
-              <span className="text-red-600">Premier Hikvision</span>{' '}
-              <span className="text-black">Solutions in Dubai</span>
+              <span className="text-red-600">Hikvision UAE</span>{' '}
+              <span className="text-black">Security Solutions</span>
             </h2>
             <p className="text-black leading-relaxed">
-              We specialize in providing comprehensive Hikvision security solutions across Dubai. From advanced DVR systems to state-of-the-art IP cameras, we deliver professional installations for educational institutions, corporate offices, and commercial spaces.
+              Experience cutting-edge security technology with Hikvision in the UAE. We provide comprehensive security solutions featuring advanced surveillance systems, smart cameras, and integrated security platforms designed for the unique needs of UAE businesses and properties.
             </p>
             <p className="text-black leading-relaxed">
-              As Dubai&apos;s trusted security technology partner, we offer:
+              Choose Hikvision UAE for:
             </p>
             <ul className="list-disc list-inside text-black space-y-2">
-              <li>Premium Hikvision equipment</li>
-              <li>Expert installation services</li>
-              <li>Competitive pricing</li>
-              <li>Rapid response support</li>
+              <li>Complete range of Hikvision products</li>
+              <li>Professional system integration</li>
+              <li>Local technical support</li>
+              <li>Customized security solutions</li>
             </ul>
           </div>
         </div>
