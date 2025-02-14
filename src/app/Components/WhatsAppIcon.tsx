@@ -73,8 +73,8 @@ const WhatsAppIcon = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-red-900 to-red-800 p-4 flex justify-between items-center">
             <div className="text-white">
-              <h3 className="font-bold text-lg">Digitallink Technology</h3>
-              <p className="text-sm font-medium">L.L.C Dubai</p>
+              <h3 className="font-bold text-lg">Hikvision UAE</h3>
+              {/* <p className="text-sm font-medium">L.L.C Dubai</p> */}
               <div className="flex items-center gap-2 mt-2">
                 <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
                 <p className="text-sm">Online - Ready to chat</p>
