@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Script from 'next/script';
 import img1 from '../../../public/manufacture/1.jpg';
-import img2 from '../../../public/manufacture/2.png';
-import img3 from '../../../public/manufacture/2.png';
+import img2 from '../../../public/manufacture/2.jpg';
+import img3 from '../../../public/manufacture/3.jpg';
 
 // Manufacturing Schema
 const manufacturingSchema = {

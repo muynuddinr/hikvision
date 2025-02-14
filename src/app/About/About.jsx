@@ -179,7 +179,10 @@ const About = () => {
               <img 
                 src={img.src}
                 alt="Hikvision Security Products"
-                className="rounded-lg shadow-xl w-full h-[500px] object-cover"
+                className="rounded-lg shadow-xl w-full h-auto max-h-[600px] object-cover"
+                width={600}
+                height={400}
+                sizes="(max-width: 400px) 100vw, 100vw"
               />
             </div>
             <div className="w-full md:w-1/2 space-y-6">
