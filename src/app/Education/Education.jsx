@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-import img1 from '../../../public/manufacture/1.jpg'
-import img2 from '../../../public/manufacture/2.png'
+import img1 from '../../../public/education/1.jpg'
+import img2 from '../../../public/education/2.jpg'
 
 // Education Schema
 const educationSchema = {

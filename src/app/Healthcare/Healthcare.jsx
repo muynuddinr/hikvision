@@ -2,8 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import Script from 'next/script';
-import img1 from '../../../public/Healtcare/1.jpg'
-import img2 from '../../../public/Healtcare/2.webp'
+import img1 from '../../../public/healthcare/HIKIVISION LOW LIGHT.jpg'
+import img2 from '../../../public/healthcare/HIKIVISION AI DRIVEN.jpg'
 
 // Healthcare Schema
 const healthcareSchema = {
@@ -168,10 +168,10 @@ const Healthcare = () => {
           </div>
 
           {/* Solutions Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 mb-12 sm:mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20">
             {/* Advanced Low-light Technology */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
-              <div className="relative h-[250px] sm:h-[400px]">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              <div className="relative h-[300px] sm:h-[400px] w-full">
                 <Image
                   src={img1.src}
                   alt="Advanced Low-light Technology"
@@ -179,23 +179,23 @@ const Healthcare = () => {
                   quality={100}
                   priority
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
-                  className="w-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-4">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                   Advanced Low-light Surveillance
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600">
+                <p className="text-base text-gray-600 leading-relaxed">
                   Our advanced low-light surveillance technology delivers exceptional clarity in minimal lighting conditions, perfect for monitoring ICUs, emergency rooms, and other critical care areas 24/7.
                 </p>
               </div>
             </div>
 
             {/* AI-driven Analysis */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-2">
-              <div className="relative h-[250px] sm:h-[400px]">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              <div className="relative h-[300px] sm:h-[400px] w-full">
                 <Image
                   src={img2.src}
                   alt="AI-driven Analysis"
@@ -203,15 +203,15 @@ const Healthcare = () => {
                   quality={100}
                   priority
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
-                  className="w-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 sm:mb-4">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
                   AI-driven Patient Behavior Analysis
                 </h3>
-                <p className="text-sm sm:text-base text-gray-600">
+                <p className="text-base text-gray-600 leading-relaxed">
                   Our intelligent monitoring systems utilize advanced AI to detect and alert staff of potential patient incidents, enabling immediate response to emergency situations.
                 </p>
               </div>
