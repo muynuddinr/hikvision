@@ -14,7 +14,7 @@ const Looking = () => {
       </h2>
       
       <p className="text-lg leading-relaxed">
-        As a trusted Hikvision distributor in UAE, we offer comprehensive security solutions and professional-grade surveillance equipment. Our extensive inventory includes the latest Hikvision products at competitive prices. For detailed product information and pricing, please contact our technical sales team at <a href="tel:+97154994539" className="text-blue-600 hover:underline">+971 54 994 5390</a>. Our experts will assist you in selecting the right security solutions tailored to your requirements.
+        As a trusted Hikvision distributor in UAE, we offer comprehensive security solutions and professional-grade surveillance equipment. Our extensive inventory includes the latest Hikvision products at competitive prices. For detailed product information and pricing, please contact our technical sales team at <a href="tel:+971 50 989 3134" className="text-blue-600 hover:underline">+971 50 989 3134</a>. Our experts will assist you in selecting the right security solutions tailored to your requirements.
       </p>
     </div>
   );
