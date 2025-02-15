@@ -46,6 +46,19 @@ const WhatsAppIcon = () => {
     };
   }, []);
 
+  // Add click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (isOpen && !target.closest('.whatsapp-widget')) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isOpen]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim()) {
@@ -69,7 +82,7 @@ const WhatsAppIcon = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {isOpen && (
-        <div className="mb-4 w-[350px] rounded-2xl shadow-2xl bg-gray-900 overflow-hidden animate-slideUp">
+        <div className="whatsapp-widget mb-4 w-[350px] rounded-2xl shadow-2xl bg-gray-900 overflow-hidden animate-slideUp">
           {/* Header */}
           <div className="bg-gradient-to-r from-red-900 to-red-800 p-4 flex justify-between items-center">
             <div className="text-white">
@@ -143,8 +156,11 @@ const WhatsAppIcon = () => {
 
       {/* WhatsApp Icon Button */}
       <button
-        onClick={() => setIsOpen(true)}
-        className="bg-green-600 p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group relative hover:bg-green-500"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(true);
+        }}
+        className="whatsapp-widget bg-green-600 p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 group relative hover:bg-green-500"
         aria-label="Chat on WhatsApp"
       >
         <div className="absolute -top-12 right-0 bg-gray-900 px-4 py-2 rounded-lg shadow-lg text-sm font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
