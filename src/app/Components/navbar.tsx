@@ -117,6 +117,7 @@ const Navbar = () => {
           <Link
             href="/"
             className="flex items-center transition-duration-300 ml-0 sm:ml-8"
+            onClick={() => setIsOpen(false)}
           >
             <div className="relative h-12 sm:h-16 w-[220px] sm:w-[300px] group">
               <Image
@@ -361,6 +362,7 @@ const Navbar = () => {
               {/* Home Link */}
               <Link
                 href="/"
+                onClick={() => setIsOpen(false)}
                 className="flex items-center space-x-2 px-4 py-3 text-gray-800 hover:bg-red-50 
                   hover:text-red-600 transition-all duration-300 border-b border-gray-100"
               >
