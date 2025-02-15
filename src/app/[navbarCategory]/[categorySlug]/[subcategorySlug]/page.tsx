@@ -98,6 +98,76 @@ const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) 
     );
 };
 
+// Add Schema markup component
+const SubcategorySchema = ({ 
+    subcategory, 
+    products, 
+    navbarCategoryName, 
+    categoryName 
+}: { 
+    subcategory: SubCategory | null;
+    products: Product[];
+    navbarCategoryName: { name: string; _id: string } | null;
+    categoryName: { name: string; _id: string } | null;
+}) => {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": `${subcategory?.name} Solutions - HikvisionUAE.ae`,
+        "description": subcategory?.description || `Explore our range of ${subcategory?.name} solutions from Hikvision`,
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://hikvisionuae.ae"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": navbarCategoryName?.name,
+                    "item": `https://hikvisionuae.ae/${navbarCategoryName?.name?.toLowerCase()}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": categoryName?.name,
+                    "item": `https://hikvisionuae.ae/${navbarCategoryName?.name?.toLowerCase()}/${categoryName?.name?.toLowerCase()}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": subcategory?.name,
+                    "item": `https://hikvisionuae.ae/${navbarCategoryName?.name?.toLowerCase()}/${categoryName?.name?.toLowerCase()}/${subcategory?.name?.toLowerCase()}`
+                }
+            ]
+        },
+        "offers": {
+            "@type": "ItemList",
+            "itemListElement": products.map((product, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": "Product",
+                    "name": product.name,
+                    "description": product.description,
+                    "image": product.image1,
+                    "url": `https://hikvisionuae.ae/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`
+                }
+            }))
+        }
+    };
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+    );
+};
+
 export default function SubCategoryPage() {
     const params = useParams();
     const navbarCategory = params.navbarCategory as string;
@@ -187,6 +257,12 @@ export default function SubCategoryPage() {
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
+            <SubcategorySchema 
+                subcategory={subcategory}
+                products={products}
+                navbarCategoryName={navbarCategoryName}
+                categoryName={categoryName}
+            />
             <Navbar />
             <Breadcrumb
                 navbarCategory={{

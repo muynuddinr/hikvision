@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import Navbar from '../../../../Components/navbar';
 import Footer from '../../../../Components/footer';
 import Link from 'next/link';
+import Head from 'next/head';
 
 interface Product {
     _id: string;
@@ -51,6 +52,28 @@ interface BreadcrumbProps {
         name: string;
         slug: string;
     } | null;
+}
+
+interface SchemaData {
+    "@context": string;
+    "@type": string;
+    name: string;
+    description: string;
+    image: string[];
+    brand: {
+        "@type": string;
+        name: string;
+    };
+    offers: {
+        "@type": string;
+        availability: string;
+    };
+    category?: string;
+    additionalProperty?: {
+        "@type": string;
+        name: string;
+        value: string;
+    }[];
 }
 
 const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) => {
@@ -102,6 +125,109 @@ const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) 
                 </ol>
             </div>
         </nav>
+    );
+};
+
+const ProductSEO = ({ product, navbarCategory, category, subcategory }: { 
+    product: Product; 
+    navbarCategory: NavbarCategoryDetails | null;
+    category: CategoryDetails | null;
+    subcategory: SubCategoryDetails | null;
+}) => {
+    const images = [product.image1, product.image2, product.image3].filter(Boolean);
+    const title = `${product.name} | HikVision UAE`;
+    
+    // Create a more structured description that includes category context and key features
+    const enhancedDescription = [
+        product.description,
+        `Category: ${category?.name || ''}`,
+        `Type: ${subcategory?.name || ''}`,
+        product.keyFeatures?.length ? `Features: ${product.keyFeatures.join(', ')}` : ''
+    ].filter(Boolean).join('. ');
+    
+    // Truncate the description for meta tags while preserving complete sentences
+    const truncatedDescription = `${enhancedDescription.substring(0, 155)}...`;
+
+    // Create structured key features for schema
+    const structuredFeatures = product.keyFeatures?.map(feature => ({
+        "@type": "PropertyValue",
+        "name": "Feature",
+        "value": feature
+    })) || [];
+
+    const breadcrumbList = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://hikvisionuae.ae"
+            },
+            ...(navbarCategory ? [{
+                "@type": "ListItem",
+                "position": 2,
+                "name": navbarCategory.name,
+                "item": `https://hikvisionuae.ae/${navbarCategory.slug}`
+            }] : []),
+            ...(category ? [{
+                "@type": "ListItem",
+                "position": 3,
+                "name": category.name,
+                "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category.slug}`
+            }] : []),
+            ...(subcategory ? [{
+                "@type": "ListItem",
+                "position": 4,
+                "name": subcategory.name,
+                "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory.slug}`
+            }] : [])
+        ]
+    };
+
+    const productSchema: SchemaData = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        description: enhancedDescription, // Use full enhanced description for schema
+        image: images,
+        brand: {
+            "@type": "Brand",
+            name: "HikVision"
+        },
+        offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock"
+        },
+        category: `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
+        additionalProperty: structuredFeatures
+    };
+
+    return (
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content={truncatedDescription} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={truncatedDescription} />
+                <meta property="og:image" content={product.image1} />
+                <meta property="og:type" content="product" />
+                <meta property="og:site_name" content="HikVision UAE" />
+                {product.keyFeatures?.map((feature, index) => (
+                    <meta key={index} property="product:feature" content={feature} />
+                ))}
+                <link rel="canonical" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} />
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+                />
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
+                />
+            </Head>
+        </>
     );
 };
 
@@ -226,6 +352,14 @@ export default function ProductDetailsPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+            {product && (
+                <ProductSEO 
+                    product={product} 
+                    navbarCategory={navbarCategory}
+                    category={category}
+                    subcategory={subcategory}
+                />
+            )}
             <Navbar />
             <Breadcrumb {...breadcrumbProps} />
             <div className="py-8 px-4 sm:px-6 lg:px-8">

@@ -6,6 +6,7 @@ import Footer from '../Components/footer';
 import Link from 'next/link';
 import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
+import Head from 'next/head';
 
 
 interface NavbarCategory {
@@ -52,6 +53,68 @@ const Breadcrumb = ({ category }: { category: NavbarCategory | null }) => {
                 </ol>
             </div>
         </nav>
+    );
+};
+
+// Update Schema Component
+const CategorySchema = ({ category, categories }: { category: NavbarCategory | null, categories: Category[] }) => {
+    if (!category) return null;
+
+    const schemaData = {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: `${category.name} Solutions - Hikvisionuae`,
+        description: category.description || `Hikvision ${category.name} Solutions and Products in UAE`,
+        mainEntity: {
+            '@type': 'WebPage',
+            name: category.name,
+            description: category.description,
+        },
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`,
+        hasPart: categories.map(subCategory => ({
+            '@type': 'Product',
+            name: subCategory.name,
+            description: subCategory.description,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}/${subCategory.slug}`
+        })),
+        publisher: {
+            '@type': 'Organization',
+            name: 'Hikvisionuae',
+            url: process.env.NEXT_PUBLIC_SITE_URL
+        }
+    };
+
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+    );
+};
+
+// Update SEO Component
+const SEOHead = ({ category }: { category: NavbarCategory | null }) => {
+    if (!category) return null;
+
+    const title = `${category.title || category.name} Solutions - HikvisionUAE`;
+    const description = category.description || `Explore our range of Hikvision ${category.name} solutions and products in UAE. Official Hikvision distributor in United Arab Emirates.`;
+
+    return (
+        <Head>
+            <title>{title}</title>
+            <meta name="description" content={description} />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`} />
+            <meta property="og:site_name" content="HikvisionUAE" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            <meta name="geo.region" content="AE" />
+            <meta name="geo.placename" content="United Arab Emirates" />
+            <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`} />
+        </Head>
     );
 };
 
@@ -110,6 +173,8 @@ export default function NavbarCategoryPage() {
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
+            <SEOHead category={navbarCategoryDetails} />
+            <CategorySchema category={navbarCategoryDetails} categories={categories} />
             <Navbar />
             <Breadcrumb category={navbarCategoryDetails} />
             <div className="flex-grow">
