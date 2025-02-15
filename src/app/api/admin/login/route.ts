@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 // Hardcoded admin credentials
 const ADMIN_CREDENTIALS = {
     username: 'admin',
-    password: 'admin123' // You should change this to your desired password
+    password: 'admin@hikvisionuae' // You should change this to your desired password
 };
 
 export async function POST(request: Request) {
