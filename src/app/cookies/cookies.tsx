@@ -47,7 +47,7 @@ const CookiePolicy = () => {
           name="description"
           content="Learn about Hikvision UAE's cookie policy. Understand how we use cookies to enhance your browsing experience and protect your privacy. Manage your cookie preferences."
         />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content="Cookie Policy | Hikvision UAE - Privacy & Cookie Information" />
         <meta property="og:description" content="Learn about Hikvision UAE's cookie policy and how we use cookies to enhance your browsing experience while protecting your privacy." />
@@ -74,13 +74,13 @@ const CookiePolicy = () => {
 
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <h1 className="text-3xl font-bold mb-6">Cookie Policy</h1>
-        
+
         <div className="space-y-6">
           <section>
             <h2 className="text-2xl font-semibold mb-3">About This Cookie Policy</h2>
             <p className="mb-4">
-              This Cookie Policy explains how [Your Company Name], authorized distributor of Hikvision security solutions in the UAE, 
-              uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are 
+              This Cookie Policy explains how [Your Company Name], authorized distributor of Hikvision security solutions in the UAE,
+              uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are
               and why we use them, as well as your rights to control our use of them.
             </p>
           </section>
@@ -88,7 +88,7 @@ const CookiePolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-3">What Are Cookies?</h2>
             <p className="mb-4">
-              Cookies are small data files that are placed on your computer or mobile device when you visit a website. They are widely 
+              Cookies are small data files that are placed on your computer or mobile device when you visit a website. They are widely
               used by website owners to make their websites work, or work more efficiently, as well as to provide reporting information.
             </p>
           </section>
@@ -128,7 +128,7 @@ const CookiePolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-3">Your Cookie Choices</h2>
             <p className="mb-4">
-              You can set your browser to refuse all or some browser cookies, or to alert you when websites set or access cookies. 
+              You can set your browser to refuse all or some browser cookies, or to alert you when websites set or access cookies.
               If you disable or refuse cookies, please note that some parts of our website may become inaccessible or not function properly.
             </p>
           </section>
@@ -137,9 +137,10 @@ const CookiePolicy = () => {
             <h2 className="text-2xl font-semibold mb-3">Contact Us</h2>
             <p className="mb-4">
               If you have any questions about our use of cookies or this Cookie Policy, please contact us at:<br />
-              Email: [info@hikvision-dubai.ae]<br />
-              Phone: [+97155422194]<br />
-              Address: [Your UAE Office Address]
+              Email: sales@hikvisionuae.ae<br />
+              Phone: +971 50 989 3134<br />
+              Address: No. 12, Al khabaisi, Abu hail<br />
+              Dubai, United Arab Emirates
             </p>
           </section>
 

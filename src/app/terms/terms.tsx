@@ -139,11 +139,13 @@ const TermsPage = () => {
           <p className="mb-4">
             For any inquiries regarding these terms or our distribution services, please contact us at:
             <br />
-            Email: info@yourdomain.ae
+            Email: sales@hikvisionuae.ae
             <br />
-            Phone: +971 XX XXX XXXX
+            Phone: +971 50 989 3134
             <br />
-            Address: [Your Business Address], UAE
+            Address: No. 12, Al khabaisi, Abu hail
+            <br />
+            Dubai, United Arab Emirates
           </p>
         </section>
 

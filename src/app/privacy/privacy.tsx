@@ -128,9 +128,10 @@ const PrivacyPolicy = () => {
             If you have any questions about this Privacy Policy, please contact us at:
           </p>
           <div className="pl-6">
-            <p>Email: privacy@yourdomain.ae</p>
-            <p>Phone: +971 XX XXX XXXX</p>
-            <p>Address: [Your Business Address in UAE]</p>
+            <p>Email: sales@hikvisionuae.ae</p>
+            <p>Phone: +971 50 989 3134</p>
+            <p>Address: No. 12, Al khabaisi, Abu hail</p>
+            <p>Dubai, United Arab Emirates</p>
           </div>
         </section>
 
