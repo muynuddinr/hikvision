@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 import Navbar from '../../../Components/navbar';
 import Footer from '../../../Components/footer';
 import Link from 'next/link';
-import Image from 'next/image';
 
 interface Product {
     _id: string;
@@ -335,21 +334,15 @@ export default function SubCategoryPage() {
                                         <div className="relative h-48 mb-6 bg-gradient-to-b from-red-50/50 to-transparent rounded-xl p-4">
                                             <div className="absolute inset-0 bg-red-50/30 rounded-xl transform rotate-3 scale-95 transition-transform duration-300 group-hover:rotate-6"></div>
                                             <div className="absolute inset-0 bg-white/80 rounded-xl transform -rotate-3 scale-95 transition-transform duration-300 group-hover:-rotate-6"></div>
-                                            {product.image1 && (
-                                                <Image
-                                                    src={product.image1.startsWith('http') ? product.image1 : `${process.env.NEXT_PUBLIC_API_URL}${product.image1}`}
-                                                    alt={product.name}
-                                                    width={500}
-                                                    height={384}
-                                                    className="relative h-full w-full object-contain p-4 transform transition-transform duration-300 group-hover:scale-110"
-                                                    loading="eager"
-                                                    priority
-                                                    onError={(e) => {
-                                                        console.error('Image load error:', product.image1);
-                                                        e.currentTarget.src = '/placeholder.jpg';
-                                                    }}
-                                                />
-                                            )}
+                                            <img
+                                                src={product.image1.startsWith('http') ? product.image1 : `${process.env.NEXT_PUBLIC_API_URL}${product.image1}`}
+                                                alt={product.name}
+                                                className="relative h-full w-full object-contain p-4 transform transition-transform duration-300 group-hover:scale-110"
+                                                onError={(e) => {
+                                                    console.error('Image load error:', product.image1);
+                                                    e.currentTarget.src = '/placeholder.jpg';
+                                                }}
+                                            />
                                         </div>
 
                                         {/* Content */}

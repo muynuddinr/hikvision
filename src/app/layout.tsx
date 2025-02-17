@@ -4,7 +4,7 @@ import "./globals.css";
 import 'aos/dist/aos.css';
 import { Toaster } from "react-hot-toast";
 import WhatsAppIcon from './Components/WhatsAppIcon';
-import favicon from '../../public/user.png';
+import favicon from '../../public/favicon.svg';
 
 const geist = Geist({
   subsets: ["latin"],
