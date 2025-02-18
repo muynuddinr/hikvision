@@ -7,16 +7,16 @@ import hikvisionLogo from '../../../public/hikvision logo.jpg'
 
 const dropdownMenus = {
   technologies: [
-    { title: 'Tandemvu-technology', href: 'Tandemvu' },
-    { title: 'Acusense-technology', href: 'Acusense' },
-    { title: 'Darkfighter-technology', href: 'Darkfighter' },
-    { title: 'Colorvu-technology', href: 'Colorvu' },
+    { title: 'Tandemvu-technology', href: 'tandemvu' },
+    { title: 'Acusense-technology', href: 'acusense' },
+    { title: 'Darkfighter-technology', href: 'darkfighter' },
+    { title: 'Colorvu-technology', href: 'colorvu' },
   ],
   solutions: [
-    { title: 'Manufacturing solution in Dubai', href: 'Manufacturing' },
-    { title: 'Retail solution in Dubai', href: 'Retail' },
-    { title: 'Healthcare solution in Dubai', href: 'Healthcare' },
-    { title: 'Education Solution in Dubai', href: 'Education' },
+    { title: 'Manufacturing solution in Dubai', href: 'manufacturing' },
+    { title: 'Retail solution in Dubai', href: 'retail' },
+    { title: 'Healthcare solution in Dubai', href: 'healthcare' },
+    { title: 'Education Solution in Dubai', href: 'education' },
   ],
 }
 
@@ -305,7 +305,7 @@ const Navbar = () => {
             {/* About Us Link */}
             <div className="relative group">
               <Link
-                href="/About"
+                href="/about"
                 className="flex items-center space-x-2 w-full px-4 py-2.5 text-gray-800 hover:bg-red-50 
                   hover:text-red-600 transition-all duration-300 rounded-lg"
               >
@@ -316,7 +316,7 @@ const Navbar = () => {
             {/* Contact Us Button */}
             <div className="relative group">
               <Link
-                href="/Contact"
+                href="/contact"
                 className="relative inline-flex items-center px-6 py-3 text-white font-medium 
                   rounded-lg overflow-hidden transition-all duration-300"
               >
