@@ -8,6 +8,12 @@ RUN npm ci --frozen-lockfile
 COPY . .
 RUN npm run build
 
+# Copy public directory containing robots.txt and sitemap.xml
+COPY public/ ./public/
+
+# Copy source files including sitemap.ts
+COPY src/ ./src/
+
 # -- Production image --
 FROM node:18-alpine AS runner
 
