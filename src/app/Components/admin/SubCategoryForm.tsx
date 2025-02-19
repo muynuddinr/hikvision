@@ -17,6 +17,7 @@ interface SubCategory {
     description?: string;
     isActive: boolean;
     image?: string;
+    navbarCategory?: string;
 }
 
 interface SubCategoryFormProps {
@@ -33,28 +34,49 @@ export default function SubCategoryForm({
     onCancelEdit
 }: SubCategoryFormProps) {
     const [categories, setCategories] = useState<Category[]>([]);
+    const [navbarCategories, setNavbarCategories] = useState<Category[]>([]);
     const [formData, setFormData] = useState({
         name: '',
         category: '',
         description: '',
         isActive: true,
-        image: null as File | null
+        image: null as File | null,
+        navbarCategory: '',
     });
 
     const [previewUrl, setPreviewUrl] = useState<string>('');
 
     useEffect(() => {
-        const fetchCategories = async () => {
+        const fetchNavbarCategories = async () => {
             try {
-                const response = await fetch('/api/categories');
+                const response = await fetch('/api/navbar-categories');
                 const data = await response.json();
-                setCategories(data);
+                setNavbarCategories(data);
             } catch (error) {
-                toast.error('Error fetching categories');
+                console.error('Error fetching navbar categories:', error);
+                toast.error('Error fetching navbar categories');
+            }
+        };
+        fetchNavbarCategories();
+    }, []);
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            if (formData.navbarCategory) {
+                try {
+                    const response = await fetch(`/api/categories?navbarCategory=${formData.navbarCategory}`);
+                    const data = await response.json();
+                    setCategories(data);
+                } catch (error) {
+                    toast.error('Error fetching categories');
+                    setCategories([]);
+                }
+            } else {
+                setCategories([]);
             }
         };
         fetchCategories();
-    }, []);
+    }, [formData.navbarCategory]);
 
     useEffect(() => {
         if (isEditing && editData) {
@@ -63,13 +85,23 @@ export default function SubCategoryForm({
                 category: editData.category,
                 description: editData.description || '',
                 isActive: editData.isActive,
-                image: null
+                image: null,
+                navbarCategory: editData.navbarCategory || '',
             });
             if (editData.image) {
                 setPreviewUrl(editData.image);
             }
         }
     }, [isEditing, editData]);
+
+    useEffect(() => {
+        if (!isEditing) {
+            setFormData(prev => ({
+                ...prev,
+                category: ''
+            }));
+        }
+    }, [formData.navbarCategory, isEditing]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -94,6 +126,7 @@ export default function SubCategoryForm({
             formDataToSend.append('category', formData.category);
             formDataToSend.append('description', formData.description);
             formDataToSend.append('isActive', String(formData.isActive));
+            formDataToSend.append('navbarCategory', formData.navbarCategory);
             
             if (formData.image) {
                 formDataToSend.append('image', formData.image);
@@ -112,7 +145,8 @@ export default function SubCategoryForm({
                     category: '', 
                     description: '', 
                     isActive: true, 
-                    image: null 
+                    image: null,
+                    navbarCategory: '',
                 });
                 setPreviewUrl('');
                 onSubCategoryAdded();
@@ -144,6 +178,23 @@ export default function SubCategoryForm({
                         className="w-full p-2 border rounded focus:ring-2 focus:ring-red-500"
                         required
                     />
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium mb-1">Navbar Category</label>
+                    <select
+                        value={formData.navbarCategory}
+                        onChange={(e) => setFormData({ ...formData, navbarCategory: e.target.value })}
+                        className="w-full p-2 border rounded focus:ring-2 focus:ring-red-500"
+                        required
+                    >
+                        <option value="">Select Navbar Category</option>
+                        {navbarCategories.map((category) => (
+                            <option key={category._id} value={category._id}>
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>
