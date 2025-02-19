@@ -410,44 +410,47 @@ export default function ProductDetailsPage() {
                                 <div className="grid grid-cols-3 gap-4 mt-6">
                                     <button
                                         onClick={() => setSelectedImage(product.image1)}
-                                        className={`relative h-24 rounded-lg overflow-hidden transition-all duration-300 
+                                        className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                             ${selectedImage === product.image1
-                                                ? 'ring-2 ring-red-500 shadow-lg scale-105'
-                                                : 'hover:ring-2 hover:ring-red-300 hover:scale-105'}`}
+                                                ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                            bg-white p-2`}
                                     >
                                         <img
                                             src={product.image1}
                                             alt={`${product.name} 1`}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain hover:opacity-90 transition-opacity"
                                         />
                                     </button>
                                     {product.image2 && (
                                         <button
                                             onClick={() => setSelectedImage(product.image2)}
-                                            className={`relative h-24 rounded-lg overflow-hidden transition-all duration-300 
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                                 ${selectedImage === product.image2
-                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105'
-                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105'}`}
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
                                         >
                                             <img
                                                 src={product.image2}
                                                 alt={`${product.name} 2`}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
                                             />
                                         </button>
                                     )}
                                     {product.image3 && (
                                         <button
                                             onClick={() => setSelectedImage(product.image3)}
-                                            className={`relative h-24 rounded-lg overflow-hidden transition-all duration-300 
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                                 ${selectedImage === product.image3
-                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105'
-                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105'}`}
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
                                         >
                                             <img
                                                 src={product.image3}
                                                 alt={`${product.name} 3`}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
                                             />
                                         </button>
                                     )}
