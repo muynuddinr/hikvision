@@ -7,8 +7,25 @@ export const metadata = {
   title: "Contact Us | Hikvision Official Distributor & Supplier in UAE - Security Solutions",
   description:
     "Contact Hikvision UAE for CCTV cameras, security systems & support in Dubai. Authorized dealer for Hikvision products, pricing & technical support.",
-  keywords:
-    "hikvision uae, hikvision dubai, hikvision middle east, hikvision distributor uae, hikvision supplier uae, hikvision authorized distributor in uae, hikvision support uae, hikvision dealer dubai",
+    keywords: [
+      'Hikvision UAE',
+      'Retail Security Solutions',
+      'Security Cameras',
+      'NVR Systems',
+      'Access Control',
+      'Hikvision Dubai',
+      'Hikvision Middle East',
+      'Hikvision Distributor UAE',
+      'Hikvision Supplier UAE',
+      'Hikvision Authorized Distributor in UAE',
+      'Hikvision Support UAE',
+      'hikvision uae',
+      'hikvision dubai',
+      'hikvision middle east',
+      'hikvision distributor uae',
+      'hikvision supplier uae',
+      'hikvision authorized distributor in uae',
+    ],
 };
 
 export default function ContactPage() {

@@ -7,9 +7,25 @@ export const metadata = {
     "About Us | Hikvision Official Distributor & Supplier in UAE - Security Solutions",
   description:
     "Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support.",
-  keywords:
-
-    "hikvision uae, best cameras in uae, hikvision dubai, hikvision middle east, best cameras in dubai, hikvision distributor uae, hikvision supplier uae, hikvision authorized distributor in uae, hikvision support uae, hikvision dealer dubai, hikvision sharjah, hikvision ajman, hikvision fujairah, hikvision ras al khaimah, hikvision umm al quwain, hikvision abu dhabi, hikvision manufacturing security, industrial security cameras UAE, manufacturing surveillance Dubai, thermal cameras UAE, PTZ cameras manufacturing, AI security solutions UAE, factory security systems Dubai",
+    keywords: [
+      'Hikvision UAE',
+      'Retail Security Solutions',
+      'Security Cameras',
+      'NVR Systems',
+      'Access Control',
+      'Hikvision Dubai',
+      'Hikvision Middle East',
+      'Hikvision Distributor UAE',
+      'Hikvision Supplier UAE',
+      'Hikvision Authorized Distributor in UAE',
+      'Hikvision Support UAE',
+      'hikvision uae',
+      'hikvision dubai',
+      'hikvision middle east',
+      'hikvision distributor uae',
+      'hikvision supplier uae',
+      'hikvision authorized distributor in uae',
+    ],
 };
 
 export default function AboutPage() {
