@@ -96,7 +96,7 @@ const Acusense = () => {
       description: "Fully customizable settings that align with UAE security regulations and requirements, allowing property managers and security teams to implement tailored surveillance solutions that meet local standards."
     },
     {
-      title: "Integration with UAE Security Infrastructure",
+      title: "Integration with UAE Security Infrastructures",
       description: "Seamlessly integrates with UAE's existing security networks and smart city initiatives, compatible with local VMS systems and security protocols for comprehensive protection."
     }
   ];
