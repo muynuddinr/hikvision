@@ -1,48 +1,104 @@
 import React from 'react';
 import Head from 'next/head';
 
-const CustomerSupport: React.FC = () => {
-  // Add schema markup for local business
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SecuritySystem",
-    "name": "Security Systems Customer Support",
-    "description": "24/7 professional customer support and after-sale services for security systems in Dubai, UAE and Middle East",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "No. 12, Al khabaisi, Abu hail",
-      "addressLocality": "Dubai",
-      "addressCountry": "UAE"
-    },
-    "telephone": "+971 50 989 3134",
-    "openingHours": "Mo-Su 00:00-24:00",
-    "areaServed": ["Dubai", "UAE", "Middle East"],
-    "serviceType": ["Security Camera Installation", "CCTV Support", "After-Sales Service"]
-  };
+// Update schema markup with more comprehensive details
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["Service", "Organization"],
+  "@id": "https://hikvisionuae.ae/customer-support",
+  "name": "Security Systems Customer Support",
+  "headline": "24/7 Security Systems Customer Support in Dubai",
+  "description": "24/7 professional customer support and after-sale services for security systems in Dubai, UAE and Middle East",
+  "brand": {
+    "@type": "Brand",
+    "name": "Hikvision"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://hikvisionuae.ae/images/customer-support.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No. 12, Al khabaisi, Abu hail",
+    "addressLocality": "Dubai",
+    "addressCountry": "UAE"
+  },
+  "telephone": "+971 50 989 3134",
+  "openingHours": "Mo-Su 00:00-24:00",
+  "areaServed": ["Dubai", "UAE", "Middle East"],
+  "serviceType": ["Security Camera Installation", "CCTV Support", "After-Sales Service"],
+  "provider": {
+    "@type": "Organization",
+    "name": "Hikvision UAE",
+    "url": "https://hikvisionuae.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hikvisionuae.ae/images/hikvision-logo.jpg"
+    }
+  }
+};
 
+// Add FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kind of support services do you offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer 24/7 customer support, professional installation, maintenance services, and comprehensive after-sales support for all security systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I contact your support team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can reach our support team through multiple channels including phone, email, or by visiting our location in Dubai. We provide 24/7 assistance for urgent matters."
+      }
+    }
+  ]
+};
+
+const CustomerSupport: React.FC = () => {
   return (
     <>
       <Head>
         <title>24/7 Security Systems Customer Support in Dubai | Professional CCTV Service</title>
         <meta name="description" content="Get expert 24/7 customer support for security cameras in Dubai. Professional installation, maintenance & after-sales service. Best security solutions in UAE." />
-        <meta name="keywords" content="Hikvision UAE, Hikvision Dubai, best cameras in UAE, best cameras in Dubai, Hikvision Middle East, CCTV installation Dubai, security camera support UAE" />
+        <meta name="keywords" content="security system support Dubai, CCTV maintenance UAE, Hikvision support, security camera installation, 24/7 technical support, CCTV service Dubai, security system maintenance UAE" />
         
         {/* Open Graph tags */}
         <meta property="og:title" content="24/7 Security Systems Customer Support in Dubai | Professional CCTV Service" />
         <meta property="og:description" content="Get expert 24/7 customer support for security cameras in Dubai. Professional installation, maintenance & after-sales service." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/customer-support.jpg" />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/customer-support" />
         <meta property="og:locale" content="en_AE" />
         
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="24/7 Security Systems Customer Support in Dubai" />
+        <meta name="twitter:description" content="Expert 24/7 customer support for security cameras in Dubai. Professional installation & maintenance services." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/customer-support.jpg" />
+        
         {/* Additional SEO tags */}
-        <link rel="canonical" href="https://www.hikvisionuae.ae/" />
+        <link rel="canonical" href="https://hikvisionuae.ae/customer-support" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
 
         {/* Schema markup */}
         <script 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </Head>
 

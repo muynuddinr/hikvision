@@ -1,183 +1,121 @@
 'use client'
 import Link from 'next/link'
 import banner from '../../../public/banner.jpg'
-import { Metadata } from 'next'
+import Head from 'next/head'
+import Script from 'next/script'
 
-// Note: Since this is a client component, metadata should be in a parent layout or page component
-// Here's the metadata object you should add to the nearest parent page/layout
-export const metadata: Metadata = {
-  title: 'Hikvision UAE | Official Distributor & Supplier in UAE - Security Solutions',
-  description: 'Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support.',
-
-  keywords: 'hikvision uae, best cameras in uae, hikvision dubai, hikvision middle east, best cameras in dubai, hikvision distributor uae, hikvision supplier uae, hikvision authorized distributor in uae, hikvision support uae, hikvision dealer dubai',
-  alternates: {
-    canonical: 'https://www.hikvisionuae.com',
+// Banner Schema
+const bannerSchema = {
+  "@context": "https://schema.org",
+  "@type": ["WebPage", "Organization"],
+  "@id": "https://hikvisionuae.ae/",
+  "name": "Hikvision UAE Official Distributor",
+  "headline": "Professional Security Solutions in UAE",
+  "description": "Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support.",
+  "keywords": "Hikvision UAE, CCTV cameras UAE, security systems UAE, Dubai security solutions, Hikvision distributor UAE, Hikvision supplier UAE, Hikvision authorized distributor in UAE, Hikvision support UAE, Hikvision dealer Dubai",
+  "image": {
+    "@type": "ImageObject",
+    "url": banner.src,
+    "width": 1200,
+    "height": 630
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hikvisionuae.ae/"
   },
-  openGraph: {
-    type: 'website',
-    locale: 'en_AE',
-    url: 'https://www.hikvisionuae.com',
-    siteName: 'Hikvision UAE Official Distributor',
-    title: 'Hikvision UAE - Official Distributor & Security Solutions Provider',
-    description: 'Authorized Hikvision distributor in UAE. Expert supplier of CCTV cameras, security systems & technical support in UAE. Get official Hikvision products & solutions.',
-
-    images: [{
-      url: banner.src,
-      width: 1200,
-      height: 630,
-      alt: 'Hikvision UAE Official Distributor',
-
-    }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Hikvision UAE - Official Distributor & Security Solutions Provider',
-    description: 'Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support.',
-    images: [banner.src],
-    creator: '@hikvisionuae',
-    site: '@hikvisionuae',
-
-  },
-  other: {
-    'application/ld+json': JSON.stringify([
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        '@id': 'https://www.hikvisionuae.com/',
-        name: 'Hikvision UAE Official Distributor',
-        url: 'https://www.hikvisionuae.com',
-
-
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://www.hikvisionuae.com/logo.png',
-          width: 112,
-          height: 112,
-        },
-
-        description: 'Authorized Hikvision distributor and supplier in UAE, providing official Hikvision products, support, and solutions.',
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: '+971 509893134',
-          contactType: 'sales',
-          areaServed: ['Dubai', 'UAE', 'Oman'],
-          availableLanguage: ['English', 'Arabic'],
-        },
-      },
-      {
-        '@context': 'https://schema.org',
-
-        '@type': 'Organization',
-        '@id': 'https://www.hikvisionuae.com/supplier',
-        name: 'Hikvision UAE Supplier',
-        description: 'Official supplier and distributor of Hikvision security products in UAE',
-
-
-        brand: {
-          '@type': 'Brand',
-          name: 'Hikvision'
-        },
-        areaServed: {
-          '@type': 'Country',
-          name: 'United Arab Emirates',
-        },
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: 'Hikvision Security Systems',
-        description: 'Official Hikvision security cameras and surveillance systems',
-        brand: {
-          '@type': 'Brand',
-          name: 'Hikvision'
-        },
-        offers: {
-          '@type': 'AggregateOffer',
-          availability: 'https://schema.org/InStock',
-          priceCurrency: 'AED',
-          seller: {
-            '@type': 'Organization',
-            name: 'Hikvision UAE Official Distributor',
-            url: 'https://www.hikvisionuae.com'
-          }
-        }
-      },
-
-      {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: [{
-          '@type': 'Question',
-          name: 'Are you an authorized Hikvision distributor in UAE?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, we are an authorized Hikvision distributor in UAE, providing official products, warranty, and technical support.'
-          }
-        }, {
-          '@type': 'Question',
-          name: 'Where can I get Hikvision support in UAE?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'We provide comprehensive Hikvision support including technical assistance, warranty services, and after-sales support across UAE.'
-          }
-        }]
-      }
-    ]),
+  "datePublished": "2024-01-01T08:00:00+04:00",
+  "dateModified": new Date().toISOString(),
+  "provider": {
+    "@type": "Organization",
+    "name": "Hikvision UAE",
+    "url": "https://hikvisionuae.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hikvisionuae.ae/logo.png"
+    }
   }
 }
 
 export default function Banner() {
   return (
-    <div className="relative bg-white h-[600px] flex items-center">
-      {/* Main Content */}
-      <div className="container mx-auto px-6 z-10">
-        <div className="max-w-2xl space-y-6">
-          <h1 className="text-5xl font-medium">
-            <span className="text-red-600">Profess</span><span className="text-gray-900">ional Security</span><br />
-            <span className="text-red-600">Solut</span><span className="text-gray-900">ions in UAE</span>
-          </h1>
-          
-          <p className="text-lg">
-            <span className="text-red-600">Providing cutting-edge surv</span><span className="text-gray-900">eillance systems and security</span><br />
-            <span className="text-red-600">equipment for your pe</span><span className="text-gray-900">ace of mind.</span>
-          </p>
+    <>
+      <Head>
+        <title>Hikvision UAE | Official Distributor & Supplier in UAE - Security Solutions</title>
+        <meta
+          name="description"
+          content="Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support."
+        />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Hikvision UAE | Official Distributor & Security Solutions Provider" />
+        <meta property="og:description" content="Authorized Hikvision distributor in UAE. Expert supplier of CCTV cameras, security systems & technical support in UAE. Get official Hikvision products & solutions." />
+        <meta property="og:image" content={banner.src} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
+        <meta property="og:site_name" content="Hikvision UAE Official Distributor" />
+        <meta property="og:locale" content="en_AE" />
 
-          <div className="pt-4">
-            <Link 
-              href="/Contact"
-              className="inline-block px-8 py-4 border-2 border-red-600 bg-transparent hover:bg-red-600 transition-colors duration-300 rounded-md shadow-md hover:shadow-lg"
-            >
-              <span className="text-black hover:text-white transition-colors duration-300">Get Started</span>
-            </Link>
-          </div>
-        </div>
-      </div>
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Distributor & Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai." />
+        <meta name="twitter:image" content={banner.src} />
+        <meta name="twitter:creator" content="@hikvisionuae" />
+        <meta name="twitter:site" content="@hikvisionuae" />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-0" />
-      
-      {/* Background image */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${banner.src})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}
+        {/* SEO Essentials */}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="hikvision uae, best cameras in uae, hikvision dubai, hikvision middle east, best cameras in dubai, hikvision distributor uae, hikvision supplier uae, hikvision authorized distributor in uae, hikvision support uae, hikvision dealer dubai" />
+      </Head>
+
+      <Script
+        id="banner-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bannerSchema) }}
       />
 
-    </div>
+      <div className="relative bg-white h-[600px] flex items-center">
+        {/* Main Content */}
+        <div className="container mx-auto px-6 z-10">
+          <div className="max-w-2xl space-y-6">
+            <h1 className="text-5xl font-medium">
+              <span className="text-red-600">Profess</span><span className="text-gray-900">ional Security</span><br />
+              <span className="text-red-600">Solut</span><span className="text-gray-900">ions in UAE</span>
+            </h1>
+            
+            <p className="text-lg">
+              <span className="text-red-600">Providing cutting-edge surv</span><span className="text-gray-900">eillance systems and security</span><br />
+              <span className="text-red-600">equipment for your pe</span><span className="text-gray-900">ace of mind.</span>
+            </p>
+
+            <div className="pt-4">
+              <Link 
+                href="/Contact"
+                className="inline-block px-8 py-4 border-2 border-red-600 bg-transparent hover:bg-red-600 transition-colors duration-300 rounded-md shadow-md hover:shadow-lg"
+              >
+                <span className="text-black hover:text-white transition-colors duration-300">Get Started</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-0" />
+        
+        {/* Background image */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${banner.src})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+      </div>
+    </>
   )
 }
