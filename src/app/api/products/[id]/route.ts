@@ -56,7 +56,7 @@ export async function PUT(
     };
 
     // Handle image updates
-    for (const imageField of ['image1', 'image2', 'image3'] as const) {
+    for (const imageField of ['image1', 'image2', 'image3', 'image4'] as const) {
       const newImage = formData.get(imageField) as File;
       if (newImage && newImage.size > 0) {
         // Delete old image if it exists

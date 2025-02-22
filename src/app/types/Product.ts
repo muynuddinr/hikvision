@@ -6,6 +6,7 @@ export interface Product {
     image1: string;
     image2?: string;
     image3?: string;
+    image4?: string;
     navbarCategory: {
         _id: string;
         name: string;

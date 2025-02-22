@@ -23,9 +23,14 @@ interface Product {
     image1: string;
     image2?: string;
     image3?: string;
+    image4?: string;
     navbarCategory: string | { _id: string; name: string; };
     category: string | { _id: string; name: string; };
     subcategory?: string | { _id: string; name: string; };
+    seoTitle?: string;
+    seoDescription?: string;
+    seoKeywords?: string;
+    faqSchema?: any[];
 }
 
 interface ProductFormProps {
@@ -53,12 +58,18 @@ export default function ProductForm({
         subcategory: '',
         image1: null as File | null,
         image2: null as File | null,
-        image3: null as File | null
+        image3: null as File | null,
+        image4: null as File | null,
+        seoTitle: '',
+        seoDescription: '',
+        seoKeywords: '',
+        faqSchema: [] as any[]
     });
     const [previewUrls, setPreviewUrls] = useState({
         image1: '',
         image2: '',
-        image3: ''
+        image3: '',
+        image4: ''
     });
     const [navbarCategories, setNavbarCategories] = useState<Category[]>([]);
 
@@ -121,13 +132,19 @@ export default function ProductForm({
                 subcategory: editData.subcategory ? (typeof editData.subcategory === 'string' ? editData.subcategory : editData.subcategory._id) : '',
                 image1: null,
                 image2: null,
-                image3: null
+                image3: null,
+                image4: null,
+                seoTitle: editData.seoTitle || '',
+                seoDescription: editData.seoDescription || '',
+                seoKeywords: editData.seoKeywords || '',
+                faqSchema: editData.faqSchema || []
             });
             
             setPreviewUrls({
                 image1: editData.image1 || '',
                 image2: editData.image2 || '',
-                image3: editData.image3 || ''
+                image3: editData.image3 || '',
+                image4: editData.image4 || ''
             });
         }
     }, [isEditing, editData]);
@@ -166,7 +183,7 @@ export default function ProductForm({
         setFormData({ ...formData, name, slug });
     };
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, imageField: 'image1' | 'image2' | 'image3') => {
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, imageField: 'image1' | 'image2' | 'image3' | 'image4') => {
         const file = e.target.files?.[0];
         if (file) {
             setFormData({ ...formData, [imageField]: file });
@@ -214,6 +231,9 @@ export default function ProductForm({
             if (formData.image3) {
                 formDataToSend.append('image3', formData.image3);
             }
+            if (formData.image4) {
+                formDataToSend.append('image4', formData.image4);
+            }
 
             const url = isEditing ? `/api/products/${editData?._id}` : '/api/products';
             const method = isEditing ? 'PUT' : 'POST';
@@ -235,12 +255,18 @@ export default function ProductForm({
                     subcategory: '',
                     image1: null,
                     image2: null,
-                    image3: null
+                    image3: null,
+                    image4: null,
+                    seoTitle: '',
+                    seoDescription: '',
+                    seoKeywords: '',
+                    faqSchema: []
                 });
                 setPreviewUrls({
                     image1: '',
                     image2: '',
-                    image3: ''
+                    image3: '',
+                    image4: ''
                 });
                 onProductAdded();
                 if (isEditing && onCancelEdit) {
@@ -414,6 +440,26 @@ export default function ProductForm({
                             <Image
                                 src={previewUrls.image3}
                                 alt="Preview 3"
+                                fill
+                                className="object-cover rounded"
+                            />
+                        </div>
+                    )}
+                </div>
+
+                <div>
+                    <label className="block text-sm font-medium mb-1">Image 4 (Optional)</label>
+                    <input
+                        type="file"
+                        onChange={(e) => handleImageChange(e, 'image4')}
+                        accept="image/*"
+                        className="w-full p-2 border rounded"
+                    />
+                    {previewUrls.image4 && (
+                        <div className="mt-2 relative w-32 h-32">
+                            <Image
+                                src={previewUrls.image4}
+                                alt="Preview 4"
                                 fill
                                 className="object-cover rounded"
                             />

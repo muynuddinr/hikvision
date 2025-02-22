@@ -15,10 +15,18 @@ interface Product {
     image1: string;
     image2: string;
     image3: string;
+    image4: string;
     navbarCategory: string;
     category: string;
     subcategory: string;
     slug: string;
+    seoTitle?: string;
+    seoDescription?: string;
+    seoKeywords?: string;
+    faqSchema?: {
+        question: string;
+        answer: string;
+    }[];
 }
 
 interface NavbarCategoryDetails {
@@ -134,21 +142,31 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
     category: CategoryDetails | null;
     subcategory: SubCategoryDetails | null;
 }) => {
-    const images = [product.image1, product.image2, product.image3].filter(Boolean);
-    const title = `${product.name} | HikVision UAE`;
+    const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
+    const title = product.seoTitle || `${product.name} | HikVision UAE`;
     
-    // Create a more structured description that includes category context and key features
-    const enhancedDescription = [
+    const enhancedDescription = product.seoDescription || [
         product.description,
         `Category: ${category?.name || ''}`,
         `Type: ${subcategory?.name || ''}`,
         product.keyFeatures?.length ? `Features: ${product.keyFeatures.join(', ')}` : ''
     ].filter(Boolean).join('. ');
     
-    // Truncate the description for meta tags while preserving complete sentences
     const truncatedDescription = `${enhancedDescription.substring(0, 155)}...`;
 
-    // Create structured key features for schema
+    const faqSchema = product.faqSchema ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": product.faqSchema.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    } : null;
+
     const structuredFeatures = product.keyFeatures?.map(feature => ({
         "@type": "PropertyValue",
         "name": "Feature",
@@ -190,7 +208,7 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
         "@context": "https://schema.org",
         "@type": "Product",
         name: product.name,
-        description: enhancedDescription, // Use full enhanced description for schema
+        description: enhancedDescription,
         image: images,
         brand: {
             "@type": "Brand",
@@ -209,11 +227,16 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={truncatedDescription} />
+                <meta name="keywords" content={product.seoKeywords} />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={truncatedDescription} />
                 <meta property="og:image" content={product.image1} />
                 <meta property="og:type" content="product" />
                 <meta property="og:site_name" content="HikVision UAE" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={truncatedDescription} />
+                <meta name="twitter:image" content={product.image1} />
                 {product.keyFeatures?.map((feature, index) => (
                     <meta key={index} property="product:feature" content={feature} />
                 ))}
@@ -226,6 +249,12 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
                 />
+                {faqSchema && (
+                    <script 
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                )}
             </Head>
         </>
     );
@@ -379,7 +408,7 @@ export default function ProductDetailsPage() {
                                     <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <button
                                             onClick={() => {
-                                                const images = [product.image1, product.image2, product.image3].filter(Boolean);
+                                                const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
                                                 const currentIndex = images.indexOf(selectedImage);
                                                 const prevIndex = (currentIndex - 1 + images.length) % images.length;
                                                 setSelectedImage(images[prevIndex]);
@@ -393,7 +422,7 @@ export default function ProductDetailsPage() {
                                         
                                         <button
                                             onClick={() => {
-                                                const images = [product.image1, product.image2, product.image3].filter(Boolean);
+                                                const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
                                                 const currentIndex = images.indexOf(selectedImage);
                                                 const nextIndex = (currentIndex + 1) % images.length;
                                                 setSelectedImage(images[nextIndex]);
@@ -407,7 +436,7 @@ export default function ProductDetailsPage() {
                                     </div>
                                 </div>
                                 
-                                <div className="grid grid-cols-3 gap-4 mt-6">
+                                <div className="grid grid-cols-4 gap-4 mt-6">
                                     <button
                                         onClick={() => setSelectedImage(product.image1)}
                                         className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
@@ -450,6 +479,22 @@ export default function ProductDetailsPage() {
                                             <img
                                                 src={product.image3}
                                                 alt={`${product.name} 3`}
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                                            />
+                                        </button>
+                                    )}
+                                    {product.image4 && (
+                                        <button
+                                            onClick={() => setSelectedImage(product.image4)}
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                                ${selectedImage === product.image4
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
+                                        >
+                                            <img
+                                                src={product.image4}
+                                                alt={`${product.name} 4`}
                                                 className="w-full h-full object-contain hover:opacity-90 transition-opacity"
                                             />
                                         </button>

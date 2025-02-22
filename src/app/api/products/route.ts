@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     const imageUrls: { [key: string]: string } = {};
     
     // Process images sequentially using async/await
-    for (const imageField of ['image1', 'image2', 'image3']) {
+    for (const imageField of ['image1', 'image2', 'image3', 'image4']) {
       const imageFile = formData.get(imageField) as File;
       if (imageFile && imageFile.size > 0) {
         try {
@@ -74,6 +74,7 @@ export async function POST(request: Request) {
       image1: imageUrls.image1,
       image2: imageUrls.image2 || '',
       image3: imageUrls.image3 || '',
+      image4: imageUrls.image4 || '',
       slug: (formData.get('name') as string).toLowerCase().replace(/[^a-z0-9]+/g, '-')
     };
 

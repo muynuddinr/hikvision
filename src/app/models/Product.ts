@@ -27,6 +27,9 @@ const productSchema = new Schema({
   image3: {
     type: String,
   },
+  image4: {
+    type: String,
+  },
   navbarCategory: {
     type: Schema.Types.ObjectId,
     ref: 'NavbarCategory',

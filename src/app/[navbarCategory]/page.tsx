@@ -62,25 +62,67 @@ const CategorySchema = ({ category, categories }: { category: NavbarCategory | n
 
     const schemaData = {
         '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: `${category.name} Solutions - Hikvisionuae`,
-        description: category.description || `Hikvision ${category.name} Solutions and Products in UAE`,
-        mainEntity: {
-            '@type': 'WebPage',
-            name: category.name,
-            description: category.description,
+        '@type': ['CollectionPage', 'Product'],
+        '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`,
+        'name': category.title || `${category.name} Solutions - Hikvision UAE`,
+        'headline': category.title || `${category.name} Security Solutions in UAE`,
+        'description': category.description || `Advanced ${category.name} security solutions optimized for UAE. Discover comprehensive security systems for your needs.`,
+        'brand': {
+            '@type': 'Brand',
+            'name': 'Hikvision'
         },
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`,
-        hasPart: categories.map(subCategory => ({
+        'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`
+        },
+        'datePublished': '2024-01-01T08:00:00+04:00',
+        'dateModified': new Date().toISOString(),
+        'image': {
+            '@type': 'ImageObject',
+            'url': `${process.env.NEXT_PUBLIC_SITE_URL}/images/${category.slug}.jpg`,
+            'width': 1200,
+            'height': 630
+        },
+        'breadcrumb': {
+            '@type': 'BreadcrumbList',
+            'itemListElement': [
+                {
+                    '@type': 'ListItem',
+                    'position': 1,
+                    'item': {
+                        '@id': process.env.NEXT_PUBLIC_SITE_URL,
+                        'name': 'Home'
+                    }
+                },
+                {
+                    '@type': 'ListItem',
+                    'position': 2,
+                    'item': {
+                        '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`,
+                        'name': category.name
+                    }
+                }
+            ]
+        },
+        'hasPart': categories.map(subCategory => ({
             '@type': 'Product',
-            name: subCategory.name,
-            description: subCategory.description,
-            url: `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}/${subCategory.slug}`
+            'name': subCategory.name,
+            'description': subCategory.description,
+            'url': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}/${subCategory.slug}`,
+            'image': subCategory.image || undefined
         })),
-        publisher: {
+        'provider': {
             '@type': 'Organization',
-            name: 'Hikvisionuae',
-            url: process.env.NEXT_PUBLIC_SITE_URL
+            'name': 'Hikvision UAE',
+            'url': process.env.NEXT_PUBLIC_SITE_URL,
+            'logo': {
+                '@type': 'ImageObject',
+                'url': `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`
+            },
+            'sameAs': [
+                'https://www.linkedin.com/company/hikvision',
+                'https://twitter.com/hikvision'
+            ]
         }
     };
 
@@ -96,24 +138,41 @@ const CategorySchema = ({ category, categories }: { category: NavbarCategory | n
 const SEOHead = ({ category }: { category: NavbarCategory | null }) => {
     if (!category) return null;
 
-    const title = `${category.title || category.name} Solutions - HikvisionUAE`;
+    const title = category.title || `${category.name} Solutions - HikvisionUAE`;
     const description = category.description || `Explore our range of Hikvision ${category.name} solutions and products in UAE. Official Hikvision distributor in United Arab Emirates.`;
 
     return (
         <Head>
             <title>{title}</title>
             <meta name="description" content={description} />
+            
+            {/* Open Graph */}
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`} />
             <meta property="og:site_name" content="HikvisionUAE" />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/og-image.jpg`} /> {/* Make sure this exists */}
+            
+            {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL}/og-image.jpg`} />
+            
+            {/* Additional SEO */}
+            <meta name="robots" content="index, follow" />
             <meta name="geo.region" content="AE" />
             <meta name="geo.placename" content="United Arab Emirates" />
+            <meta name="geo.position" content="25.276987;55.296249" /> {/* Dubai coordinates */}
+            <meta name="ICBM" content="25.276987, 55.296249" />
+            
+            {/* Canonical */}
             <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`} />
+            
+            {/* Alternate Languages if you have them */}
+            {/* <link rel="alternate" href={`${process.env.NEXT_PUBLIC_SITE_URL}/ar/${category.slug}`} hreflang="ar" /> */}
         </Head>
     );
 };

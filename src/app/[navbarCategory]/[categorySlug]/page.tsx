@@ -6,6 +6,7 @@ import Link from "next/link";
 import Navbar from "../../Components/navbar";
 import Footer from "../../Components/footer";
 import Image from "next/image";
+import Head from "next/head";
 
 interface SubCategory {
   _id: string;
@@ -119,6 +120,97 @@ const generateSchema = (
   };
 };
 
+const CategorySEO = ({ category, navbarCategory, subcategories }: { 
+  category: Category | null;
+  navbarCategory: string;
+  subcategories: SubCategory[];
+}) => {
+  const baseUrl = "https://hikvisionuae.ae";
+  const pageUrl = `${baseUrl}/${navbarCategory}/${category?.slug}`;
+  
+  // Create enhanced meta description
+  const metaDescription = category?.description || 
+    `Explore Hikvision ${category?.name} solutions and products in UAE. Professional security systems and surveillance solutions.`;
+
+  // Create breadcrumb schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": navbarCategory,
+        "item": `${baseUrl}/${navbarCategory}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": category?.name || "",
+        "item": pageUrl
+      }
+    ]
+  };
+
+  // Create collection page schema (existing generateSchema function)
+  const collectionSchema = generateSchema(category, subcategories, navbarCategory);
+
+  return (
+    <>
+      <Head>
+        <title>{`${category?.name || ""} Solutions - Hikvision UAE`}</title>
+        <meta name="description" content={metaDescription} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={`${category?.name || ""} Solutions - Hikvision UAE`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${category?.name || ""} Solutions - Hikvision UAE`} />
+        <meta name="twitter:description" content={metaDescription} />
+        
+        {/* Additional SEO */}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={pageUrl} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Keywords based on category and subcategories */}
+        <meta name="keywords" content={`
+          Hikvision ${category?.name}, 
+          ${category?.name} solutions UAE, 
+          ${subcategories.map(sub => sub.name).join(', ')},
+          security systems Dubai,
+          Hikvision UAE,
+          surveillance solutions Dubai
+        `} />
+      </Head>
+
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema)
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionSchema)
+        }}
+      />
+    </>
+  );
+};
+
 export default function CategoryPage() {
   const params = useParams();
   const navbarCategory = params.navbarCategory as string;
@@ -213,13 +305,10 @@ export default function CategoryPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateSchema(category, subcategories, navbarCategory)
-          ),
-        }}
+      <CategorySEO 
+        category={category}
+        navbarCategory={navbarCategory}
+        subcategories={subcategories}
       />
       <div className="min-h-screen flex flex-col bg-white">
         <Navbar />
