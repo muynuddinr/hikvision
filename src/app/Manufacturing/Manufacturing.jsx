@@ -80,16 +80,6 @@ const manufacturingSchema = {
       "https://twitter.com/hikvision"
     ]
   },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "AED",
-    "availability": "https://schema.org/InStock",
-    "url": "https://hikvisionuae.ae/Manufacturing",
-    "seller": {
-      "@type": "Organization",
-      "name": "Hikvision UAE"
-    }
-  }
 };
 
 // Add FAQ Schema

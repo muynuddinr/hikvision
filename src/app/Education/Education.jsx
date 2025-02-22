@@ -61,16 +61,7 @@ const educationSchema = {
       "https://twitter.com/hikvision"
     ]
   },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "AED",
-    "availability": "https://schema.org/InStock",
-    "url": "https://hikvisionuae.ae/Education",
-    "seller": {
-      "@type": "Organization",
-      "name": "Hikvision UAE"
-    }
-  }
+
 };
 
 // Add FAQ Schema
