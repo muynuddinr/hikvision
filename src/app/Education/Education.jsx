@@ -48,6 +48,17 @@ const educationSchema = {
   ],
   "serviceType": "Education Security Solutions",
 
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AED",
+    "price": "0",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  },
+
   "provider": {
     "@type": "Organization",
     "name": "Hikvision UAE",

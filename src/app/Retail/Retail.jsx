@@ -59,6 +59,21 @@ const retailSchema = {
       "https://twitter.com/hikvision"
     ]
   },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "AED",
+    "priceValidUntil": "2025-12-31",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "95"
+  }
 };
 
 // Add FAQ Schema

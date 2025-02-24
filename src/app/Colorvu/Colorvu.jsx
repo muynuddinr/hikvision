@@ -72,6 +72,17 @@ const colorvuSchema = {
       "https://twitter.com/hikvision"
     ]
   },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AED",
+    "price": "1499",
+    "priceValidUntil": "2024-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  },
 };
 
 // Add FAQ Schema

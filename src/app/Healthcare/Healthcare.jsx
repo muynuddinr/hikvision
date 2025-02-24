@@ -63,7 +63,16 @@ const healthcareSchema = {
       "https://twitter.com/hikvision"
     ]
   },
-
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AED",
+    "price": "0",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  }
 };
 
 // FAQ Schema

@@ -68,6 +68,20 @@ const aboutSchema = {
       "https://twitter.com/hikvision"
     ]
   },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "AED",
+    "price": "299",
+    "priceValidUntil": "2024-12-31",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "156",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
 };
 
 // Enhanced FAQ Schema

@@ -5,7 +5,7 @@ import Script from 'next/script';
 // TandemVu Schema
 const tandemvuSchema = {
   "@context": "https://schema.org",
-  "@type": ["Service", "Product"],
+  "@type": "Product",
   "@id": "https://hikvisionuae.ae/Tandemvu",
   "name": "Hikvision TandemVu Security Cameras",
   "headline": "Hikvision TandemVu Technology in UAE",
@@ -80,6 +80,20 @@ const tandemvuSchema = {
       "https://twitter.com/hikvision"
     ]
   },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "AED",
+    "priceValidUntil": "2025-12-31",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Hikvision"
+  }
 };
 
 // Add FAQ Schema

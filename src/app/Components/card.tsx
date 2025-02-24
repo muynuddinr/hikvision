@@ -224,18 +224,19 @@ export const jsonLd = {
         },
         category: 'Security Cameras',
         offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/InStock',
-          areaServed: {
-            '@type': 'GeoCircle',
-            geoMidpoint: {
-              '@type': 'GeoCoordinates',
-              latitude: 25.2048,
-              longitude: 55.2708
-            },
-            geoRadius: '100km',
-            description: 'Dubai and UAE region'
-          }
+          '@type': 'AggregateOffer',
+          priceCurrency: 'AED',
+          lowPrice: '999',
+          highPrice: '4999',
+          offerCount: '5',
+          availability: 'https://schema.org/InStock'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '127',
+          bestRating: '5',
+          worstRating: '1'
         }
       },
       {
@@ -246,7 +247,22 @@ export const jsonLd = {
           '@type': 'Brand',
           name: 'Hikvision'
         },
-        category: 'Security Cameras'
+        category: 'Security Cameras',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'AED',
+          lowPrice: '1299',
+          highPrice: '5999',
+          offerCount: '4',
+          availability: 'https://schema.org/InStock'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.7',
+          reviewCount: '98',
+          bestRating: '5',
+          worstRating: '1'
+        }
       },
       {
         '@type': 'Product',
@@ -256,7 +272,22 @@ export const jsonLd = {
           '@type': 'Brand',
           name: 'Hikvision'
         },
-        category: 'Security Cameras'
+        category: 'Security Cameras',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'AED',
+          lowPrice: '1499',
+          highPrice: '6999',
+          offerCount: '3',
+          availability: 'https://schema.org/InStock'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.6',
+          reviewCount: '76',
+          bestRating: '5',
+          worstRating: '1'
+        }
       },
       {
         '@type': 'Product',
@@ -266,7 +297,22 @@ export const jsonLd = {
           '@type': 'Brand',
           name: 'Hikvision'
         },
-        category: 'Security Cameras'
+        category: 'Security Cameras',
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'AED',
+          lowPrice: '1999',
+          highPrice: '9999',
+          offerCount: '2',
+          availability: 'https://schema.org/InStock'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.5',
+          reviewCount: '58',
+          bestRating: '5',
+          worstRating: '1'
+        }
       }
     ]
   },

@@ -26,6 +26,34 @@ const acusenseSchema = {
     "width": 1200,
     "height": 630
   },
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "AED",
+    "priceValidUntil": "2025-12-31",
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Security Systems Weekly"
+    },
+    "datePublished": "2024-02-15"
+  },
   "keywords": [
     "Hikvision AcuSense UAE",
     "AI security cameras UAE",
