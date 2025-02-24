@@ -64,6 +64,12 @@ const retailSchema = {
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
     "priceValidUntil": "2025-12-31",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "1000",
+      "minPrice": "1000",
+      "maxPrice": "50000"
+    },
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
@@ -104,7 +110,7 @@ const Retail = () => {
   const benefits = [
     {
       title: "Advanced Video Surveillance",
-      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations."
+      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations.."
     },
     {
       title: "Smart Loss Prevention",

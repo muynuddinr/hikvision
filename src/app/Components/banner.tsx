@@ -33,6 +33,21 @@ const bannerSchema = {
       "@type": "ImageObject",
       "url": "https://hikvisionuae.ae/logo.png"
     }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "156",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "AED",
+    "lowPrice": "199",
+    "highPrice": "9999",
+    "offerCount": "100+",
+    "availability": "https://schema.org/InStock"
   }
 }
 

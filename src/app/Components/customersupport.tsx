@@ -46,8 +46,11 @@ const schema = {
   },
   "offers": {
     "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "AED",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "0",
+      "priceCurrency": "AED"
+    },
     "availability": "https://schema.org/InStock",
     "validFrom": "2024-01-01"
   },

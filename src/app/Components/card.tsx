@@ -226,8 +226,11 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          lowPrice: '999',
-          highPrice: '4999',
+          priceSpecification: {
+            price: '999',
+            minPrice: '999',
+            maxPrice: '4999'
+          },
           offerCount: '5',
           availability: 'https://schema.org/InStock'
         },
@@ -251,8 +254,11 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          lowPrice: '1299',
-          highPrice: '5999',
+          priceSpecification: {
+            price: '1299',
+            minPrice: '1299',
+            maxPrice: '5999'
+          },
           offerCount: '4',
           availability: 'https://schema.org/InStock'
         },
@@ -276,8 +282,11 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          lowPrice: '1499',
-          highPrice: '6999',
+          priceSpecification: {
+            price: '1499',
+            minPrice: '1499',
+            maxPrice: '6999'
+          },
           offerCount: '3',
           availability: 'https://schema.org/InStock'
         },
@@ -301,8 +310,11 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          lowPrice: '1999',
-          highPrice: '9999',
+          priceSpecification: {
+            price: '1999',
+            minPrice: '1999',
+            maxPrice: '9999'
+          },
           offerCount: '2',
           availability: 'https://schema.org/InStock'
         },

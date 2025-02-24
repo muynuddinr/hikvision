@@ -31,6 +31,12 @@ const acusenseSchema = {
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
     "priceValidUntil": "2025-12-31",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "999.00",
+      "minPrice": "999.00",
+      "maxPrice": "4999.00"
+    },
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
