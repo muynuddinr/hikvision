@@ -75,6 +75,8 @@ interface SchemaData {
     offers: {
         "@type": string;
         availability: string;
+        price: string;
+        priceCurrency: string;
     };
     category?: string;
     additionalProperty?: {
@@ -216,7 +218,9 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
         },
         offers: {
             "@type": "Offer",
-            availability: "https://schema.org/InStock"
+            availability: "https://schema.org/InStock",
+            price: "0",
+            priceCurrency: "AED"
         },
         category: `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
         additionalProperty: structuredFeatures

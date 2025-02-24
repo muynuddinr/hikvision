@@ -217,6 +217,7 @@ export const jsonLd = {
       {
         '@type': 'Product',
         name: 'DarkFighter Technology',
+        image: 'https://www.hikvisionuae.ae/darkfighter.png',
         description: 'Advanced low-light imaging technology for superior night vision surveillance in UAE conditions',
         brand: {
           '@type': 'Brand',
@@ -226,11 +227,9 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          priceSpecification: {
-            price: '999',
-            minPrice: '999',
-            maxPrice: '4999'
-          },
+          price: '999',
+          minPrice: '999',
+          maxPrice: '4999',
           offerCount: '5',
           availability: 'https://schema.org/InStock'
         },
@@ -245,6 +244,7 @@ export const jsonLd = {
       {
         '@type': 'Product',
         name: 'TandemVu Technology',
+        image: 'https://www.hikvisionuae.ae/tandem.png',
         description: 'Dual-lens security camera technology optimized for Middle East surveillance needs',
         brand: {
           '@type': 'Brand',
@@ -254,11 +254,9 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          priceSpecification: {
-            price: '1299',
-            minPrice: '1299',
-            maxPrice: '5999'
-          },
+          price: '1299',
+          minPrice: '1299',
+          maxPrice: '5999',
           offerCount: '4',
           availability: 'https://schema.org/InStock'
         },
@@ -273,6 +271,7 @@ export const jsonLd = {
       {
         '@type': 'Product',
         name: 'ColorVu Technology',
+        image: 'https://www.hikvisionuae.ae/color.png',
         description: 'Full-color night vision security cameras perfect for UAE commercial and residential use',
         brand: {
           '@type': 'Brand',
@@ -282,11 +281,9 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          priceSpecification: {
-            price: '1499',
-            minPrice: '1499',
-            maxPrice: '6999'
-          },
+          price: '1499',
+          minPrice: '1499',
+          maxPrice: '6999',
           offerCount: '3',
           availability: 'https://schema.org/InStock'
         },
@@ -301,6 +298,7 @@ export const jsonLd = {
       {
         '@type': 'Product',
         name: 'AcuSense Technology',
+        image: 'https://www.hikvisionuae.ae/acusense.png',
         description: 'AI-powered security detection system for enhanced surveillance in Dubai and UAE',
         brand: {
           '@type': 'Brand',
@@ -310,11 +308,9 @@ export const jsonLd = {
         offers: {
           '@type': 'AggregateOffer',
           priceCurrency: 'AED',
-          priceSpecification: {
-            price: '1999',
-            minPrice: '1999',
-            maxPrice: '9999'
-          },
+          price: '1999',
+          minPrice: '1999',
+          maxPrice: '9999',
           offerCount: '2',
           availability: 'https://schema.org/InStock'
         },

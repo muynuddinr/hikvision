@@ -9,7 +9,10 @@ const schema = {
   "name": "Security Systems Customer Support",
   "headline": "24/7 Security Systems Customer Support in Dubai",
   "description": "24/7 professional customer support and after-sale services for security systems in Dubai, UAE and Middle East",
-  "image": {
+  "image": [
+    "https://hikvisionuae.ae/images/customer-support.jpg"
+  ],
+  "imageObject": {
     "@type": "ImageObject",
     "url": "https://hikvisionuae.ae/images/customer-support.jpg",
     "width": 1200,
@@ -45,14 +48,15 @@ const schema = {
     }
   },
   "offers": {
-    "@type": "Offer",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "price": "0",
-      "priceCurrency": "AED"
-    },
+    "@type": "AggregateOffer",
+    "priceCurrency": "AED",
+    "lowPrice": 1000.00,
+    "highPrice": 50000.00,
     "availability": "https://schema.org/InStock",
-    "validFrom": "2024-01-01"
+    "seller": {
+      "@type": "Organization",
+      "name": "Hikvision UAE"
+    }
   },
   "aggregateRating": {
     "@type": "AggregateRating",

@@ -15,7 +15,7 @@ const bannerSchema = {
   "keywords": "Hikvision UAE, CCTV cameras UAE, security systems UAE, Dubai security solutions, Hikvision distributor UAE, Hikvision supplier UAE, Hikvision authorized distributor in UAE, Hikvision support UAE, Hikvision dealer Dubai",
   "image": {
     "@type": "ImageObject",
-    "url": banner.src,
+    "url": "https://hikvisionuae.ae/banner.jpg",
     "width": 1200,
     "height": 630
   },
@@ -44,8 +44,12 @@ const bannerSchema = {
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "AED",
-    "lowPrice": "199",
-    "highPrice": "9999",
+    "price": 199,
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": 199,
+      "maxPrice": 9999
+    },
     "offerCount": "100+",
     "availability": "https://schema.org/InStock"
   }
