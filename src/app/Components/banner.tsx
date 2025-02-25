@@ -12,7 +12,7 @@ const bannerSchema = {
   "name": "Hikvision UAE Official Distributor",
   "headline": "Professional Security Solutions in UAE",
   "description": "Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support.",
-  "keywords": "Hikvision UAE, CCTV cameras UAE, security systems UAE, Dubai security solutions, Hikvision distributor UAE, Hikvision supplier UAE, Hikvision authorized distributor in UAE, Hikvision support UAE, Hikvision dealer Dubai",
+  "keywords": "Hikvision UAE, CCTV cameras UAE, security systems UAE, Dubai security solutions, Hikvision distributor UAE, Hikvision supplier UAE, Hikvision authorized distributor in UAE, Hikvision support UAE, Hikvision dealer Dubai, hikvision uae, hikvision dubai, hikvision security solutions, hikvision cctv, hikvision access control, hikvision intercom, hikvision video door phone, hikvision security cameras, hikvision security systems, hikvision security products, hikvision security solutions dubai, hikvision cctv dubai, hikvision access control dubai, hikvision intercom dubai, hikvision video door phone dubai, hikvision security cameras dubai, hikvision security systems dubai, hikvision security products dubai",
   "image": {
     "@type": "ImageObject",
     "url": "https://hikvisionuae.ae/banner.jpg",

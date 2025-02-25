@@ -9,10 +9,12 @@ const retailSchema = {
   "@id": "https://hikvisionuae.ae/Retail",
   "name": "Retail Security Solutions UAE",
   "headline": "Retail Security Solutions in UAE | Advanced Video Surveillance",
+  "url": "https://hikvisionuae.ae/Retail",
+  "keywords": "Retail Security Solutions UAE, Advanced Video Surveillance, CCTV Cameras UAE, Loss Prevention, Business Intelligence, Hikvision Dubai, Hikvision Middle East, Hikvision Distributor UAE, Hikvision Supplier UAE, Hikvision Authorized Distributor in UAE, Hikvision Support UAE",
   "description": "Advanced retail surveillance and security systems for stores in UAE. Comprehensive video monitoring, loss prevention, and business intelligence solutions.",
   "brand": {
     "@type": "Brand",
-    "name": "Hikvision"
+    "name": "Hikvision UAE"
   },
   "image": {
     "@type": "ImageObject",
@@ -110,7 +112,7 @@ const Retail = () => {
   const benefits = [
     {
       title: "Advanced Video Surveillance",
-      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations.."
+      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations."
     },
     {
       title: "Smart Loss Prevention",

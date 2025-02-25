@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Professional Security Solutions in Dubai | Your Company Name',
+  title: 'Professional Security Solutions in Dubai | Hikvision UAE',
   description: 'Leading provider of cutting-edge surveillance systems and security equipment in Dubai. Get professional security solutions for your peace of mind.',
 }
 

@@ -79,7 +79,7 @@ const CookiePolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-3">About This Cookie Policy</h2>
             <p className="mb-4">
-              This Cookie Policy explains how [Your Company Name], authorized distributor of Hikvision security solutions in the UAE,
+              This Cookie Policy explains how Hikvision UAE, authorized distributor of Hikvision security solutions in the UAE,
               uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are
               and why we use them, as well as your rights to control our use of them.
             </p>

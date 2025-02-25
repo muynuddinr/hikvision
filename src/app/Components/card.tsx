@@ -94,32 +94,30 @@ const TechnologyGrid = () => {
     {
       title: "DarkFighter Technology",
       logoSrc: darkfighter.src,
-      description: "Advanced low-light imaging technology",
+      description: "Advanced low-light imaging technology optimized for UAE's challenging lighting conditions. Perfect for 24/7 surveillance in Dubai's diverse environments.",
       learnMoreUrl: "/Darkfighter",
-      logoAlt: "DarkFighter Logo"
+      logoAlt: "DarkFighter Technology UAE"
     },
-
     {
       title: "TandemVu Technology",
       logoSrc: tandemvu.src,
-      description: "Advanced low-light imaging technology",
+      description: "Dual-lens security solution designed for UAE's commercial spaces. Combines thermal and optical imaging for comprehensive surveillance coverage.",
       learnMoreUrl: "/Tandemvu",
-      logoAlt: "TandemVu Logo"
+      logoAlt: "TandemVu Technology UAE"
     },
     {
       title: "ColorVu Technology",
       logoSrc: colorvu.src,
-      description: "Advanced low-light imaging technology",
+      description: "Full-color night vision technology adapted for UAE conditions. Delivers crystal-clear color imaging even in complete darkness.",
       learnMoreUrl: "/Colorvu",
-      logoAlt: "ColorVu Logo"
-
+      logoAlt: "ColorVu Technology UAE"
     },
     {
       title: "AcuSense Technology",
       logoSrc: darkfighter.src,
-      description: "Advanced low-light imaging technology",
+      description: "AI-powered security detection optimized for UAE businesses. Reduces false alarms while ensuring accurate threat detection.",
       learnMoreUrl: "/Acusense",
-      logoAlt: "AcuSense Logo"
+      logoAlt: "AcuSense Technology UAE"
     },
   ];
 
@@ -145,15 +143,15 @@ const TechnologyGrid = () => {
 };
 
 export const metadata: Metadata = {
-  title: 'Hikvision Security Technologies & CCTV Cameras | Official Dealer Dubai UAE',
-  description: 'Leading Hikvision dealer in Dubai & UAE. Premium security cameras featuring DarkFighter, TandemVu, ColorVu & AcuSense technologies. Expert CCTV installation in Dubai. Contact us at +971 50 989 3134.',
-  keywords: 'Hikvision UAE, Hikvision Dubai, Hikvision dealer Dubai, Hikvision Middle East, security cameras Dubai, CCTV cameras UAE, best security cameras Dubai, DarkFighter camera, TandemVu technology, ColorVu cameras, AcuSense technology, CCTV installation Dubai, security camera price UAE, surveillance systems Dubai, Hikvision Al Khabaisi, security solutions Abu Hail',
+  title: 'Hikvision Security Technologies UAE | Official Distributor Dubai',
+  description: 'Leading Hikvision distributor in UAE offering DarkFighter, TandemVu, ColorVu & AcuSense technologies. Expert CCTV installation & security solutions in Dubai. Contact +971 50 989 3134.',
+  keywords: 'Hikvision UAE, Hikvision Dubai, Hikvision distributor UAE, security cameras Dubai, CCTV installation UAE, DarkFighter technology, TandemVu cameras, ColorVu systems, AcuSense solutions, surveillance Dubai',
   alternates: {
     canonical: 'https://www.hikvisionuae.ae/'
   },
   openGraph: {
-    title: 'Hikvision Security Technologies & CCTV Cameras | Official Dealer Dubai UAE',
-    description: 'Your trusted Hikvision dealer in Dubai. Expert CCTV installation and premium security solutions. Visit our showroom in Al Khabaisi or call +971 50 989 3134.',
+    title: 'Hikvision Security Technologies UAE | Official Distributor Dubai',
+    description: 'Discover advanced Hikvision security solutions in UAE. Premium CCTV cameras & expert installation services in Dubai. Visit our showroom or call +971 50 989 3134.',
     type: 'website',
     locale: 'en_AE',
     images: [
@@ -164,12 +162,13 @@ export const metadata: Metadata = {
         alt: 'Hikvision Security Technologies UAE',
       },
     ],
-    siteName: 'Hikvision UAE',
+    siteName: 'Hikvision UAE Official Distributor',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hikvision Security Cameras | Official Dealer in Dubai UAE',
-    description: 'Premium Hikvision security solutions in Dubai. Visit our showroom in Al Khabaisi or call +971 50 989 3134 for expert consultation.',
+    title: 'Hikvision Security Technologies UAE | Official Distributor',
+    description: 'Leading Hikvision security solutions provider in UAE. Expert CCTV installation & support in Dubai.',
+    creator: '@hikvisionuae',
     images: ['/og-image.jpg'],
   },
   robots: {
