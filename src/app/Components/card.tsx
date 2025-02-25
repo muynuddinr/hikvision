@@ -228,7 +228,9 @@ export const jsonLd = {
           priceCurrency: 'AED',
           price: '999',
           minPrice: '999',
+          lowPrice: '999',
           maxPrice: '4999',
+          highPrice: '4999',
           offerCount: '5',
           availability: 'https://schema.org/InStock'
         },
@@ -255,7 +257,9 @@ export const jsonLd = {
           priceCurrency: 'AED',
           price: '1299',
           minPrice: '1299',
+          lowPrice: '1299',
           maxPrice: '5999',
+          highPrice: '5999',
           offerCount: '4',
           availability: 'https://schema.org/InStock'
         },
@@ -282,7 +286,9 @@ export const jsonLd = {
           priceCurrency: 'AED',
           price: '1499',
           minPrice: '1499',
+          lowPrice: '1499',
           maxPrice: '6999',
+          highPrice: '6999',
           offerCount: '3',
           availability: 'https://schema.org/InStock'
         },
@@ -309,7 +315,9 @@ export const jsonLd = {
           priceCurrency: 'AED',
           price: '1999',
           minPrice: '1999',
+          lowPrice: '1999',
           maxPrice: '9999',
+          highPrice: '9999',
           offerCount: '2',
           availability: 'https://schema.org/InStock'
         },

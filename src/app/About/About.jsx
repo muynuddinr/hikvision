@@ -73,7 +73,8 @@ const aboutSchema = {
     "priceCurrency": "AED",
     "price": "299",
     "priceValidUntil": "2024-12-31",
-    "availability": "https://schema.org/InStock"
+    "availability": "https://schema.org/InStock",
+    "hasMerchantReturnPolicy": true
   },
   "aggregateRating": {
     "@type": "AggregateRating",

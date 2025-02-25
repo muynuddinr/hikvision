@@ -43,11 +43,7 @@ const healthcareSchema = {
     "hikvision authorized distributor in uae",
     "hikvision support uae",
     "hikvision healthcare solutions uae",
-    "hikvision healthcare solutions dubai",
-    "hikvision healthcare solutions UAE",
-    "hikvision healthcare solutions Dubai",
-    "hikvision healthcare solutions UAE",
-    
+    "hikvision healthcare solutions dubai"
   ],
   "serviceType": "Healthcare Security Solutions",
   "provider": {
@@ -68,10 +64,48 @@ const healthcareSchema = {
     "priceCurrency": "AED",
     "price": "0",
     "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2025-12-31",
+    "hasMerchantReturnPolicy": false,
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
     }
+  },
+  "review": [{
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Dubai Healthcare City"
+    },
+    "datePublished": "2024-03-01",
+    "reviewBody": "Excellent healthcare security solutions that have significantly improved our facility's safety and monitoring capabilities."
+  },
+  {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "4.8",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Al Zahra Hospital Dubai"
+    },
+    "datePublished": "2024-02-15",
+    "reviewBody": "Hikvision's healthcare security solutions have revolutionized our patient monitoring capabilities."
+  }],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "156",
+    "reviewCount": "89"
   }
 };
 

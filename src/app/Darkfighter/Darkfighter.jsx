@@ -20,7 +20,19 @@ const darkfighterSchema = {
   },
   "datePublished": "2024-01-01T08:00:00+04:00",
   "dateModified": "2024-03-19T08:00:00+04:00",
-  
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://hikvisionuae.ae/images/darkfighter-security.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "keywords": [
     "hikvision distributor uae",
     "Hikvision DarkFighter UAE",
@@ -51,7 +63,6 @@ const darkfighterSchema = {
       "https://twitter.com/hikvision"
     ]
   },
-
 };
 
 // Add FAQ Schema

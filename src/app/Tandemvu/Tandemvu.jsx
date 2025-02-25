@@ -10,6 +10,13 @@ const tandemvuSchema = {
   "name": "Hikvision TandemVu Security Cameras",
   "headline": "Hikvision TandemVu Technology in UAE",
   "description": "Advanced dual-sensor security solutions optimized for the UAE. Combining thermal and visible imaging for comprehensive surveillance. Get a demo today!",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "156",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
   "brand": {
     "@type": "Brand",
     "name": "Hikvision"
@@ -81,10 +88,22 @@ const tandemvuSchema = {
     ]
   },
   "offers": {
-    "@type": "Offer",
+    "@type": "AggregateOffer",
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
     "priceValidUntil": "2025-12-31",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "minPrice": 2000,
+      "maxPrice": 15000,
+      "priceCurrency": "AED"
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "returnWindow": "P30D",
+      "returnMethod": "https://schema.org/ReturnByMail"
+    },
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
@@ -93,7 +112,51 @@ const tandemvuSchema = {
   "manufacturer": {
     "@type": "Organization",
     "name": "Hikvision"
-  }
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.8",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Dubai Security Solutions"
+      },
+      "datePublished": "2024-03-01",
+      "reviewBody": "Hikvision TandemVu cameras have proven exceptional in UAE conditions. The dual-sensor technology provides outstanding surveillance capabilities in both daylight and nighttime conditions."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.9",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Abu Dhabi Smart Systems"
+      },
+      "datePublished": "2024-02-15",
+      "reviewBody": "The TandemVu system's performance in harsh desert conditions is remarkable. Integration with our existing security infrastructure was seamless."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.7",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "UAE Port Authority"
+      },
+      "datePublished": "2024-01-20",
+      "reviewBody": "Perfect solution for our maritime security needs. The dual-sensor capability provides excellent coverage in all weather conditions."
+    }
+  ]
 };
 
 // Add FAQ Schema

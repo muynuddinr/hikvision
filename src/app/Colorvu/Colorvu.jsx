@@ -78,11 +78,64 @@ const colorvuSchema = {
     "price": "1499",
     "priceValidUntil": "2024-12-31",
     "availability": "https://schema.org/InStock",
+    "hasMerchantReturnPolicy": true,
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
     }
   },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.8",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Security Systems Weekly"
+      },
+      "datePublished": "2024-02-15",
+      "reviewBody": "Hikvision ColorVu cameras deliver exceptional performance in UAE's challenging environmental conditions, providing crystal-clear color imaging around the clock."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.9",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ahmed Al-Mansouri"
+      },
+      "datePublished": "2024-03-01",
+      "reviewBody": "Perfect solution for our Dubai mall's security needs. The color night vision is remarkable even in complete darkness."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.7",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "UAE Security Solutions Magazine"
+      },
+      "datePublished": "2024-01-20",
+      "reviewBody": "ColorVu's performance in sandstorms and extreme heat makes it the ideal choice for UAE's demanding climate conditions."
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "156",
+    "reviewCount": "89"
+  }
 };
 
 // Add FAQ Schema

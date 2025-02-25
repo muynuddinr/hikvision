@@ -9,7 +9,7 @@ export const metadata = {
     "Contact Hikvision UAE for CCTV cameras, security systems & support in Dubai. Authorized dealer for Hikvision products, pricing & technical support.",
     keywords: [
       'Hikvision UAE',
-      'Retail Security Solutions',
+      'Retail Security S   olutions',
       'Security Cameras',
       'NVR Systems',
       'Access Control',

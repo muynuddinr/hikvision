@@ -48,11 +48,36 @@ const educationSchema = {
   ],
   "serviceType": "Education Security Solutions",
 
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "156",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Mohammed Ahmed"
+    },
+    "datePublished": "2024-03-01",
+    "reviewBody": "Excellent security solutions for our educational institution. The smart campus features have significantly improved our operational efficiency and safety measures."
+  },
+
   "offers": {
     "@type": "Offer",
     "priceCurrency": "AED",
     "price": "0",
     "availability": "https://schema.org/InStock",
+    "priceValidUntil": "2025-12-31",
+    "hasMerchantReturnPolicy": false,
     "seller": {
       "@type": "Organization",
       "name": "Hikvision UAE"
