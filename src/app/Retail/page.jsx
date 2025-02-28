@@ -24,6 +24,14 @@ export const metadata = {
     'hikvision distributor uae',
     'hikvision supplier uae',
     'hikvision authorized distributor in uae',
+    'hikvision support uae',  
+    'retail security uae',
+    'retail security dubai',
+    'retail security middle east',
+    'retail security distributor uae',
+    'retail security supplier uae',
+    'retail security authorized distributor in uae',
+    'retail security support uae',
   ],
 
 };

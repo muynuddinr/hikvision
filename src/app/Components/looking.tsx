@@ -33,7 +33,7 @@ const lookingSchema = {
   "offers": {
     "@type": "Offer",
     "priceCurrency": "AED",
-    "price": "0",
+    "price": "199.00",
     "availability": "https://schema.org/InStock"
   },
   "contactPoint": {

@@ -29,6 +29,13 @@ const termsSchema = {
     "hikvision distributor uae",
     "hikvision supplier uae",
     "hikvision authorized distributor in uae",
+    "hikvision terms and conditions",
+    "security solutions for uae",
+    "security solutions in uae",
+    "security solutions in dubai",
+    "security solutions in abu dhabi",
+    "security solutions in sharjah",
+    "security solutions in ajman",
   ],
   "publisher": {
     "@type": "Organization",

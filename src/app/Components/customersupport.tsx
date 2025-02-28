@@ -50,8 +50,7 @@ const schema = {
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "AED",
-    "lowPrice": 1000.00,
-    "highPrice": 50000.00,
+    "price": "1000.00",
     "availability": "https://schema.org/InStock",
     "seller": {
       "@type": "Organization",

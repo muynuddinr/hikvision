@@ -19,6 +19,7 @@ const textImageSchema = {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
+    "price": "199.00",
     "priceValidUntil": "2025-12-31",
     "seller": {
       "@type": "Organization",

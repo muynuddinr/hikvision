@@ -30,7 +30,17 @@ const healthcareSchema = {
     "height": 630
   },
   "keywords": [
+    "Hikvision",
+    "Hikvision UAE",
+    "Hikvision Dubai",
+    "Hikvision Abu Dhabi",
+    "Hikvision Sharjah",
+    "Hikvision Ajman",
+    "Hikvision Fujairah",
     "healthcare security Dubai",
+    "healthcare security uae",
+    "healthcare security in dubai",
+    "healthcare security in uae",
     "hospital surveillance UAE",
     "medical facility security",
     "Hikvision healthcare solutions",

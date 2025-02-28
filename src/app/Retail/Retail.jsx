@@ -28,7 +28,21 @@ const retailSchema = {
   },
   "datePublished": "2024-01-01T08:00:00+04:00",
   "dateModified": "2024-03-19T08:00:00+04:00",
-  "keywords": [
+  "keywords": [ 
+    "Hikvision",
+    "Hikvision UAE",
+    "Hikvision Dubai",
+    "Hikvision Abu Dhabi",
+    "Hikvision Sharjah",
+    "Hikvision Ajman",
+    "Hikvision Fujairah",
+    "Security Solutions for uae",
+    "Security Solutions in uae",
+    "Security Solutions in dubai",
+    "Security Solutions in abu dhabi",
+    "Security Solutions in sharjah",
+    "Security Solutions in ajman",
+    "Security Solutions in uae",
     "retail security UAE",
     "store surveillance Dubai",
     "loss prevention cameras",
@@ -65,12 +79,12 @@ const retailSchema = {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
+    "price": "1000.00",
     "priceValidUntil": "2025-12-31",
     "priceSpecification": {
       "@type": "PriceSpecification",
-      "price": "1000",
-      "minPrice": "1000",
-      "maxPrice": "50000"
+      "minPrice": "1000.00",
+      "maxPrice": "50000.00"
     },
     "seller": {
       "@type": "Organization",
@@ -119,7 +133,7 @@ const Retail = () => {
   const benefits = [
     {
       title: "Advanced Video Surveillance",
-      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations.."
+      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations."
     },
     {
       title: "Smart Loss Prevention",

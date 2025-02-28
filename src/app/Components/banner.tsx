@@ -44,12 +44,9 @@ const bannerSchema = {
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "AED",
-    "price": 199,
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "minPrice": 199,
-      "maxPrice": 9999
-    },
+    "price": "199.00",
+    "lowPrice": 199,
+    "highPrice": 9999,
     "offerCount": "100+",
     "availability": "https://schema.org/InStock"
   }

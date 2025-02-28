@@ -27,6 +27,16 @@ const colorvuSchema = {
     "height": 630
   },
   "keywords": [
+    "Hikvision",
+    "Hikvision ColorVu",
+    "Hikvision UAE",
+    'Security Solutions for uae',
+    'Security Solutions in uae',
+    'Security Solutions in dubai',
+    'Security Solutions in abu dhabi',
+    'Security Solutions in sharjah',
+    'Security Solutions in ajman',
+    'Security Solutions in uae',
     "ColorVu UAE",
     "Hikvision ColorVu Dubai",
     "24/7 color cameras UAE",

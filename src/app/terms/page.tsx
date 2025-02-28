@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "Terms & Conditions - Hikvision UAE",
   description: "Read our terms and conditions for Hikvision UAE. Understand your rights and responsibilities as a customer.",
   keywords: [
+    "Hikvision",
+    "Hikvision UAE",
+    "Hikvision Dubai",
+    "Hikvision Abu Dhabi",
+    "Hikvision Sharjah",
+    "Hikvision Ajman",
     "terms and conditions UAE",
     "Hikvision terms",
     "Hikvision conditions",
@@ -26,6 +32,14 @@ export const metadata: Metadata = {
     "hikvision distributor uae",
     "hikvision supplier uae",
     "hikvision authorized distributor in uae",
+    "hikvision terms and conditions",
+    "security solutions for uae",
+    "security solutions in uae",
+    "security solutions in dubai",
+    "security solutions in abu dhabi",
+    "security solutions in sharjah",
+    "security solutions in ajman",
+    "security solutions in uae",
   ]
 };
 
