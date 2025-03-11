@@ -42,8 +42,54 @@ const lookingSchema = {
     "contactType": "sales",
     "areaServed": "UAE",
     "availableLanguage": ["English", "Arabic"]
-  }
+  },
+  "sameAs": [
+    "https://hikvisionuae.ae",
+    "https://www.instagram.com/hikvison_uae.01",
+  ],
+  "areaServed": [
+    "Dubai",
+    "Abu Dhabi",
+    "Sharjah",
+    "Ajman",
+    "Ras Al Khaimah",
+    "Fujairah",
+    "Umm Al Quwain"
+  ],
+  "hasMap": "https://www.google.com/maps?cid=YOUR_GOOGLE_BUSINESS_ID",
+  "priceRange": "AED 199 - AED 9999"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who is the official Hikvision distributor in UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are the authorized Hikvision distributor in UAE, providing genuine products, professional installation, and 24/7 technical support across Dubai and all emirates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I buy Hikvision cameras in UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can buy genuine Hikvision cameras from our showroom in Dubai or through our authorized dealers across UAE. We offer installation services and technical support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Hikvision camera prices in UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hikvision camera prices in UAE start from AED 199 for basic models to AED 9999 for advanced systems. Contact us for the best deals and package prices."
+      }
+    }
+  ]
+}
 
 const Looking = () => {
   return (

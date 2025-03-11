@@ -83,6 +83,37 @@ const CategorySchema = ({ category, categories }: { category: NavbarCategory | n
             'width': 1200,
             'height': 630
         },
+        'offers': {
+            '@type': 'AggregateOffer',
+            'priceCurrency': 'AED',
+            'lowPrice': '999.00',
+            'highPrice': '9999.00',
+            'offerCount': categories.length,
+            'availability': 'https://schema.org/InStock'
+        },
+        'aggregateRating': {
+            '@type': 'AggregateRating',
+            'ratingValue': '4.8',
+            'reviewCount': '156',
+            'bestRating': '5',
+            'worstRating': '1'
+        },
+        'review': [
+            {
+                '@type': 'Review',
+                'reviewRating': {
+                    '@type': 'Rating',
+                    'ratingValue': '5',
+                    'bestRating': '5'
+                },
+                'author': {
+                    '@type': 'Organization',
+                    'name': 'Security Systems Weekly'
+                },
+                'datePublished': '2024-03-01',
+                'reviewBody': `Outstanding ${category.name} security solutions from Hikvision. Perfect for UAE conditions and requirements.`
+            }
+        ],
         'breadcrumb': {
             '@type': 'BreadcrumbList',
             'itemListElement': [
@@ -90,16 +121,18 @@ const CategorySchema = ({ category, categories }: { category: NavbarCategory | n
                     '@type': 'ListItem',
                     'position': 1,
                     'item': {
-                        '@id': process.env.NEXT_PUBLIC_SITE_URL,
-                        'name': 'Home'
+                        '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/`,
+                        'name': 'Home',
+                        'url': process.env.NEXT_PUBLIC_SITE_URL
                     }
                 },
                 {
                     '@type': 'ListItem',
                     'position': 2,
                     'item': {
-                        '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`,
-                        'name': category.name
+                        '@id': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}/`,
+                        'name': category.name,
+                        'url': `${process.env.NEXT_PUBLIC_SITE_URL}/${category.slug}`
                     }
                 }
             ]

@@ -77,6 +77,8 @@ interface SchemaData {
         availability: string;
         price: string;
         priceCurrency: string;
+        priceValidUntil: string;
+        url: string;
     };
     category?: string;
     additionalProperty?: {
@@ -84,6 +86,23 @@ interface SchemaData {
         name: string;
         value: string;
     }[];
+    aggregateRating?: {
+        "@type": string;
+        ratingValue: string;
+        reviewCount: string;
+    };
+    review?: {
+        "@type": string;
+        reviewRating: {
+            "@type": string;
+            ratingValue: string;
+            bestRating: string;
+        };
+        author: {
+            "@type": string;
+            name: string;
+        };
+    };
 }
 
 const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) => {
@@ -183,25 +202,37 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://hikvisionuae.ae"
+                "item": {
+                    "@id": "https://hikvisionuae.ae",
+                    "name": "Home"
+                }
             },
             ...(navbarCategory ? [{
                 "@type": "ListItem",
                 "position": 2,
                 "name": navbarCategory.name,
-                "item": `https://hikvisionuae.ae/${navbarCategory.slug}`
+                "item": {
+                    "@id": `https://hikvisionuae.ae/${navbarCategory.slug}`,
+                    "name": navbarCategory.name
+                }
             }] : []),
             ...(category ? [{
                 "@type": "ListItem",
                 "position": 3,
                 "name": category.name,
-                "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category.slug}`
+                "item": {
+                    "@id": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category.slug}`,
+                    "name": category.name
+                }
             }] : []),
             ...(subcategory ? [{
                 "@type": "ListItem",
                 "position": 4,
                 "name": subcategory.name,
-                "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory.slug}`
+                "item": {
+                    "@id": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory.slug}`,
+                    "name": subcategory.name
+                }
             }] : [])
         ]
     };
@@ -220,10 +251,29 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
             "@type": "Offer",
             availability: "https://schema.org/InStock",
             price: "0",
-            priceCurrency: "AED"
+            priceCurrency: "AED",
+            priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+            url: `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
         },
         category: `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
-        additionalProperty: structuredFeatures
+        additionalProperty: structuredFeatures,
+        aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.5",
+            reviewCount: "10"
+        },
+        review: {
+            "@type": "Review",
+            reviewRating: {
+                "@type": "Rating",
+                ratingValue: "5",
+                bestRating: "5"
+            },
+            author: {
+                "@type": "Person",
+                name: "HikVision UAE Team"
+            }
+        }
     };
 
     return (

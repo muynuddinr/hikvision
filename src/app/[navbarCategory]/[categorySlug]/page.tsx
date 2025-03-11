@@ -115,6 +115,12 @@ const generateSchema = (
       description: subcat.description,
       position: index + 1,
       url: `${baseUrl}/${navbarCategory}/${category?.slug}/${subcat.slug}`,
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        priceCurrency: "AED",
+        priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days from now
+      },
       ...(subcat.image && { image: subcat.image }),
     })),
   };
@@ -141,19 +147,22 @@ const CategorySEO = ({ category, navbarCategory, subcategories }: {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": baseUrl
+        "item": baseUrl,
+        "@id": `${baseUrl}#breadcrumb-1`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": navbarCategory,
-        "item": `${baseUrl}/${navbarCategory}`
+        "item": `${baseUrl}/${navbarCategory}`,
+        "@id": `${baseUrl}#breadcrumb-2`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": category?.name || "",
-        "item": pageUrl
+        "item": pageUrl,
+        "@id": `${baseUrl}#breadcrumb-3`
       }
     ]
   };

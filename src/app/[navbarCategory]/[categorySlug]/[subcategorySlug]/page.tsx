@@ -184,6 +184,7 @@ const SubcategorySchema = ({
             "position": index + 1,
             "item": {
                 "@type": "Product",
+                "@id": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}#product`,
                 "name": product.name,
                 "description": product.description,
                 "image": product.image1,
@@ -191,6 +192,13 @@ const SubcategorySchema = ({
                 "brand": {
                     "@type": "Brand",
                     "name": "Hikvision"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "priceCurrency": "AED",
+                    "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                    "url": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`
                 }
             }
         })),

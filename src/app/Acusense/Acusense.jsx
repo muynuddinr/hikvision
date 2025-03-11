@@ -64,13 +64,17 @@ const acusenseSchema = {
     "height": 630
   },
   "offers": {
-    "@type": "Offer",
+    "@type": "AggregateOffer",
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
     "price": "999.00",
+    "lowPrice": "999.00",
+    "highPrice": "4999.00",
     "priceValidUntil": "2025-12-31",
+    "offerCount": "5",
     "priceSpecification": {
       "@type": "PriceSpecification",
+      "price": "999.00",
       "minPrice": "999.00",
       "maxPrice": "4999.00"
     },

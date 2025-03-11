@@ -56,10 +56,10 @@ export default function Banner() {
   return (
     <>
       <Head>
-        <title>Hikvision UAE | Official Distributor & Supplier in UAE - Security Solutions</title>
+        <title>Hikvision UAE - #1 Official Distributor & Security Solutions Provider</title>
         <meta
           name="description"
-          content="Leading Hikvision distributor and supplier in UAE. Authorized dealer for CCTV cameras, security systems & support in Dubai. Contact us for Hikvision products, pricing & technical support."
+          content="Official Hikvision distributor in UAE offering premium security cameras & CCTV systems. Expert installation, 24/7 support & best prices in Dubai. Visit our showroom or call +971 50 989 3134."
         />
         
         {/* Open Graph */}

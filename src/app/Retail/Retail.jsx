@@ -79,8 +79,6 @@ const retailSchema = {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
     "priceCurrency": "AED",
-    "price": "1000.00",
-    "priceValidUntil": "2025-12-31",
     "priceSpecification": {
       "@type": "PriceSpecification",
       "minPrice": "1000.00",
@@ -133,7 +131,7 @@ const Retail = () => {
   const benefits = [
     {
       title: "Advanced Video Surveillance",
-      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations."
+      description: "Deploy state-of-the-art HD cameras and NVR systems to monitor store activities, protect assets, and ensure customer safety across all retail locations.."
     },
     {
       title: "Smart Loss Prevention",
