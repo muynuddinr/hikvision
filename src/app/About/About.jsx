@@ -10,7 +10,7 @@ const aboutSchema = {
   "@id": "https://hikvisionuae.ae/About",
   "name": "Hikvision Security Solutions UAE",
   "headline": "About Hikvision Dubai - Authorized Security Solutions Provider",
-  "description": "Discover Hikvision Dubai, your trusted authorized reseller of security cameras and surveillance systems in UAE. Expert CCTV installation and support services.",
+  "description": "Discover Hikvision Dubai, your trusted authorized reseller of security cameras and surveillance systems in UAE. Expert CCTV installation and support services...",
   "brand": {
     "@type": "Brand",
     "name": "Hikvision"
