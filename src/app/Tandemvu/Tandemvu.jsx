@@ -228,29 +228,36 @@ const Tandemvu = () => {
   return (
     <>
       <Head>
-        <title>Hikvision TandemVu UAE - Dual-Sensor Security Cameras | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade to Hikvision TandemVu in UAE for dual-sensor security. Advanced thermal and visible imaging for comprehensive surveillance. Request a demo today!"
-        />
+        <title>Hikvision UAE - Official Security Solutions & CCTV Systems Provider</title>
+        <meta name="description" content="Hikvision UAE - Leading provider of security solutions, CCTV cameras, and surveillance systems in Dubai, Abu Dhabi & across UAE. Authorized distributor & expert installation." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Hikvision TandemVu Technology in UAE | Dual-Sensor Security Solutions" />
-        <meta property="og:description" content="Experience advanced dual-sensor security with Hikvision TandemVu in UAE. Thermal and visible imaging, comprehensive surveillance, and smart monitoring for properties across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/tandemvu-security.jpg" />
+        {/* Primary Keywords */}
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision abu dhabi, cctv camera uae, security systems uae, surveillance solutions dubai, hikvision tandemvu uae" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta property="og:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation, surveillance systems, and security cameras across Dubai & UAE." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Tandemvu" />
-
+        
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hikvision TandemVu Technology in UAE | Dual-Sensor Security Solutions" />
-        <meta name="twitter:description" content="Experience advanced dual-sensor security with Hikvision TandemVu in UAE. Thermal and visible imaging, comprehensive surveillance, and smart monitoring for properties across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/tandemvu-security.jpg" />
-
-        {/* SEO Essentials */}
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/Tandemvu" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation and surveillance systems." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        
+        {/* Additional SEO Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        
+        {/* Region-specific Tags */}
+        <meta name="geo.region" content="AE" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2048;55.2708" />
+        <meta name="ICBM" content="25.2048, 55.2708" />
       </Head>
 
       <Script

@@ -2,174 +2,30 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-// ColorVu Schema
+// SEO Schema
 const colorvuSchema = {
   "@context": "https://schema.org",
-  "@type": ["Service", "Product"],
+  "@type": ["Organization", "Product"],
   "@id": "https://hikvisionuae.ae/Colorvu",
-  "name": "Hikvision ColorVu Security Cameras",
-  "headline": "Hikvision ColorVu Technology in UAE",
-  "description": "24/7 Full-Color Surveillance Solutions optimized for UAE's environmental conditions. Advanced security cameras for crystal-clear color imaging day and night.",
+  "name": "Hikvision UAE - Official Security Solutions Provider",
+  "description": "Leading Hikvision distributor in UAE offering professional security cameras, CCTV systems & surveillance solutions. Best prices & expert installation in Dubai.",
+  "url": "https://hikvisionuae.ae",
   "brand": {
     "@type": "Brand",
     "name": "Hikvision"
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hikvisionuae.ae/Colorvu"
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "UAE"
   },
-  "datePublished": "2024-01-01T08:00:00+04:00",
-  "dateModified": "2024-03-19T08:00:00+04:00",
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://hikvisionuae.ae/images/colorvu-technology.jpg",
-    "width": 1200,
-    "height": 630
-  },
-  "keywords": [
-    "Hikvision",
-    "Hikvision ColorVu",
-    "Hikvision UAE",
-    'Security Solutions for uae',
-    'Security Solutions in uae',
-    'Security Solutions in dubai',
-    'Security Solutions in abu dhabi',
-    'Security Solutions in sharjah',
-    'Security Solutions in ajman',
-    'Security Solutions in uae',
-    "ColorVu UAE",
-    "Hikvision ColorVu Dubai",
-    "24/7 color cameras UAE",
-    "night vision cameras Dubai",
-    "full color surveillance UAE",
-    "Hikvision security Dubai",
-    "ColorVu technology UAE",
-    "low light cameras UAE",
-    "hikvision uae",
-    "hikvision dubai",
-    "hikvision middle east",
-    "hikvision distributor uae",
-    "hikvision supplier uae",
-    "hikvision authorized distributor in uae",
-    "hikvision support uae",
-    "hikvision colorvu",
-    "hikvision colorvu uae",
-    "hikvision colorvu dubai",
-    "hikvision colorvu middle east",
-    "hikvision colorvu distributor uae",
-    "hikvision colorvu supplier uae",
-    "hikvision colorvu authorized distributor in uae",
-    "hikvision colorvu support uae",
-    "hikvision colorvu technology",
-    "hikvision colorvu technology uae",
-    "hikvision colorvu technology dubai",
-    "hikvision colorvu technology middle east",
-    "hikvision colorvu technology distributor uae",
-    "hikvision colorvu technology supplier uae",
-    "hikvision colorvu technology authorized distributor in uae",
-  ],
-  "serviceType": "Full-Color Surveillance Solutions",
-  "provider": {
-    "@type": "Organization",
-    "name": "Hikvision UAE",
-    "url": "https://hikvisionuae.ae",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hikvisionuae.ae/images/hikvision-logo.jpg"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/hikvision",
-      "https://twitter.com/hikvision"
-    ]
-  },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "AED",
-    "price": "1499",
-    "priceValidUntil": "2024-12-31",
-    "availability": "https://schema.org/InStock",
-    "hasMerchantReturnPolicy": true,
-    "seller": {
-      "@type": "Organization",
-      "name": "Hikvision UAE"
-    }
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.8",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Security Systems Weekly"
-      },
-      "datePublished": "2024-02-15",
-      "reviewBody": "Hikvision ColorVu cameras deliver exceptional performance in UAE's challenging environmental conditions, providing crystal-clear color imaging around the clock."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.9",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Ahmed Al-Mansouri"
-      },
-      "datePublished": "2024-03-01",
-      "reviewBody": "Perfect solution for our Dubai mall's security needs. The color night vision is remarkable even in complete darkness."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.7",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "UAE Security Solutions Magazine"
-      },
-      "datePublished": "2024-01-20",
-      "reviewBody": "ColorVu's performance in sandstorms and extreme heat makes it the ideal choice for UAE's demanding climate conditions."
-    }
-  ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "156",
-    "reviewCount": "89"
+    "ratingValue": "4.8",
+    "reviewCount": "150",
+    "bestRating": "5"
   }
-};
-
-// Add FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What makes ColorVu cameras special for UAE conditions?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ColorVu cameras feature F1.0 super-aperture lenses optimized for UAE's unique environmental conditions, delivering crystal-clear, full-color images 24/7, even in extreme lighting conditions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do ColorVu cameras perform in UAE's harsh weather?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ColorVu cameras are engineered to withstand UAE's extreme climate conditions, including intense heat and sandstorms, while maintaining exceptional image quality throughout the year."
-      }
-    }
-  ]
 };
 
 const Colorvu = () => {
@@ -203,43 +59,32 @@ const Colorvu = () => {
   return (
     <>
       <Head>
-        <title>Hikvision ColorVu UAE - 24/7 Full-Color Cameras | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade to Hikvision ColorVu in UAE for 24/7 full-color surveillance. Crystal-clear color imaging in any lighting condition. Request a demo today!"
+        <title>Hikvision UAE | #1 Security Camera Provider in Dubai & UAE</title>
+        <meta 
+          name="description" 
+          content="Official Hikvision distributor in UAE. Expert CCTV installation, security cameras & surveillance systems. Best prices in Dubai, Abu Dhabi & across UAE. ☎ Call Now!"
+        />
+        <meta 
+          name="keywords" 
+          content="Hikvision UAE, Hikvision Dubai, CCTV Dubai, security cameras UAE, Hikvision distributor UAE, CCTV installation Dubai, surveillance systems UAE"
         />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Hikvision ColorVu Technology in UAE | 24/7 Full-Color Surveillance" />
-        <meta property="og:description" content="Experience superior 24/7 full-color surveillance with Hikvision ColorVu in UAE. Crystal-clear color imaging in any lighting condition, optimized for UAE's unique environment." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/colorvu-technology.jpg" />
+        <meta property="og:title" content="Hikvision UAE - Leading Security Camera Provider" />
+        <meta property="og:description" content="Official Hikvision distributor in UAE. Expert security solutions & CCTV installation across Dubai & UAE." />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Colorvu" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hikvision ColorVu Technology in UAE | 24/7 Full-Color Surveillance" />
-        <meta name="twitter:description" content="Experience superior 24/7 full-color surveillance with Hikvision ColorVu in UAE. Crystal-clear color imaging in any lighting condition, optimized for UAE's unique environment." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/colorvu-technology.jpg" />
-
-        {/* SEO Essentials */}
+        
+        {/* Additional SEO Tags */}
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/Colorvu" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Script
         id="colorvu-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(colorvuSchema) }}
-      />
-
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="bg-[#8B1818] text-white py-20 px-24">
@@ -285,6 +130,7 @@ const Colorvu = () => {
         </div>
       </div>
     </>
+    
   );
 };
 

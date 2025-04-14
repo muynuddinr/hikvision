@@ -89,7 +89,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
             {/* Brand Column */}
             <div className="lg:col-span-2" itemProp="publisher" itemScope itemType="https://schema.org/Organization">
-              <h3 className="text-gray-900 text-xl font-bold mb-4" itemProp="name">Hikvision UAE</h3>
+              <h3 className="text-gray-900 text-xl font-bold mb-4" itemProp="name">Hikvision UAE.</h3>
               <p className="text-gray-600 mb-6 pr-4" itemProp="description">
                 Leading provider of security cameras and surveillance solutions in Dubai and UAE. Authorized Hikvision distributor serving the Middle East region.
               </p>

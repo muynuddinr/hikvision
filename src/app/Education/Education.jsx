@@ -142,29 +142,27 @@ const Education = () => {
   return (
     <>
       <Head>
-        <title>Education Security Solutions UAE - Smart Campus Systems | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade your educational institution's security in UAE with smart surveillance systems. Comprehensive solutions for schools, colleges & universities. Request a demo today!"
-        />
+        <title>Hikvision UAE - Official Security Solutions Provider | Education Security Systems</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Education Security Solutions in UAE | Smart Campus Systems" />
-        <meta property="og:description" content="Experience advanced security solutions for educational institutions in UAE. Smart surveillance, access control, and monitoring systems for schools and universities across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/education-security.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Education" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Education Security Solutions in UAE | Smart Campus Systems" />
-        <meta name="twitter:description" content="Experience advanced security solutions for educational institutions in UAE. Smart surveillance, access control, and monitoring systems for schools and universities across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/education-security.jpg" />
-
-        {/* SEO Essentials */}
+        {/* Primary Meta Tags */}
+        <meta name="description" content="Official Hikvision UAE dealer & distributor. Leading provider of education security systems, CCTV cameras, and smart campus solutions in Dubai, Abu Dhabi & across UAE. Best prices guaranteed." />
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision dealer uae, hikvision distributor dubai, hikvision security camera uae, hikvision cctv dubai, hikvision education solutions uae, hikvision smart campus" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/Education" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/Education" />
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider | Education Security Systems" />
+        <meta property="og:description" content="Leading provider of education security systems, CCTV cameras, and smart campus solutions in UAE. Expert installation and support available." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/education-security.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of education security systems, CCTV cameras, and smart campus solutions in UAE. Expert installation and support available." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/education-security.jpg" />
       </Head>
 
       <Script

@@ -157,29 +157,36 @@ const Manufacturing = () => {
   return (
     <>
       <Head>
-        <title>Hikvision Manufacturing Security in UAE | Industrial CCTV & AI Surveillance</title>
-        <meta
-          name="description"
-          content="Upgrade to Hikvision manufacturing security in UAE. Advanced CCTV, thermal cameras & AI surveillance for industrial facilities. Request a demo today!"
-        />
-        
-        {/* Open Graph - Updated */}
-        <meta property="og:title" content="Hikvision Manufacturing Security in UAE | Industrial CCTV Solutions" />
-        <meta property="og:description" content="Experience advanced manufacturing security with Hikvision in UAE. Comprehensive CCTV, thermal imaging, and AI-powered surveillance for industrial facilities across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/manufacturing-security.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Manufacturing" />
-
-        {/* Twitter Card - Updated */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hikvision Manufacturing Security in UAE | Industrial CCTV Solutions" />
-        <meta name="twitter:description" content="Experience advanced manufacturing security with Hikvision in UAE. Comprehensive CCTV, thermal imaging, and AI-powered surveillance for industrial facilities across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/manufacturing-security.jpg" />
-
-        {/* SEO Essentials */}
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/Manufacturing" />
+        <title>Hikvision UAE - Official Security Solutions Provider | CCTV & Surveillance Systems</title>
+        <meta name="description" content="Hikvision UAE - Leading provider of security solutions, CCTV cameras, and surveillance systems in Dubai, Abu Dhabi & across UAE. Authorized distributor & expert installation." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Primary Keywords */}
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision abu dhabi, cctv camera uae, security systems uae, surveillance solutions dubai" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider | CCTV Systems" />
+        <meta property="og:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation, surveillance systems, and security cameras across Dubai & UAE." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation and surveillance systems." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        
+        {/* Additional SEO Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        
+        {/* Region-specific Tags */}
+        <meta name="geo.region" content="AE" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2048;55.2708" />
+        <meta name="ICBM" content="25.2048, 55.2708" />
       </Head>
 
       <Script

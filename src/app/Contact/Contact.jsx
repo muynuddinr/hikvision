@@ -93,30 +93,29 @@ const Contact = () => {
   return (
     <>
       <Head>
-        <title>Contact Hikvision Dubai | 24/7 Security Camera Support & Installation</title>
-        <meta
-          name="description"
-          content="Need help with Hikvision security cameras in Dubai? Contact our 24/7 support team for expert assistance, installation services, and technical support. Authorized Hikvision dealer in UAE."
-        />
+        <title>Contact Hikvision Dubai | Official Hikvision Dealer UAE | Security Camera Solutions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Contact Hikvision Dubai | 24/7 Security Camera Support & Installation" />
-        <meta property="og:description" content="Need help with Hikvision security cameras in Dubai? Contact our 24/7 support team for expert assistance, installation services, and technical support. Authorized Hikvision dealer in UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-contact.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Contact" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Hikvision Dubai | 24/7 Security Camera Support & Installation" />
-        <meta name="twitter:description" content="Need help with Hikvision security cameras in Dubai? Contact our 24/7 support team for expert assistance, installation services, and technical support." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-contact.jpg" />
-
-        {/* SEO Essentials */}
+        {/* Primary Meta Tags */}
+        <meta name="title" content="Contact Hikvision Dubai | Official Hikvision Dealer UAE | Security Camera Solutions" />
+        <meta name="description" content="Official Hikvision dealer in UAE. Get expert support for Hikvision security cameras, CCTV installation, and maintenance in Dubai. 24/7 technical assistance available. Best prices on Hikvision products." />
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision dealer uae, hikvision distributor dubai, hikvision security camera uae, hikvision cctv dubai, hikvision price uae, hikvision support dubai, hikvision installation uae, hikvision products dubai" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/Contact" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="Hikvision Dubai contact, CCTV support UAE, security camera installation Dubai, Hikvision technical support, CCTV maintenance UAE, security system help Dubai hikvision uae, hikvision dubai, hikvision middle east, hikvision distributor uae, hikvision supplier uae, hikvision authorized distributor in uae, hikvision support uae, hikvision dealer dubai" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/Contact" />
+        <meta property="og:title" content="Contact Hikvision Dubai | Official Hikvision Dealer UAE" />
+        <meta property="og:description" content="Official Hikvision dealer in UAE. Expert support for security cameras, CCTV installation, and maintenance in Dubai. 24/7 technical assistance available." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-contact.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://hikvisionuae.ae/Contact" />
+        <meta property="twitter:title" content="Contact Hikvision Dubai | Official Hikvision Dealer UAE" />
+        <meta property="twitter:description" content="Official Hikvision dealer in UAE. Expert support for security cameras, CCTV installation, and maintenance in Dubai. 24/7 technical assistance available." />
+        <meta property="twitter:image" content="https://hikvisionuae.ae/images/hikvision-contact.jpg" />
       </Head>
 
       <Script

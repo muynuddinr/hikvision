@@ -147,29 +147,27 @@ const Healthcare = () => {
   return (
     <>
       <Head>
-        <title>Healthcare Security Solutions Dubai - Hospital Surveillance | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade your healthcare facility with advanced security solutions in Dubai. AI-powered surveillance, patient monitoring & comprehensive security systems. Request a demo today!"
-        />
+        <title>Hikvision UAE - Official Security Solutions Provider | Healthcare Security Systems</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Healthcare Security Solutions in Dubai | Advanced Hospital Security" />
-        <meta property="og:description" content="Experience advanced healthcare security with Hikvision in UAE. Precise monitoring, patient safety, and smart surveillance for medical facilities across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/healthcare-security.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Healthcare" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Healthcare Security Solutions in Dubai | Advanced Hospital Security" />
-        <meta name="twitter:description" content="Experience advanced healthcare security with Hikvision in UAE. Precise monitoring, patient safety, and smart surveillance for medical facilities across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/healthcare-security.jpg" />
-
-        {/* SEO Essentials */}
+        {/* Primary Meta Tags */}
+        <meta name="description" content="Official Hikvision UAE dealer & distributor. Leading provider of healthcare security systems, CCTV cameras, and surveillance solutions in Dubai, Abu Dhabi & across UAE. Best prices guaranteed." />
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision dealer uae, hikvision distributor dubai, hikvision security camera uae, hikvision cctv dubai, hikvision healthcare solutions uae, hikvision hospital security" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/Healthcare" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/Healthcare" />
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider | Healthcare Security Systems" />
+        <meta property="og:description" content="Leading provider of healthcare security systems, CCTV cameras, and surveillance solutions in UAE. Expert installation and support available." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/healthcare-security.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of healthcare security systems, CCTV cameras, and surveillance solutions in UAE. Expert installation and support available." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/healthcare-security.jpg" />
       </Head>
 
       <Script

@@ -2,195 +2,30 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 
-// Acusense Schema
+// SEO Schema
 const acusenseSchema = {
   "@context": "https://schema.org",
-  "@type": ["Service", "Product"],
+  "@type": ["Organization", "Product"],
   "@id": "https://hikvisionuae.ae/Acusense",
-  "name": "Hikvision AcuSense AI Security Cameras",
-  "headline": "Hikvision AcuSense Technology in UAE",
-  "description": "Advanced AI-powered security solutions optimized for the UAE. Reduce false alarms with smart detection. Get a demo today!",
-  "keywords": [
-    "Hikvision",
-    "Hikvision UAE",
-    "Hikvision Dubai",
-    "Hikvision Abu Dhabi",
-    "Hikvision Sharjah",
-    "Hikvision Ajman",
-    "Hikvision Fujairah",
-    "Security Solutions for uae",
-    "Security Solutions in uae",
-    "Security Solutions in dubai",
-    "Security Solutions in abu dhabi",
-    "Security Solutions in sharjah",
-    "Security Solutions in ajman",
-    "Security Solutions in uae",
-    "acusense technology",
-    "acusense technology uae",
-    "acusense technology dubai",
-    "acusense technology abu dhabi",
-    "acusense technology sharjah",
-    "acusense technology ajman",
-    "acusense technology Fujairah",
-    "acusense technology Ras Al Khaimah",
-    "acusense technology Umm Al Quwain",
-    "acusense technology Abu Dhabi",
-    "Hikvision AcuSense UAE",
-    "AI security cameras UAE",
-    "false alarm reduction UAE",
-    "smart surveillance Dubai",
-    "AcuSense technology Gulf",
-    "Hikvision AcuSense",
-    "Hikvision AcuSense UAE",
-    "Hikvision AcuSense Dubai",
-    "Hikvision AcuSense Abu Dhabi",
-    "Hikvision AcuSense Sharjah",
-    "Hikvision AcuSense Ajman",
-  ],
+  "name": "Hikvision UAE - Official Security Solutions Provider",
+  "description": "Leading Hikvision distributor in UAE offering professional security cameras, CCTV systems & surveillance solutions. Best prices & expert installation in Dubai.",
+  "url": "https://hikvisionuae.ae",
   "brand": {
     "@type": "Brand",
     "name": "Hikvision"
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hikvisionuae.ae/Acusense"
-  },
-  "datePublished": "2024-01-01T08:00:00+04:00",
-  "dateModified": "2024-03-19T08:00:00+04:00",
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://hikvisionuae.ae/images/acusense-security.jpg",
-    "width": 1200,
-    "height": 630
-  },
-  "offers": {
-    "@type": "AggregateOffer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "AED",
-    "price": "999.00",
-    "lowPrice": "999.00",
-    "highPrice": "4999.00",
-    "priceValidUntil": "2025-12-31",
-    "offerCount": "5",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "price": "999.00",
-      "minPrice": "999.00",
-      "maxPrice": "4999.00"
-    },
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-      "returnWindow": "P30D",
-      "returnMethod": "https://schema.org/ReturnByMail"
-    },
-    "seller": {
-      "@type": "Organization",
-      "name": "Hikvision UAE"
-    }
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "UAE"
   },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
-    "reviewCount": "127",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "127"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "Security Systems Weekly"
-      },
-      "datePublished": "2024-02-15",
-      "reviewBody": "Hikvision AcuSense technology demonstrates exceptional performance in UAE conditions. The AI-powered detection system effectively reduces false alarms while maintaining high accuracy in human and vehicle detection.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Security Systems Weekly",
-        "sameAs": "https://securitysystemsweekly.com"
-      }
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.8",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Ahmed Al-Mansouri"
-      },
-      "datePublished": "2024-03-01",
-      "reviewBody": "Installed AcuSense cameras across our commercial property in Dubai. The false alarm reduction is remarkable, and the system handles our harsh weather conditions perfectly."
-    },
-    {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "4.7",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "UAE Security Solutions Magazine"
-      },
-      "datePublished": "2024-01-20",
-      "reviewBody": "AcuSense's desert-optimized performance sets a new standard for AI security in the Gulf region. Excellent detection accuracy even during sandstorms."
-    }
-  ],
-  "keywords": [
-    "Hikvision AcuSense UAE",
-    "AI security cameras UAE",
-    "false alarm reduction UAE",
-    "smart surveillance Dubai",
-    "AcuSense technology Gulf"
-  ],
-  "serviceType": "AI-Powered Security Solutions",
-  "provider": {
-    "@type": "Organization",
-    "name": "Hikvision UAE",
-    "url": "https://hikvisionuae.ae",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hikvisionuae.ae/images/hikvision-logo.jpg"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/hikvision",
-      "https://twitter.com/hikvision"
-    ]
-  },
-};
-
-// Add FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Hikvision AcuSense technology?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Hikvision AcuSense is an AI-powered technology that accurately distinguishes between humans and vehicles, reducing false alarms and providing precise detection for enhanced security monitoring in UAE properties."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does AcuSense perform in UAE's climate conditions?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AcuSense is specially calibrated for UAE's environmental conditions, effectively minimizing false alarms triggered by sandstorms, desert wildlife, and extreme weather conditions, ensuring reliable surveillance in the Gulf climate."
-      }
-    }
-  ]
+    "reviewCount": "150",
+    "bestRating": "5"
+  }
 };
 
 const Acusense = () => {
@@ -224,43 +59,32 @@ const Acusense = () => {
   return (
     <>
       <Head>
-        <title>Hikvision AcuSense UAE - Smart AI Security Cameras | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade to Hikvision AcuSense in UAE for AI-powered security. Eliminate false alarms with smart human & vehicle detection. Request a demo today!"
+        <title>Hikvision UAE | #1 Security Camera Provider in Dubai & UAE</title>
+        <meta 
+          name="description" 
+          content="Official Hikvision distributor in UAE. Expert CCTV installation, security cameras & surveillance systems. Best prices in Dubai, Abu Dhabi & across UAE. ☎ Call Now!"
+        />
+        <meta 
+          name="keywords" 
+          content="Hikvision UAE, Hikvision Dubai, CCTV Dubai, security cameras UAE, Hikvision distributor UAE, CCTV installation Dubai, surveillance systems UAE"
         />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Hikvision AcuSense Technology in UAE | AI-Powered Security Solutions" />
-        <meta property="og:description" content="Experience advanced AI-powered security with Hikvision AcuSense in UAE. Precise detection, reduced false alarms, and smart monitoring for properties across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/acusense-security.jpg" />
+        <meta property="og:title" content="Hikvision UAE - Leading Security Camera Provider" />
+        <meta property="og:description" content="Official Hikvision distributor in UAE. Expert security solutions & CCTV installation across Dubai & UAE." />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Acusense" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hikvision AcuSense Technology in UAE | AI-Powered Security Solutions" />
-        <meta name="twitter:description" content="Experience advanced AI-powered security with Hikvision AcuSense in UAE. Precise detection, reduced false alarms, and smart monitoring for properties across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/acusense-security.jpg" />
-
-        {/* SEO Essentials */}
+        
+        {/* Additional SEO Tags */}
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/Acusense" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Script
         id="acusense-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(acusenseSchema) }}
-      />
-
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="bg-[#8B1818] text-white py-20 px-24">
@@ -307,7 +131,7 @@ const Acusense = () => {
           </div>
         </div>
       </div>
-    </>
+  </>
   );
 };
 

@@ -38,27 +38,36 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Head>
-        <title>Privacy Policy | Hikvision UAE - Data Protection & Security</title>
-        <meta
-          name="description"
-          content="Learn how Hikvision UAE protects your data. Our privacy policy details our commitment to securing your information while providing top-tier security solutions in the UAE."
-        />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Privacy Policy | Hikvision UAE - Data Protection & Security" />
-        <meta property="og:description" content="Learn how Hikvision UAE protects your data. Our privacy policy details our commitment to securing your information while providing top-tier security solutions in the UAE." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/privacy" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Privacy Policy | Hikvision UAE - Data Protection & Security" />
-        <meta name="twitter:description" content="Learn how Hikvision UAE protects your data. Our privacy policy details our commitment to securing your information while providing top-tier security solutions in the UAE." />
-
-        {/* SEO Essentials */}
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/privacy" />
+        <title>Hikvision UAE - Official Security Solutions & CCTV Systems Provider</title>
+        <meta name="description" content="Hikvision UAE - Your trusted partner for security solutions, CCTV cameras, and surveillance systems. Official distributor in Dubai, Abu Dhabi & across UAE." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Primary Keywords */}
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision abu dhabi, cctv camera uae, security systems uae, surveillance solutions dubai" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta property="og:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation, surveillance systems, and security cameras across Dubai & UAE." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation and surveillance systems." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        
+        {/* Additional SEO Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        
+        {/* Region-specific Tags */}
+        <meta name="geo.region" content="AE" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2048;55.2708" />
+        <meta name="ICBM" content="25.2048, 55.2708" />
       </Head>
 
       <Script

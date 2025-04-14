@@ -3,131 +3,34 @@ import img from '../../../public/Hikvision about.jpg'
 import Head from 'next/head';
 import Script from 'next/script';
 
-// Update the schema to match the Article/Service format
+// SEO Schema
 const aboutSchema = {
   "@context": "https://schema.org",
-  "@type": ["Service", "Product"],
+  "@type": ["Organization", "LocalBusiness"],
   "@id": "https://hikvisionuae.ae/About",
-  "name": "Hikvision Security Solutions UAE",
-  "headline": "About Hikvision Dubai - Authorized Security Solutions Provider",
-  "description": "Discover Hikvision Dubai, your trusted authorized reseller of security cameras and surveillance systems in UAE. Expert CCTV installation and support services...",
-  "brand": {
-    "@type": "Brand",
-    "name": "Hikvision"
+  "name": "Hikvision UAE - Official Security Solutions Provider",
+  "description": "Leading authorized Hikvision distributor in UAE. Expert security camera solutions, CCTV installation, and surveillance systems across Dubai, Abu Dhabi, and UAE.",
+  "url": "https://hikvisionuae.ae",
+  "logo": "https://hikvisionuae.ae/images/hikvision-logo.png",
+  "image": "https://hikvisionuae.ae/images/hikvision-about.jpg",
+  "telephone": "+971 50 989 3134",
+  "email": "sales@hikvisionuae.ae",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No. 12, Al khabaisi, Abu hail",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "UAE"
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://hikvisionuae.ae/About"
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "25.2048",
+    "longitude": "55.2708"
   },
-  "datePublished": "2024-01-01T08:00:00+04:00",
-  "dateModified": "2024-03-19T08:00:00+04:00",
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://hikvisionuae.ae/images/hikvision-about.jpg",
-    "width": 1200,
-    "height": 630
-  },
-  "keywords": [
-    "Hikvision UAE",
-    "Hikvision Dubai",
-    "Hikvision",
-    "Hikvision Sharjah",
-    "about hikvision",
-    "about hikvision uae",
-    "about hikvision dubai",
-    "about hikvision abu dhabi",
-    "about hikvision sharjah",
-    "about hikvision ajman",
-    "about hikvision Fujairah",
-    "about hikvision Ras Al Khaimah",
-    "about hikvision Umm Al Quwain",
-    "about hikvision Abu Dhabi",
-    "security camera dealer Dubai",
-    "CCTV installation UAE",
-    "Hikvision authorized reseller",
-    "surveillance systems Dubai",
-    "security solutions UAE",
-    "Hikvision Middle East",
-    "Hikvision Distributor UAE",
-    "Hikvision Supplier UAE",
-    "Hikvision Authorized Distributor in UAE",
-    "Hikvision Support UAE",
-    "Hikvision UAE",
-    "Hikvision Dubai",
-
-
-    "CCTV cameras Dubai",
-    "Hikvision distributor UAE",
-    "security camera price Dubai"
-  ],
-  "serviceType": "Security Camera Solutions",
-  "provider": {
-    "@type": "Organization",
-    "name": "Hikvision UAE",
-    "url": "https://hikvisionuae.ae",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://hikvisionuae.ae/images/hikvision-logo.jpg"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/company/hikvision",
-      "https://twitter.com/hikvision"
-    ]
-  },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "AED",
-    "price": "299",
-    "priceValidUntil": "2024-12-31",
-    "availability": "https://schema.org/InStock",
-    "hasMerchantReturnPolicy": true
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "156",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-};
-
-// Enhanced FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Where can I buy Hikvision security cameras in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can buy Hikvision security cameras from our authorized store in Dubai, UAE. We offer the best prices on CCTV, surveillance systems, and security solutions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Hikvision Dubai offer CCTV installation services?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! We provide professional CCTV installation in Dubai and across the UAE. Our experts ensure a secure and seamless setup."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the price range of Hikvision security cameras in Dubai?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our Hikvision security cameras range from affordable entry-level options to advanced professional systems. We offer competitive prices starting from AED X for basic cameras to AED Y for advanced surveillance solutions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer Hikvision NVR and DVR systems?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we offer a complete range of Hikvision NVR and DVR systems. Our selection includes both basic and advanced models suitable for home and business security needs."
-      }
-    }
+  "sameAs": [
+    "https://www.facebook.com/HikvisionUAE",
+    "https://twitter.com/HikvisionUAE",
+    "https://www.linkedin.com/company/hikvision-uae"
   ]
 };
 
@@ -135,43 +38,40 @@ const About = () => {
   return (
     <>
       <Head>
-        <title>About Hikvision Dubai | Leading Security Camera Provider in UAE</title>
-        <meta
-          name="description"
-          content="Learn about Hikvision Dubai, your trusted authorized reseller of security cameras & surveillance systems in UAE. Expert CCTV installation & support services available."
+        <title>Hikvision UAE | #1 Security Camera & CCTV Solutions Provider Dubai</title>
+        <meta 
+          name="description" 
+          content="Leading Hikvision distributor in UAE offering professional security cameras, CCTV systems & surveillance solutions. Best prices & expert installation in Dubai, Abu Dhabi & UAE."
+        />
+        <meta 
+          name="keywords" 
+          content="Hikvision UAE, Hikvision Dubai, CCTV Dubai, security cameras UAE, Hikvision distributor UAE, CCTV installation Dubai, surveillance systems UAE, Hikvision dealer Dubai, security solutions UAE"
         />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="About Hikvision Dubai | Leading Security Camera Provider in UAE" />
-        <meta property="og:description" content="Learn about Hikvision Dubai, your trusted authorized reseller of security cameras & surveillance systems in UAE. Expert CCTV installation & support services available." />
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Hikvision UAE | #1 Security Camera & CCTV Solutions Provider Dubai" />
+        <meta property="og:description" content="Leading Hikvision distributor in UAE offering professional security cameras, CCTV systems & surveillance solutions. Best prices & expert installation in Dubai." />
         <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-about.jpg" />
-        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://hikvisionuae.ae/About" />
-
+        <meta property="og:type" content="website" />
+        
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Hikvision Dubai | Leading Security Camera Provider in UAE" />
-        <meta name="twitter:description" content="Learn about Hikvision Dubai, your trusted authorized reseller of security cameras & surveillance systems in UAE. Expert CCTV installation & support services available." />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Professional security cameras & CCTV solutions in UAE. Authorized Hikvision distributor offering expert installation & support." />
         <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-about.jpg" />
-
-        {/* SEO Essentials */}
+        
+        {/* Additional SEO Meta Tags */}
         <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/About" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Script
         id="about-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
-      />
-
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="min-h-screen bg-gray-50">
@@ -182,7 +82,7 @@ const About = () => {
             <p className="text-xl">Your Trusted Hikvision Reseller in Dubai</p>
           </div>
         </div>
-
+    
         {/* Main Content with Image and Text */}
         <div className="container mx-auto px-4 py-16">
           <div className="flex flex-col md:flex-row items-center gap-12">
@@ -204,13 +104,13 @@ const About = () => {
               <p className="text-gray-600 leading-relaxed">
                 With a keen eye for detail and a commitment to delivering unmatched quality, we have carved a niche for ourselves as a leading Hikvision Reseller in Dubai. Our reputation is underpinned by the trust and loyalty of a broad clientele base spanning various sectors, including educational institutions and corporate enterprises. The surveillance solutions we offer aren't just about products; they are tailored experiences optimized to address the unique security challenges of each domain.
               </p>
-
+    
               <p className="text-gray-600 leading-relaxed">
                 Our core strength lies in understanding our clients' requirements and delivering solutions that not only meet but often exceed their expectations. Offering superior products at cost-effective prices is a promise we've held dear since our inception.
               </p>
             </div>
           </div>
-
+    
           {/* Core Technologies Section */}
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Core Technologies</h2>
@@ -238,7 +138,7 @@ const About = () => {
               </div>
             </div>
           </div>
-
+    
           {/* Product Categories */}
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Product Categories</h2>
@@ -256,7 +156,7 @@ const About = () => {
               ))}
             </div>
           </div>
-
+    
           {/* Global Presence */}
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Global Presence</h2>

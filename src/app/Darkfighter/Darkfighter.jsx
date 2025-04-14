@@ -130,29 +130,27 @@ const Darkfighter = () => {
   return (
     <>
       <Head>
-        <title>Hikvision DarkFighter UAE - Advanced Night Vision Cameras | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade to Hikvision DarkFighter in UAE for superior low-light security. Exceptional night vision capabilities for ultimate protection. Request a demo today!"
-        />
+        <title>Hikvision UAE - Official Security Camera & CCTV Solutions Provider Dubai</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Hikvision DarkFighter Technology in UAE | Low-Light Security Solutions" />
-        <meta property="og:description" content="Experience advanced low-light security with Hikvision DarkFighter in UAE. Superior night vision, enhanced clarity, and smart monitoring for properties across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/darkfighter-security.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Darkfighter" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hikvision DarkFighter Technology in UAE | Low-Light Security Solutions" />
-        <meta name="twitter:description" content="Experience advanced low-light security with Hikvision DarkFighter in UAE. Superior night vision, enhanced clarity, and smart monitoring for properties across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/darkfighter-security.jpg" />
-
-        {/* SEO Essentials */}
+        {/* Primary Meta Tags */}
+        <meta name="description" content="Official Hikvision UAE dealer & distributor. Leading provider of security cameras, CCTV systems, and DarkFighter technology in Dubai, Abu Dhabi & across UAE. Best prices guaranteed." />
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision dealer uae, hikvision distributor dubai, hikvision security camera uae, hikvision cctv dubai, hikvision price uae, hikvision darkfighter uae" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/Darkfighter" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/Darkfighter" />
+        <meta property="og:title" content="Hikvision UAE - Official Security Camera & CCTV Solutions Provider Dubai" />
+        <meta property="og:description" content="Leading provider of Hikvision security cameras, CCTV systems, and DarkFighter technology in UAE. Expert installation and support available." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/darkfighter-security.jpg" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Camera Solutions" />
+        <meta name="twitter:description" content="Leading provider of Hikvision security cameras, CCTV systems, and DarkFighter technology in UAE. Expert installation and support available." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/darkfighter-security.jpg" />
       </Head>
 
       <Script

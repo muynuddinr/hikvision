@@ -56,27 +56,29 @@ const CookiePolicy = () => {
   return (
     <>
       <Head>
-        <title>Cookie Policy | Hikvision UAE - Privacy & Cookie Information</title>
-        <meta
-          name="description"
-          content="Learn about Hikvision UAE's cookie policy. Understand how we use cookies to enhance your browsing experience and protect your privacy. Manage your cookie preferences."
-        />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Cookie Policy | Hikvision UAE - Privacy & Cookie Information" />
-        <meta property="og:description" content="Learn about Hikvision UAE's cookie policy and how we use cookies to enhance your browsing experience while protecting your privacy." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/cookies" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Cookie Policy | Hikvision UAE" />
-        <meta name="twitter:description" content="Learn about Hikvision UAE's cookie policy and how we use cookies to enhance your browsing experience while protecting your privacy." />
-
-        {/* SEO Essentials */}
+        <title>Cookie Policy | Hikvision UAE - Official Security Camera Solutions Provider</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Primary Meta Tags */}
+        <meta name="title" content="Cookie Policy | Hikvision UAE - Official Security Camera Solutions Provider" />
+        <meta name="description" content="Official Hikvision UAE dealer and distributor. Leading provider of security cameras, CCTV systems, and surveillance solutions in Dubai, Abu Dhabi, and across UAE. Best prices and professional installation." />
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision abu dhabi, hikvision dealer uae, hikvision distributor dubai, hikvision security camera uae, hikvision cctv dubai, hikvision price uae, hikvision installation dubai, hikvision products uae" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://hikvisionuae.ae/cookies" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hikvisionuae.ae/cookies" />
+        <meta property="og:title" content="Cookie Policy | Hikvision UAE - Official Security Camera Solutions Provider" />
+        <meta property="og:description" content="Official Hikvision UAE dealer and distributor. Leading provider of security cameras, CCTV systems, and surveillance solutions in Dubai, Abu Dhabi, and across UAE." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-og.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://hikvisionuae.ae/cookies" />
+        <meta property="twitter:title" content="Cookie Policy | Hikvision UAE - Official Security Camera Solutions Provider" />
+        <meta property="twitter:description" content="Official Hikvision UAE dealer and distributor. Leading provider of security cameras, CCTV systems, and surveillance solutions in Dubai, Abu Dhabi, and across UAE." />
+        <meta property="twitter:image" content="https://hikvisionuae.ae/images/hikvision-og.jpg" />
       </Head>
 
       <Script

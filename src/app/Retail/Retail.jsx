@@ -150,29 +150,36 @@ const Retail = () => {
   return (
     <>
       <Head>
-        <title>Retail Security Solutions UAE - Advanced Video Surveillance | Get Started</title>
-        <meta
-          name="description"
-          content="Upgrade your retail security in UAE with advanced surveillance solutions. HD cameras, loss prevention systems, and business intelligence for stores across Dubai & UAE."
-        />
+        <title>Hikvision UAE - Official Security Solutions & CCTV Systems Provider</title>
+        <meta name="description" content="Hikvision UAE - Leading provider of security solutions, CCTV cameras, and surveillance systems in Dubai, Abu Dhabi & across UAE. Authorized distributor & expert installation." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Retail Security Solutions in UAE | Advanced Video Surveillance Systems" />
-        <meta property="og:description" content="Experience advanced retail security solutions in UAE. Comprehensive video monitoring, loss prevention, and business intelligence for stores across Dubai & UAE." />
-        <meta property="og:image" content="https://hikvisionuae.ae/images/retail-security.jpg" />
+        {/* Primary Keywords */}
+        <meta name="keywords" content="hikvision uae, hikvision dubai, hikvision abu dhabi, cctv camera uae, security systems uae, surveillance solutions dubai" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta property="og:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation, surveillance systems, and security cameras across Dubai & UAE." />
+        <meta property="og:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        <meta property="og:url" content="https://hikvisionuae.ae" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://hikvisionuae.ae/Retail" />
-
+        
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Retail Security Solutions in UAE | Advanced Video Surveillance Systems" />
-        <meta name="twitter:description" content="Experience advanced retail security solutions in UAE. Comprehensive video monitoring, loss prevention, and business intelligence for stores across Dubai & UAE." />
-        <meta name="twitter:image" content="https://hikvisionuae.ae/images/retail-security.jpg" />
-
-        {/* SEO Essentials */}
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://hikvisionuae.ae/Retail" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:title" content="Hikvision UAE - Official Security Solutions Provider" />
+        <meta name="twitter:description" content="Leading provider of Hikvision security solutions in UAE. Professional CCTV installation and surveillance systems." />
+        <meta name="twitter:image" content="https://hikvisionuae.ae/images/hikvision-uae-office.jpg" />
+        
+        {/* Additional SEO Tags */}
+        <meta name="robots" content="index, follow, max-image-preview:large" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href="https://hikvisionuae.ae" />
+        
+        {/* Region-specific Tags */}
+        <meta name="geo.region" content="AE" />
+        <meta name="geo.placename" content="Dubai" />
+        <meta name="geo.position" content="25.2048;55.2708" />
+        <meta name="ICBM" content="25.2048, 55.2708" />
       </Head>
 
       <Script
