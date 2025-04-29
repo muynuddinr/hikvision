@@ -68,12 +68,6 @@ interface SchemaData {
     name: string;
     description: string;
     image: string[];
-    alternateName?: string[];
-    mainEntityOfPage?: {
-        "@type": string;
-        "@id": string;
-    };
-    identifier?: any;
     brand: {
         "@type": string;
         name: string;
@@ -85,17 +79,6 @@ interface SchemaData {
         priceCurrency: string;
         priceValidUntil: string;
         url: string;
-        itemCondition?: string;
-        seller: {
-            "@type": string;
-            name: string;
-            "@id"?: string;
-            url?: string;
-            logo?: {
-                "@type": string;
-                url: string;
-            };
-        };
     };
     category?: string;
     additionalProperty?: {
@@ -254,91 +237,43 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
         ]
     };
 
-    // Generate alternate names for better search matching
-    const alternateNames = [
-        product.name,
-        `${product.name} UAE`,
-        `${product.name} Dubai`,
-        `${product.name} HikVision`,
-        `HikVision ${product.name}`,
-        `${product.name} ${category?.name || ''}`,
-        `${product.name} ${subcategory?.name || ''}`,
-    ].filter(Boolean);
-
     const productSchema: SchemaData = {
         "@context": "https://schema.org",
         "@type": "Product",
-        "name": product.name,
-        "description": enhancedDescription,
-        "image": images,
-        "alternateName": alternateNames,
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
-        },
-        "identifier": [
-            {
-                "@type": "PropertyValue",
-                "propertyID": "sku",
-                "value": product.slug
-            },
-            {
-                "@type": "PropertyValue",
-                "propertyID": "mpn",
-                "value": product._id
-            }
-        ],
-        "brand": {
+        name: product.name,
+        description: enhancedDescription,
+        image: images,
+        brand: {
             "@type": "Brand",
-            "name": "HikVision"
+            name: "HikVision"
         },
-        "offers": {
+        offers: {
             "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "price": "0",
-            "priceCurrency": "AED",
-            "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-            "url": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`,
-            // Remove itemCondition as it's not in the type definition
-            "seller": {
-                "@type": "Organization",
-                "name": "HikVision UAE"
-            }
+            availability: "https://schema.org/InStock",
+            price: "0",
+            priceCurrency: "AED",
+            priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+            url: `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
         },
-        "category": `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
-        "additionalProperty": structuredFeatures,
-        "aggregateRating": {
+        category: `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
+        additionalProperty: structuredFeatures,
+        aggregateRating: {
             "@type": "AggregateRating",
-            "ratingValue": "4.5",
-            "reviewCount": "10",
-
+            ratingValue: "4.5",
+            reviewCount: "10"
         },
-        "review": {
+        review: {
             "@type": "Review",
-            "reviewRating": {
+            reviewRating: {
                 "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
+                ratingValue: "5",
+                bestRating: "5"
             },
-            "author": {
+            author: {
                 "@type": "Person",
-                "name": "HikVision UAE Team"
+                name: "HikVision UAE Team"
             }
         }
-    };
-
-    // Add product metadata schema for better search indexing
-    const productMetadata = {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "speakable": {
-            "@type": "SpeakableSpecification",
-            "cssSelector": ["h1", ".product-description"]
-        },
-        "name": title,
-        "description": truncatedDescription,
-        "keywords": product.seoKeywords || `${product.name}, HikVision, security camera, surveillance, UAE, Dubai, ${category?.name || ''}, ${subcategory?.name || ''}`,
-        "significantLink": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
     };
 
     return (
@@ -367,10 +302,6 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                 <script 
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
-                />
-                <script 
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(productMetadata) }}
                 />
                 {faqSchema && (
                     <script 
@@ -514,81 +445,199 @@ export default function ProductDetailsPage() {
             )}
             <Navbar />
             <Breadcrumb {...breadcrumbProps} />
-            
-            {/* Product Details Section */}
-            <div className="container mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Image Gallery */}
-                    <div className="space-y-4">
-                        <div className="aspect-w-1 aspect-h-1 w-full">
-                            <img
-                                src={selectedImage}
-                                alt={product?.name}
-                                className="object-contain w-full h-full rounded-lg shadow-lg"
-                            />
-                        </div>
-                        <div className="grid grid-cols-4 gap-2">
-                            {[product?.image1, product?.image2, product?.image3, product?.image4]
-                                .filter(Boolean)
-                                .map((image, index) => (
+            <div className="py-8 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-6xl mx-auto">
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* Image Gallery Section - Enhanced */}
+                            <div className="p-6 bg-gray-50">
+                                <div className="relative h-[400px] rounded-xl overflow-hidden border border-gray-100 shadow-lg bg-white group">
+                                    <img
+                                        src={selectedImage}
+                                        alt={product.name}
+                                        className="w-full h-full object-contain p-4 transition-all duration-500 transform hover:scale-110"
+                                    />
+                                    
+                                    {/* Slider Navigation Arrows */}
+                                    <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            onClick={() => {
+                                                const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
+                                                const currentIndex = images.indexOf(selectedImage);
+                                                const prevIndex = (currentIndex - 1 + images.length) % images.length;
+                                                setSelectedImage(images[prevIndex]);
+                                            }}
+                                            className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md hover:shadow-lg transition-all text-gray-800 hover:text-red-600"
+                                        >
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                        </button>
+                                        
+                                        <button
+                                            onClick={() => {
+                                                const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
+                                                const currentIndex = images.indexOf(selectedImage);
+                                                const nextIndex = (currentIndex + 1) % images.length;
+                                                setSelectedImage(images[nextIndex]);
+                                            }}
+                                            className="p-2 rounded-full bg-white/80 hover:bg-white shadow-md hover:shadow-lg transition-all text-gray-800 hover:text-red-600"
+                                        >
+                                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div className="grid grid-cols-4 gap-4 mt-6">
                                     <button
-                                        key={index}
-                                        onClick={() => setSelectedImage(image)}
-                                        className={`aspect-w-1 aspect-h-1 rounded-lg overflow-hidden border-2 
-                                            ${selectedImage === image ? 'border-red-600' : 'border-transparent'}`}
+                                        onClick={() => setSelectedImage(product.image1)}
+                                        className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                            ${selectedImage === product.image1
+                                                ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                            bg-white p-2`}
                                     >
                                         <img
-                                            src={image}
-                                            alt={`${product?.name} view ${index + 1}`}
-                                            className="object-cover w-full h-full"
+                                            src={product.image1}
+                                            alt={`${product.name} 1`}
+                                            className="w-full h-full object-contain hover:opacity-90 transition-opacity"
                                         />
                                     </button>
+                                    {product.image2 && (
+                                        <button
+                                            onClick={() => setSelectedImage(product.image2)}
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                                ${selectedImage === product.image2
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
+                                        >
+                                            <img
+                                                src={product.image2}
+                                                alt={`${product.name} 2`}
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                                            />
+                                        </button>
+                                    )}
+                                    {product.image3 && (
+                                        <button
+                                            onClick={() => setSelectedImage(product.image3)}
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                                ${selectedImage === product.image3
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
+                                        >
+                                            <img
+                                                src={product.image3}
+                                                alt={`${product.name} 3`}
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                                            />
+                                        </button>
+                                    )}
+                                    {product.image4 && (
+                                        <button
+                                            onClick={() => setSelectedImage(product.image4)}
+                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                                ${selectedImage === product.image4
+                                                    ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
+                                                    : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
+                                                bg-white p-2`}
+                                        >
+                                            <img
+                                                src={product.image4}
+                                                alt={`${product.name} 4`}
+                                                className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                                            />
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Product Details Section */}
+                            <div className="p-6 lg:p-8">
+                                <div className="space-y-6">
+                                    <div>
+                                        <h1 className="text-3xl font-bold text-gray-900 mb-3">{product.name}</h1>
+                                        <p className="text-base text-gray-600 leading-relaxed">{product.description}</p>
+                                    </div>
+
+                                    <div className="space-y-4 py-6 border-y border-gray-100">
+                                        <div className="flex items-center space-x-4">
+                                            <span className="text-sm font-medium text-gray-500 w-28">Navbar Category:</span>
+                                            <Link
+                                                href={`/${navbarCategory?.slug}`}
+                                                className="text-indigo-600 hover:text-indigo-700 transition-colors text-sm"
+                                            >
+                                                {navbarCategory?.name || 'Loading...'}
+                                            </Link>
+                                        </div>
+
+                                        <div className="flex items-center space-x-4">
+                                            <span className="text-sm font-medium text-gray-500 w-28">Category:</span>
+                                            <Link
+                                                href={`/${navbarCategory?.slug}/${category?.slug}`}
+                                                className="text-emerald-600 hover:text-emerald-700 transition-colors text-sm"
+                                            >
+                                                {category?.name || 'Loading...'}
+                                            </Link>
+                                        </div>
+
+                                        <div className="flex items-center space-x-4">
+                                            <span className="text-sm font-medium text-gray-500 w-28">Sub Category:</span>
+                                            <Link
+                                                href={`/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}`}
+                                                className="text-amber-600 hover:text-amber-700 transition-colors text-sm"
+                                            >
+                                                {subcategory?.name || 'Loading...'}
+                                            </Link>
+                                        </div>
+                                    </div>
+
+                                    <div className="pt-4">
+                                        <Link
+                                            href="/Contact"
+                                            className="group relative w-full inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white text-base font-medium rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                                        >
+                                            <svg
+                                                className="w-5 h-5 mr-2"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                                />
+                                            </svg>
+                                            Contact Us About This Product
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Key Features Card */}
+                    {product.keyFeatures && product.keyFeatures.length > 0 && (
+                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden p-6">
+                            <h2 className="text-xl font-semibold mb-4">Key Features</h2>
+                            <ul className="list-disc pl-5 space-y-2">
+                                {product.keyFeatures.map((feature, index) => (
+                                    <li key={index} className="text-gray-600">
+                                        {feature}
+                                    </li>
                                 ))}
+                            </ul>
                         </div>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="space-y-6">
-                        <h1 className="text-3xl font-bold text-gray-900">{product?.name}</h1>
-                        <p className="text-gray-600">{product?.description}</p>
-
-                        {product?.keyFeatures && product.keyFeatures.length > 0 && (
-                            <div className="space-y-4">
-                                <h2 className="text-xl font-semibold text-gray-900">Key Features</h2>
-                                <ul className="space-y-2">
-                                    {product.keyFeatures.map((feature, index) => (
-                                        <li key={index} className="flex items-start">
-                                            <span className="text-red-600 mr-2">•</span>
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        {/* Contact Section */}
-                        <div className="mt-8 space-y-4">
-                            <h3 className="text-lg font-semibold text-gray-900">Interested in this product?</h3>
-                            <p className="text-gray-600">Contact our sales team for pricing and availability.</p>
-                            <div className="flex space-x-4">
-                                <a
-                                    href="tel:+971509893134"
-                                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700"
-                                >
-                                    Call Now
-                                </a>
-                                <Link
-                                    href="/Contact"
-                                    className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
-                                >
-                                    Send Inquiry
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    )}
                 </div>
             </div>
             <Footer />
         </div>
     );
-}
+} 
