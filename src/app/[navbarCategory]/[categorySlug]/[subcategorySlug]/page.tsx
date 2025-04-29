@@ -179,29 +179,53 @@ const SubcategorySchema = ({
         "description": subcategory?.description || `Explore our range of ${subcategory?.name} solutions from Hikvision`,
         "url": `${baseUrl}/${navbarCategoryName?.name?.toLowerCase()}/${categoryName?.name?.toLowerCase()}/${subcategory?.name?.toLowerCase()}`,
         "numberOfItems": products.length,
-        "itemListElement": products.map((product, index) => ({
-            "@type": "ListItem",
-            "position": index + 1,
-            "item": {
-                "@type": "Product",
-                "@id": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}#product`,
-                "name": product.name,
-                "description": product.description,
-                "image": product.image1,
-                "url": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`,
-                "brand": {
-                    "@type": "Brand",
-                    "name": "Hikvision"
-                },
-                "offers": {
-                    "@type": "Offer",
-                    "availability": "https://schema.org/InStock",
-                    "priceCurrency": "AED",
-                    "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-                    "url": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`
+        "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": products.map((product, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": "Product",
+                    "@id": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}#product`,
+                    "name": `${product.name} | Hikvision UAE`,
+                    "description": product.description,
+                    "image": product.image1,
+                    "url": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`,
+                    "brand": {
+                        "@type": "Brand",
+                        "name": "Hikvision"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/InStock",
+                        "priceCurrency": "AED",
+                        "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                        "url": `${baseUrl}/${product.navbarCategory.slug}/${product.category.slug}/${product.subcategory.slug}/${product.slug}`,
+                        "areaServed": {
+                            "@type": "Country",
+                            "name": "United Arab Emirates"
+                        },
+                        "seller": {
+                            "@type": "Organization",
+                            "name": "HikvisionUAE.ae",
+                            "areaServed": "UAE"
+                        }
+                    },
+                    "additionalProperty": [
+                        {
+                            "@type": "PropertyValue",
+                            "name": "category",
+                            "value": categoryName?.name
+                        },
+                        {
+                            "@type": "PropertyValue",
+                            "name": "subcategory",
+                            "value": subcategory?.name
+                        }
+                    ]
                 }
-            }
-        })),
+            }))
+        },
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
