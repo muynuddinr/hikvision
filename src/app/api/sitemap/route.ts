@@ -3,15 +3,34 @@ import { NextResponse } from 'next/server';
 // Function to get all products from the database
 async function getAllProducts() {
     try {
+        console.log('Fetching products from:', `${process.env.NEXT_PUBLIC_API_URL}/api/products`);
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
-            cache: 'no-store'
+            next: { revalidate: 3600 }, // Cache for 1 hour
+            cache: 'no-store', // Ensure fresh data
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
         });
+        
         if (!response.ok) {
             console.error('Failed to fetch products:', response.status, response.statusText);
             throw new Error('Failed to fetch products');
         }
+        
         const data = await response.json();
-        console.log('Products fetched successfully:', data.length);
+        console.log('Products fetched successfully. Count:', data.length);
+        
+        // Log sample product data
+        if (data.length > 0) {
+            console.log('Sample product:', {
+                name: data[0].name,
+                slug: data[0].slug,
+                subcategory: data[0].subcategory,
+                category: data[0].category,
+                navbarCategory: data[0].navbarCategory
+            });
+        }
+        
         return data;
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -23,7 +42,8 @@ async function getAllProducts() {
 async function getAllCategories() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`, {
-            cache: 'no-store'
+            next: { revalidate: 3600 }, // Cache for 1 hour
+            cache: 'no-store' // Ensure fresh data
         });
         if (!response.ok) throw new Error('Failed to fetch categories');
         return await response.json();
@@ -37,7 +57,8 @@ async function getAllCategories() {
 async function getAllSubcategories() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/subcategories`, {
-            cache: 'no-store'
+            next: { revalidate: 3600 }, // Cache for 1 hour
+            cache: 'no-store' // Ensure fresh data
         });
         if (!response.ok) throw new Error('Failed to fetch subcategories');
         return await response.json();
@@ -51,7 +72,8 @@ async function getAllSubcategories() {
 async function getAllNavbarCategories() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/navbar-categories`, {
-            cache: 'no-store'
+            next: { revalidate: 3600 }, // Cache for 1 hour
+            cache: 'no-store' // Ensure fresh data
         });
         if (!response.ok) throw new Error('Failed to fetch navbar categories');
         return await response.json();
@@ -84,9 +106,17 @@ function isValidUrl(url: string): boolean {
     }
 }
 
+// Configure the route to be statically generated with ISR
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidate every hour
+
 export async function GET() {
     try {
+        // Log environment variables
+        console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
+        
         // Fetch all data
+        console.log('Starting to fetch all data...');
         const [products, categories, subcategories, navbarCategories] = await Promise.all([
             getAllProducts(),
             getAllCategories(),
@@ -94,6 +124,7 @@ export async function GET() {
             getAllNavbarCategories()
         ]);
 
+        // Log raw data counts
         console.log('Raw data received:', {
             productsCount: products.length,
             categoriesCount: categories.length,
@@ -158,81 +189,121 @@ export async function GET() {
             })
             .filter(Boolean);
 
-        // Enhanced product URLs with variations
+        // Log sample data for debugging
+        if (products.length > 0) {
+            const sampleProduct = products[0];
+            console.log('Sample product data:', {
+                name: sampleProduct.name,
+                slug: sampleProduct.slug,
+                subcategory: sampleProduct.subcategory,
+                category: sampleProduct.category,
+                navbarCategory: sampleProduct.navbarCategory
+            });
+
+            // Log the relationships
+            const sampleSubcategory = subcategories.find((sc: { _id: string; category: string }) => sc._id === sampleProduct.subcategory);
+            const sampleCategory = categories.find((c: { _id: string; navbarCategory: string }) => c._id === sampleSubcategory?.category);
+            const sampleNavbarCategory = navbarCategories.find((nc: { _id: string }) => nc._id === sampleCategory?.navbarCategory);
+
+            console.log('Sample relationships:', {
+                subcategory: sampleSubcategory ? {
+                    name: sampleSubcategory.name,
+                    slug: sampleSubcategory.slug,
+                    category: sampleSubcategory.category
+                } : 'Not found',
+                category: sampleCategory ? {
+                    name: sampleCategory.name,
+                    slug: sampleCategory.slug,
+                    navbarCategory: sampleCategory.navbarCategory
+                } : 'Not found',
+                navbarCategory: sampleNavbarCategory ? {
+                    name: sampleNavbarCategory.name,
+                    slug: sampleNavbarCategory.slug
+                } : 'Not found'
+            });
+        }
+
+        // Dynamic URLs from products
         console.log('Starting product URL generation with products:', products.length);
-        
         const productUrls = products
             .filter((product: any) => {
-                console.log('Processing product:', {
-                    id: product._id,
-                    slug: product.slug,
-                    subcategory: product.subcategory
-                });
-                
-                if (!product?.slug) {
-                    console.log('Product missing slug:', product);
+                if (!product) {
+                    console.log('Null or undefined product found');
                     return false;
                 }
+                
+                // Generate slug if not present
+                if (!product.slug) {
+                    product.slug = product.name
+                        .toLowerCase()
+                        .replace(/[^a-z0-9]+/g, '-')
+                        .replace(/(^-|-$)/g, '');
+                    console.log('Generated slug for product:', product.name, '->', product.slug);
+                }
+                
+                if (!product.subcategory) {
+                    console.log('Product missing subcategory:', product.name);
+                    return false;
+                }
+                
                 return true;
             })
             .map((product: any) => {
                 try {
-                    console.log('Finding relationships for product:', product.slug);
+                    console.log('\nProcessing product:', product.name);
                     
+                    // Find subcategory
                     const subcategory = subcategories.find((sc: any) => sc._id === product.subcategory);
-                    console.log('Found subcategory:', subcategory ? {
-                        id: subcategory._id,
-                        slug: subcategory.slug,
-                        category: subcategory.category
-                    } : 'Not found');
-                    
-                    if (!subcategory?.slug) {
-                        console.log('Subcategory not found for product:', product.slug);
+                    if (!subcategory) {
+                        console.log('Subcategory not found for product:', product.name, 'subcategory ID:', product.subcategory);
                         return null;
                     }
 
+                    // Find category
                     const category = categories.find((c: any) => c._id === subcategory.category);
-                    console.log('Found category:', category ? {
-                        id: category._id,
-                        slug: category.slug,
-                        navbarCategory: category.navbarCategory
-                    } : 'Not found');
-                    
-                    if (!category?.slug) {
-                        console.log('Category not found for subcategory:', subcategory.slug);
+                    if (!category) {
+                        console.log('Category not found for subcategory:', subcategory.name, 'category ID:', subcategory.category);
                         return null;
                     }
 
+                    // Find navbar category
                     const navbarCategory = navbarCategories.find((nc: any) => nc._id === category.navbarCategory);
-                    console.log('Found navbar category:', navbarCategory ? {
-                        id: navbarCategory._id,
-                        slug: navbarCategory.slug
-                    } : 'Not found');
-                    
-                    if (!navbarCategory?.slug) {
-                        console.log('Navbar category not found for category:', category.slug);
+                    if (!navbarCategory) {
+                        console.log('Navbar category not found for category:', category.name, 'navbarCategory ID:', category.navbarCategory);
                         return null;
                     }
 
-                    // Generate the product URL
-                    const productUrl = {
-                        loc: `https://hikvisionuae.ae/${navbarCategory.slug}/${category.slug}/${subcategory.slug}/${product.slug}`,
-                        changefreq: 'weekly',
-                        priority: 0.6
-                    };
+                    // Clean and format slugs
+                    const cleanNavbarSlug = navbarCategory.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    const cleanCategorySlug = category.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    const cleanSubcategorySlug = subcategory.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    const cleanProductSlug = product.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+                    // Generate base product URL with proper formatting
+                    const baseUrl = `https://hikvisionuae.ae/${cleanNavbarSlug}/${cleanCategorySlug}/${cleanSubcategorySlug}/${cleanProductSlug}`;
                     
-                    console.log('Generated product URL:', productUrl);
-                    return productUrl;
+                    // Create array of URLs for this product
+                    const urls = [{
+                        loc: baseUrl,
+                        changefreq: 'weekly',
+                        priority: 0.7
+                    }];
+
+                    // Log the generated URLs for debugging
+                    console.log('Generated URL for product:', product.name, '->', baseUrl);
+
+                    return urls;
                 } catch (error) {
-                    console.error('Error generating URL for product:', product.slug, error);
+                    console.error('Error generating URL for product:', product.name, error);
                     return null;
                 }
             })
-            .filter(Boolean);
+            .filter(Boolean)
+            .flat(); // Flatten the array of URL arrays
 
-        console.log('Product URLs generated:', productUrls.length);
-        if (productUrls.length === 0) {
-            console.log('No product URLs were generated. Products data:', products);
+        console.log('\nGenerated product URLs:', productUrls.length);
+        if (productUrls.length > 0) {
+            console.log('Sample product URLs:', productUrls.slice(0, 3));
         }
 
         // Combine all URLs and filter out invalid ones
@@ -245,28 +316,37 @@ export async function GET() {
         ].filter(url => {
             const isValid = isValidUrl(url.loc);
             if (!isValid) {
-                console.log('Invalid URL:', url.loc);
+                console.log('Invalid URL removed:', url.loc);
             }
             return isValid;
         });
 
-        console.log('Final URL counts:', {
-            staticUrls: staticUrls.length,
-            navbarCategoryUrls: navbarCategoryUrls.length,
-            categoryUrls: categoryUrls.length,
-            subcategoryUrls: subcategoryUrls.length,
-            productUrls: productUrls.length,
-            totalUrls: allUrls.length
+        // Log the total number of URLs
+        console.log('\nTotal URLs in sitemap:', allUrls.length);
+        console.log('URLs by type:', {
+            static: staticUrls.length,
+            navbarCategory: navbarCategoryUrls.length,
+            category: categoryUrls.length,
+            subcategory: subcategoryUrls.length,
+            product: productUrls.length
         });
 
-        // Generate sitemap XML
-        const sitemap = generateSitemapXml(allUrls);
+        // Generate the sitemap XML
+        const sitemapXml = generateSitemapXml(allUrls);
 
-        // Return the sitemap with appropriate headers
-        return new NextResponse(sitemap, {
+        // Log the final sitemap content
+        console.log('\nSitemap XML generated with', allUrls.length, 'URLs');
+        console.log('Sample sitemap content:', sitemapXml.substring(0, 500) + '...');
+
+        // Return the sitemap with proper headers for ISR and hosting
+        return new NextResponse(sitemapXml, {
             headers: {
                 'Content-Type': 'application/xml',
-                'Cache-Control': 'public, max-age=3600, s-maxage=3600'
+                'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+                'Surrogate-Key': 'sitemap',
+                'Surrogate-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+                'X-Robots-Tag': 'noindex',
+                'Access-Control-Allow-Origin': '*'
             }
         });
     } catch (error) {
@@ -274,7 +354,8 @@ export async function GET() {
         return new NextResponse('Error generating sitemap', { 
             status: 500,
             headers: {
-                'Content-Type': 'application/xml'
+                'Content-Type': 'application/xml',
+                'Cache-Control': 'no-store'
             }
         });
     }
