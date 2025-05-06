@@ -44,6 +44,32 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'SubCategory'
   },
+  seoTitle: {
+    type: String,
+  },
+  seoDescription: {
+    type: String,
+  },
+  seoKeywords: {
+    type: String,
+  },
+  // Add these new fields
+  metaRobots: {
+    type: String,
+    default: 'index, follow'
+  },
+  canonicalUrl: {
+    type: String
+  },
+  structuredData: {
+    type: Object
+  },
+  faqSchema: {
+    type: [{
+      question: String,
+      answer: String
+    }]
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -56,4 +82,4 @@ if (mongoose.models.Product) {
 }
 
 const Product = mongoose.model('Product', productSchema);
-export default Product; 
+export default Product;

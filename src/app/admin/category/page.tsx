@@ -10,6 +10,7 @@ interface Category {
     slug: string;
     navbarCategory: string;
     description?: string;
+    seoKeywords?: string;
     isActive: boolean;
     createdAt: string;
 }
@@ -25,7 +26,7 @@ export default function CategoryPage() {
             const response = await fetch('/api/categories');
             const data = await response.json();
             setCategories(data);
-        } catch (error) {
+        } catch {
             toast.error('Error fetching categories');
         } finally {
             setLoading(false);
@@ -46,7 +47,7 @@ export default function CategoryPage() {
                     fetchCategories();
                     toast.success('Category deleted successfully');
                 }
-            } catch (error) {
+            } catch {
                 toast.error('Error deleting category');
             }
         }
@@ -81,4 +82,4 @@ export default function CategoryPage() {
             />
         </div>
     );
-} 
+}

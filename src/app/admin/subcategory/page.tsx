@@ -13,6 +13,7 @@ interface SubCategory {
   isActive: boolean;
   createdAt: string;
   image?: string;
+  seoKeywords?: string; // Added seoKeywords field
 }
 
 export default function SubCategoryPage() {
@@ -86,4 +87,4 @@ export default function SubCategoryPage() {
       />
     </div>
   );
-} 
+}

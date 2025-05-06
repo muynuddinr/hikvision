@@ -20,4 +20,5 @@ export interface Product {
         name: string;
     };
     createdAt: string;
+    seoKeywords?: string; // Added for SEO optimization
 }

@@ -18,6 +18,7 @@ interface SubCategory {
     isActive: boolean;
     image?: string;
     navbarCategory?: string;
+    seoKeywords?: string; // Added seoKeywords field
 }
 
 interface SubCategoryFormProps {
@@ -42,6 +43,7 @@ export default function SubCategoryForm({
         isActive: true,
         image: null as File | null,
         navbarCategory: '',
+        seoKeywords: '', // Added seoKeywords field
     });
 
     const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -87,6 +89,7 @@ export default function SubCategoryForm({
                 isActive: editData.isActive,
                 image: null,
                 navbarCategory: editData.navbarCategory || '',
+                seoKeywords: editData.seoKeywords || '', // Added seoKeywords field
             });
             if (editData.image) {
                 setPreviewUrl(editData.image);
@@ -127,6 +130,7 @@ export default function SubCategoryForm({
             formDataToSend.append('description', formData.description);
             formDataToSend.append('isActive', String(formData.isActive));
             formDataToSend.append('navbarCategory', formData.navbarCategory);
+            formDataToSend.append('seoKeywords', formData.seoKeywords); // Added seoKeywords field
             
             if (formData.image) {
                 formDataToSend.append('image', formData.image);
@@ -141,7 +145,8 @@ export default function SubCategoryForm({
                 const data = await response.json();
                 toast.success(isEditing ? 'Category updated' : 'Category created');
                 setFormData({ 
-                    name: '', 
+                    name: '',
+                    seoKeywords: '',
                     category: '', 
                     description: '', 
                     isActive: true, 
@@ -224,6 +229,19 @@ export default function SubCategoryForm({
                     />
                 </div>
 
+                {/* Add SEO Keywords field */}
+                <div>
+                    <label className="block text-sm font-medium mb-1">SEO Keywords</label>
+                    <textarea
+                        value={formData.seoKeywords}
+                        onChange={(e) => setFormData({ ...formData, seoKeywords: e.target.value })}
+                        className="w-full p-2 border rounded focus:ring-2 focus:ring-red-500"
+                        rows={2}
+                        placeholder="Enter keywords separated by commas (e.g., security, camera, hikvision)"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">These keywords will help improve search engine visibility.</p>
+                </div>
+
                 <div>
                     <label className="block text-sm font-medium mb-1">Image</label>
                     <input
@@ -274,4 +292,4 @@ export default function SubCategoryForm({
             </form>
         </div>
     );
-} 
+}

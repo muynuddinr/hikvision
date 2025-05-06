@@ -99,6 +99,9 @@ export default function ProductList({ products = [], isLoading, onProductsChange
               <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 tracking-wider">
                 Categories
               </th>
+              <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600 tracking-wider">
+                SEO Keywords
+              </th>
               <th className="px-6 py-4 text-right text-sm font-semibold text-gray-600 tracking-wider w-32">
                 Actions
               </th>
@@ -141,6 +144,21 @@ export default function ProductList({ products = [], isLoading, onProductsChange
                     )}
                   </div>
                 </td>
+                <td className="px-6 py-5">
+                  <div className="text-sm text-gray-600">
+                    {product.seoKeywords ? (
+                      <div className="flex flex-wrap gap-1">
+                        {product.seoKeywords.split(',').map((keyword, index) => (
+                          <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                            {keyword.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="text-gray-400 italic">No keywords</span>
+                    )}
+                  </div>
+                </td>
                 <td className="px-6 py-5 whitespace-nowrap text-right">
                   <div className="flex justify-end space-x-4">
                     <button
@@ -164,4 +182,4 @@ export default function ProductList({ products = [], isLoading, onProductsChange
       </div>
     </div>
   );
-} 
+}

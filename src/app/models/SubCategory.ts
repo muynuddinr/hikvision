@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-const ObjectId = mongoose.Types.ObjectId;
 
 const subCategorySchema = new Schema({
     name: {
@@ -33,10 +32,26 @@ const subCategorySchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    seoTitle: {
+        type: String
+    },
+    seoDescription: {
+        type: String
+    },
+    seoKeywords: {
+        type: String
+    },
+    metaRobots: {
+        type: String,
+        default: 'index, follow'
+    },
+    canonicalUrl: {
+        type: String
     }
 });
 
 subCategorySchema.index({ category: 1 });
 
 const SubCategory = mongoose.models.SubCategory || mongoose.model('SubCategory', subCategorySchema);
-export default SubCategory; 
+export default SubCategory;

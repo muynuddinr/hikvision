@@ -10,12 +10,13 @@ interface NavbarCategory {
     order: number;
     isActive: boolean;
     createdAt: string;
+    seoKeywords?: string; // Added seoKeywords field
 }
 
 const NavbarPage = () => {
     const [categories, setCategories] = useState<NavbarCategory[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [newCategory, setNewCategory] = useState({ name: '', description: '' });
+    const [, setLoading] = useState(true);
+    const [newCategory, setNewCategory] = useState({ name: '', description: '', seoKeywords: '' });
     const [editingCategory, setEditingCategory] = useState<NavbarCategory | null>(null);
 
     useEffect(() => {
@@ -46,6 +47,7 @@ const NavbarPage = () => {
                 body: JSON.stringify({
                     name: newCategory.name,
                     description: newCategory.description,
+                    seoKeywords: newCategory.seoKeywords,
                     isActive: true
                 }),
             });
@@ -55,7 +57,7 @@ const NavbarPage = () => {
 
             if (response.ok) {
                 toast.success('Category added successfully');
-                setNewCategory({ name: '', description: '' });
+                setNewCategory({ name: '', description: '', seoKeywords: '' });
                 fetchCategories();
             } else {
                 toast.error(data.error || 'Failed to add category');
@@ -79,6 +81,7 @@ const NavbarPage = () => {
                 body: JSON.stringify({
                     name: editingCategory.name,
                     description: editingCategory.description,
+                    seoKeywords: editingCategory.seoKeywords,
                     isActive: editingCategory.isActive,
                     order: editingCategory.order
                 }),
@@ -135,7 +138,7 @@ const NavbarPage = () => {
                 {/* Header Section - Left Aligned */}
                 <div className="mb-8 text-left">
                     <h1 className="text-2xl font-bold text-gray-900">Navbar Categories Management</h1>
-                    <p className="mt-2 text-sm text-gray-600">Manage your website's navigation categories</p>
+                    <p className="mt-2 text-sm text-gray-600">Manage your websites navigation categories</p>
                 </div>
 
                 {/* Action Button - Left Aligned */}
@@ -157,6 +160,13 @@ const NavbarPage = () => {
                                 placeholder="Enter category description"
                                 className="rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                                 rows={3}
+                            />
+                            <textarea
+                                value={newCategory.seoKeywords}
+                                onChange={(e) => setNewCategory({ ...newCategory, seoKeywords: e.target.value })}
+                                placeholder="Enter SEO keywords (comma-separated)"
+                                className="rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                rows={2}
                             />
                             <button
                                 type="submit"
@@ -184,6 +194,9 @@ const NavbarPage = () => {
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Description
+                                </th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    SEO Keywords
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions
@@ -229,6 +242,19 @@ const NavbarPage = () => {
                                             category.description
                                         )}
                                     </td>
+                                    <td className="px-6 py-4 text-sm text-gray-500 text-left">
+                                        {editingCategory?._id === category._id ? (
+                                            <textarea
+                                                value={editingCategory.seoKeywords || ''}
+                                                onChange={(e) => setEditingCategory({ ...editingCategory, seoKeywords: e.target.value })}
+                                                className="rounded-md border border-gray-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                                rows={2}
+                                                placeholder="Enter SEO keywords (comma-separated)"
+                                            />
+                                        ) : (
+                                            category.seoKeywords
+                                        )}
+                                    </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-3 text-left">
                                         {editingCategory?._id === category._id ? (
                                             <>
@@ -272,4 +298,4 @@ const NavbarPage = () => {
     );
 };
 
-export default NavbarPage; 
+export default NavbarPage;

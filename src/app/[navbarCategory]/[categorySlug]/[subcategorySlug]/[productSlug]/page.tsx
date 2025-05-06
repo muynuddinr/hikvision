@@ -310,6 +310,11 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                     />
                 )}
             </Head>
+            <Head>
+                {/* Add language alternates */}
+                <link rel="alternate" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="en-ae" />
+                <link rel="alternate" href={`https://hikvisionuae.ae/ar/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="ar-ae" />
+            </Head>
         </>
     );
 };
@@ -640,4 +645,4 @@ export default function ProductDetailsPage() {
             <Footer />
         </div>
     );
-} 
+}

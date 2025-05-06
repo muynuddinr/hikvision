@@ -1,9 +1,18 @@
 import { MetadataRoute } from 'next'
+import connectDB from '@/app/config/db'
+import NavbarCategory from '@/app/models/NavbarCategory'
+import Category from '@/app/models/Category'
+import SubCategory from '@/app/models/SubCategory'
+import Product from '@/app/models/Product'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://hikvisionuae.ae'
   
-  return [
+  // Connect to database
+  await connectDB()
+  
+  // Static pages
+  const staticPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -92,4 +101,78 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ]
-} 
+
+  // Dynamic pages from database
+  const dynamicPages = []
+
+  try {
+    // 1. Get all navbar categories
+    const navbarCategories = await NavbarCategory.find({ isActive: true })
+    
+    // Add navbar category pages
+    for (const navbarCategory of navbarCategories) {
+      dynamicPages.push({
+        url: `${baseUrl}/${navbarCategory.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      })
+
+      // 2. Get categories for this navbar category
+      const categories = await Category.find({ 
+        navbarCategory: navbarCategory._id,
+        isActive: true 
+      })
+
+      // Add category pages
+      for (const category of categories) {
+        dynamicPages.push({
+          url: `${baseUrl}/${navbarCategory.slug}/${category.slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly',
+          priority: 0.7,
+        })
+
+        // 3. Get subcategories for this category
+        const subcategories = await SubCategory.find({ 
+          category: category._id,
+          isActive: true 
+        })
+
+        // Add subcategory pages
+        for (const subcategory of subcategories) {
+          dynamicPages.push({
+            url: `${baseUrl}/${navbarCategory.slug}/${category.slug}/${subcategory.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.6,
+          })
+
+          // 4. Get products for each subcategory
+          for (const subcategory of subcategories) {
+            // Add products to sitemap
+            const products = await Product.find({ 
+              subcategory: subcategory._id,
+              isActive: true 
+            })
+
+            for (const product of products) {
+              dynamicPages.push({
+                url: `${baseUrl}/${navbarCategory.slug}/${category.slug}/${subcategory.slug}/${product.slug}`,
+                lastModified: new Date(product.createdAt),
+                changeFrequency: 'monthly',
+                priority: 0.5,
+              })
+            }
+          }
+        }
+      }
+    }
+  } catch (error) {
+    console.error('Error generating dynamic sitemap entries:', error)
+    // Continue with static pages if there's an error with dynamic pages
+  }
+
+  // Combine static and dynamic pages
+  return [...staticPages, ...dynamicPages] as MetadataRoute.Sitemap
+}

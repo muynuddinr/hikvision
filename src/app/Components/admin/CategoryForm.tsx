@@ -10,6 +10,7 @@ interface CategoryFormProps {
     name: string;
     navbarCategory: string;
     description?: string;
+    seoKeywords?: string;
     image?: string;
   };
   onCancelEdit?: () => void;
@@ -26,6 +27,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
     name: '',
     navbarCategory: '',
     description: '',
+    seoKeywords: '',
     image: null as File | null
   });
   const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -37,6 +39,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
         name: editData.name,
         navbarCategory: editData.navbarCategory,
         description: editData.description || '',
+        seoKeywords: editData.seoKeywords || '',
         image: null
       });
       if (editData.image) {
@@ -51,7 +54,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
         const response = await fetch('/api/navbar-categories');
         const data = await response.json();
         setNavbarCategories(data);
-      } catch (error) {
+      } catch {
         toast.error('Error fetching navbar categories');
       }
     };
@@ -71,9 +74,6 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
     }
   };
 
-  const generateSlug = (name: string) => {
-    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,6 +84,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
       formDataToSend.append('name', formData.name);
       formDataToSend.append('navbarCategory', formData.navbarCategory);
       formDataToSend.append('description', formData.description);
+      formDataToSend.append('seoKeywords', formData.seoKeywords);
       
       if (formData.image) {
         formDataToSend.append('image', formData.image);
@@ -96,7 +97,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
 
       if (response.ok) {
         toast.success(isEditing ? 'Category updated' : 'Category created');
-        setFormData({ name: '', navbarCategory: '', description: '', image: null });
+        setFormData({ name: '', navbarCategory: '', description: '', seoKeywords: '', image: null });
         setPreviewUrl('');
         onCategoryAdded();
         if (isEditing && onCancelEdit) {
@@ -106,7 +107,7 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
         const data = await response.json();
         toast.error(data.error || 'Failed to save category');
       }
-    } catch (error) {
+    } catch {
       toast.error('Error saving category');
     }
   };
@@ -156,6 +157,18 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
         </div>
 
         <div>
+          <label className="block text-sm font-medium mb-1">SEO Keywords</label>
+          <textarea
+            value={formData.seoKeywords}
+            onChange={(e) => setFormData({ ...formData, seoKeywords: e.target.value })}
+            className="w-full p-2 border rounded"
+            rows={2}
+            placeholder="Enter keywords separated by commas (e.g., security, camera, hikvision)"
+          />
+          <p className="text-xs text-gray-500 mt-1">These keywords will help improve search engine visibility.</p>
+        </div>
+
+        <div>
           <label className="block text-sm font-medium mb-1">Category Image</label>
           <input
             type="file"
@@ -195,4 +208,4 @@ export default function CategoryForm({ onCategoryAdded, isEditing, editData, onC
       </form>
     </div>
   );
-} 
+}
