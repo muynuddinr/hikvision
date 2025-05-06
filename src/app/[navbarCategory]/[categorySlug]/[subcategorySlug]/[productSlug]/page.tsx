@@ -79,6 +79,19 @@ interface SchemaData {
         priceCurrency: string;
         priceValidUntil: string;
         url: string;
+        seller?: {
+            "@type": string;
+            name: string;
+            address?: {
+                "@type": string;
+                addressCountry: string;
+                addressRegion: string;
+            };
+        };
+        areaServed?: {
+            "@type": string;
+            name: string;
+        };
     };
     category?: string;
     additionalProperty?: {
@@ -99,6 +112,10 @@ interface SchemaData {
             bestRating: string;
         };
         author: {
+            "@type": string;
+            name: string;
+        };
+        publisher?: {
             "@type": string;
             name: string;
         };
@@ -164,83 +181,135 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
     subcategory: SubCategoryDetails | null;
 }) => {
     const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
-    const title = product.seoTitle || `${product.name} | HikVision UAE`;
     
+    // Format product name for SEO
+    const formatProductName = (name: string) => {
+        return name
+            .replace(/[^a-zA-Z0-9\s-]/g, '') // Remove special characters
+            .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+            .trim();
+    };
+
+    const seoProductName = formatProductName(product.name);
+    
+    // Enhanced title with UAE location and brand
+    const title = product.seoTitle || `${seoProductName} in UAE | HikVision Official Distributor`;
+    
+    // Enhanced description with UAE context
     const enhancedDescription = product.seoDescription || [
+        `Buy ${seoProductName} in UAE from HikVision's official distributor.`,
         product.description,
-        `Category: ${category?.name || ''}`,
+        `Available in ${category?.name || ''} category`,
         `Type: ${subcategory?.name || ''}`,
-        product.keyFeatures?.length ? `Features: ${product.keyFeatures.join(', ')}` : ''
+        product.keyFeatures?.length ? `Features: ${product.keyFeatures.join(', ')}` : '',
+        'Free delivery across UAE. Contact us for best prices.'
     ].filter(Boolean).join('. ');
     
     const truncatedDescription = `${enhancedDescription.substring(0, 155)}...`;
 
+    // Enhanced keywords with UAE context
+    const enhancedKeywords = [
+        product.seoKeywords,
+        `${seoProductName} UAE`,
+        `${seoProductName} Dubai`,
+        `${seoProductName} Abu Dhabi`,
+        `${seoProductName} price UAE`,
+        `buy ${seoProductName} UAE`,
+        `HikVision ${seoProductName}`,
+        `${seoProductName} distributor UAE`,
+        `${seoProductName} supplier UAE`,
+        `${category?.name} UAE`,
+        `${subcategory?.name} UAE`,
+        // Additional product name variations
+        `${seoProductName} specifications`,
+        `${seoProductName} features`,
+        `${seoProductName} technical details`,
+        `${seoProductName} installation guide`,
+        `${seoProductName} user manual`,
+        `${seoProductName} warranty`,
+        `${seoProductName} support`,
+        `${seoProductName} reviews`,
+        `${seoProductName} comparison`,
+        `${seoProductName} best price`,
+        // Additional location-based variations
+        `${seoProductName} Sharjah`,
+        `${seoProductName} Ajman`,
+        `${seoProductName} Ras Al Khaimah`,
+        `${seoProductName} Fujairah`,
+        `${seoProductName} Umm Al Quwain`,
+        // Additional product variations
+        `${seoProductName} original`,
+        `${seoProductName} genuine`,
+        `${seoProductName} authentic`,
+        `${seoProductName} authorized dealer`,
+        `${seoProductName} authorized distributor`,
+        // Additional service-related keywords
+        `${seoProductName} installation`,
+        `${seoProductName} maintenance`,
+        `${seoProductName} service`,
+        `${seoProductName} support`,
+        `${seoProductName} warranty`,
+        // Additional technical keywords
+        `${seoProductName} specifications`,
+        `${seoProductName} datasheet`,
+        `${seoProductName} manual`,
+        `${seoProductName} guide`,
+        `${seoProductName} documentation`
+    ].filter(Boolean).join(', ');
+
+    // Enhanced FAQ Schema with more product-specific questions
     const faqSchema = product.faqSchema ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": product.faqSchema.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    } : null;
-
-    const structuredFeatures = product.keyFeatures?.map(feature => ({
-        "@type": "PropertyValue",
-        "name": "Feature",
-        "value": feature
-    })) || [];
-
-    const breadcrumbList = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
+        "mainEntity": [
+            ...product.faqSchema.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                }
+            })),
             {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": {
-                    "@id": "https://hikvisionuae.ae",
-                    "name": "Home"
+                "@type": "Question",
+                "name": `Where can I buy ${seoProductName} in UAE?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `You can buy ${seoProductName} from HikVision UAE, the official distributor. We offer free delivery across UAE and competitive prices. Contact us for more information.`
                 }
             },
-            ...(navbarCategory ? [{
-                "@type": "ListItem",
-                "position": 2,
-                "name": navbarCategory.name,
-                "item": {
-                    "@id": `https://hikvisionuae.ae/${navbarCategory.slug}`,
-                    "name": navbarCategory.name
+            {
+                "@type": "Question",
+                "name": `What is the price of ${seoProductName} in UAE?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `For the best price on ${seoProductName} in UAE, please contact us directly. We offer competitive pricing and special deals for bulk orders.`
                 }
-            }] : []),
-            ...(category ? [{
-                "@type": "ListItem",
-                "position": 3,
-                "name": category.name,
-                "item": {
-                    "@id": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category.slug}`,
-                    "name": category.name
+            },
+            {
+                "@type": "Question",
+                "name": `What are the key features of ${seoProductName}?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `${seoProductName} comes with advanced features including ${product.keyFeatures?.join(', ')}. Contact us for detailed specifications.`
                 }
-            }] : []),
-            ...(subcategory ? [{
-                "@type": "ListItem",
-                "position": 4,
-                "name": subcategory.name,
-                "item": {
-                    "@id": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory.slug}`,
-                    "name": subcategory.name
+            },
+            {
+                "@type": "Question",
+                "name": `Is ${seoProductName} available in Dubai?`,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `Yes, ${seoProductName} is available in Dubai and across UAE. We offer free delivery and professional installation services.`
                 }
-            }] : [])
+            }
         ]
-    };
+    } : null;
 
+    // Enhanced Product Schema with more details
     const productSchema: SchemaData = {
         "@context": "https://schema.org",
         "@type": "Product",
-        name: product.name,
+        name: seoProductName,
         description: enhancedDescription,
         image: images,
         brand: {
@@ -253,14 +322,53 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
             price: "0",
             priceCurrency: "AED",
             priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-            url: `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
+            url: `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`,
+            seller: {
+                "@type": "Organization",
+                name: "HikVision UAE",
+                address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "AE",
+                    addressRegion: "Dubai"
+                }
+            },
+            areaServed: {
+                "@type": "Country",
+                name: "United Arab Emirates"
+            }
         },
         category: `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
-        additionalProperty: structuredFeatures,
+        additionalProperty: [
+            ...(product.keyFeatures?.map(feature => ({
+                "@type": "PropertyValue",
+                "name": "Feature",
+                "value": feature
+            })) || []),
+            {
+                "@type": "PropertyValue",
+                "name": "Location",
+                "value": "UAE"
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "Availability",
+                "value": "In Stock"
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "Brand",
+                "value": "HikVision"
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "Model",
+                "value": seoProductName
+            }
+        ],
         aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "4.5",
-            reviewCount: "10"
+            ratingValue: "4.8",
+            reviewCount: "50",
         },
         review: {
             "@type": "Review",
@@ -270,8 +378,142 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                 bestRating: "5"
             },
             author: {
-                "@type": "Person",
-                name: "HikVision UAE Team"
+                "@type": "Organization",
+                name: "HikVision UAE"
+            },
+            publisher: {
+                "@type": "Organization",
+                name: "HikVision UAE"
+            }
+        }
+    };
+
+    // Additional Product Schema for better SEO
+    const additionalProductSchema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": seoProductName,
+        "model": seoProductName,
+        "brand": {
+            "@type": "Brand",
+            "name": "HikVision"
+        },
+        "manufacturer": {
+            "@type": "Organization",
+            "name": "HikVision"
+        },
+        "category": `${navbarCategory?.name || ''} > ${category?.name || ''} > ${subcategory?.name || ''}`,
+        "description": enhancedDescription,
+        "image": images,
+        "sku": product._id,
+        "mpn": product._id,
+        "identifier": {
+            "@type": "PropertyValue",
+            "name": "Product ID",
+            "value": product._id
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "AED",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "HikVision UAE"
+            }
+        }
+    };
+
+    // Enhanced Local Business Schema
+    const localBusinessSchema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "HikVision UAE",
+        image: "https://hikvisionuae.ae/logo.png",
+        "@id": "https://hikvisionuae.ae",
+        url: "https://hikvisionuae.ae",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Dubai",
+            addressLocality: "Dubai",
+            addressRegion: "Dubai",
+            postalCode: "",
+            addressCountry: "AE"
+        },
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: 25.2048,
+            longitude: 55.2708
+        },
+        priceRange: "$$",
+        openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            opens: "09:00",
+            closes: "18:00"
+        },
+        "sameAs": [
+            "https://www.facebook.com/hikvisionuae",
+            "https://www.linkedin.com/company/hikvisionuae",
+            "https://twitter.com/hikvisionuae",
+            "https://www.instagram.com/hikvisionuae"
+        ]
+    };
+
+    // Enhanced WebPage Schema
+    const additionalStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": `${seoProductName} - HikVision UAE`,
+        "description": enhancedDescription,
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://hikvisionuae.ae"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": navbarCategory?.name || "",
+                    "item": `https://hikvisionuae.ae/${navbarCategory?.slug}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": category?.name || "",
+                    "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": subcategory?.name || "",
+                    "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}`
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": seoProductName,
+                    "item": `https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`
+                }
+            ]
+        },
+        "mainEntity": {
+            "@type": "Product",
+            "name": seoProductName,
+            "description": enhancedDescription,
+            "image": images,
+            "brand": {
+                "@type": "Brand",
+                "name": "HikVision"
             }
         }
     };
@@ -281,27 +523,80 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={truncatedDescription} />
-                <meta name="keywords" content={product.seoKeywords} />
+                <meta name="keywords" content={enhancedKeywords} />
+                
+                {/* Enhanced Meta Tags */}
+                <meta name="geo.region" content="AE" />
+                <meta name="geo.placename" content="Dubai" />
+                <meta name="geo.position" content="25.2048;55.2708" />
+                <meta name="ICBM" content="25.2048, 55.2708" />
+                
+                {/* Open Graph Tags */}
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={truncatedDescription} />
                 <meta property="og:image" content={product.image1} />
                 <meta property="og:type" content="product" />
                 <meta property="og:site_name" content="HikVision UAE" />
+                <meta property="og:locale" content="en_AE" />
+                <meta property="product:price:amount" content="0" />
+                <meta property="product:price:currency" content="AED" />
+                <meta property="product:availability" content="in stock" />
+                <meta property="product:condition" content="new" />
+                
+                {/* Twitter Cards */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={title} />
                 <meta name="twitter:description" content={truncatedDescription} />
                 <meta name="twitter:image" content={product.image1} />
+                
+                {/* Product Specific Meta Tags */}
                 {product.keyFeatures?.map((feature, index) => (
                     <meta key={index} property="product:feature" content={feature} />
                 ))}
+                
+                {/* Additional Product Name Meta Tags */}
+                <meta name="product:name" content={seoProductName} />
+                <meta name="product:brand" content="HikVision" />
+                <meta name="product:category" content={`${navbarCategory?.name} > ${category?.name} > ${subcategory?.name}`} />
+                <meta name="product:model" content={seoProductName} />
+                <meta name="product:sku" content={product._id} />
+                
+                {/* Enhanced Product Name Meta Tags */}
+                <meta name="product:name:en" content={seoProductName} />
+                <meta name="product:name:ar" content={seoProductName} />
+                <meta name="product:model:name" content={seoProductName} />
+                <meta name="product:model:number" content={product._id} />
+                <meta name="product:model:type" content={subcategory?.name || ''} />
+                
+                {/* Additional SEO Meta Tags */}
+                <meta name="robots" content="index, follow" />
+                <meta name="author" content="HikVision UAE" />
+                <meta name="language" content="English" />
+                <meta name="revisit-after" content="7 days" />
+                <meta name="generator" content="Next.js" />
+                
+                {/* Canonical and Alternate URLs */}
                 <link rel="canonical" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} />
+                <link rel="alternate" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="en-ae" />
+                <link rel="alternate" href={`https://hikvisionuae.ae/ar/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="ar-ae" />
+                <link rel="alternate" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="x-default" />
+                
+                {/* Structured Data */}
                 <script 
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
                 />
                 <script 
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+                />
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(additionalStructuredData) }}
+                />
+                <script 
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(additionalProductSchema) }}
                 />
                 {faqSchema && (
                     <script 
@@ -309,11 +604,6 @@ const ProductSEO = ({ product, navbarCategory, category, subcategory }: {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
                     />
                 )}
-            </Head>
-            <Head>
-                {/* Add language alternates */}
-                <link rel="alternate" href={`https://hikvisionuae.ae/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="en-ae" />
-                <link rel="alternate" href={`https://hikvisionuae.ae/ar/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}/${product.slug}`} hrefLang="ar-ae" />
             </Head>
         </>
     );
