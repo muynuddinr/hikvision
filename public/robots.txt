@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://hikvisionuae.ae/sitemap.xml
+# Sitemap
+Sitemap: https://hikvisionuae.ae/api/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 10 
