@@ -24,7 +24,8 @@ const TechnologyCard = ({
   return (
     <div 
       className="group relative bg-white
-                rounded-[2rem] p-8 flex flex-col items-center justify-center min-h-[420px]
+                rounded-xl sm:rounded-[2rem] p-4 sm:p-8 flex flex-col items-center justify-center 
+                min-h-[380px] sm:min-h-[420px]
                 shadow-[0_8px_30px_rgb(0,0,0,0.04)] 
                 hover:shadow-[0_8px_30px_rgb(239,68,68,0.1)]
                 transition-all duration-500 ease-out
@@ -35,11 +36,11 @@ const TechnologyCard = ({
       role="article"
       tabIndex={0}
     >
-      {/* Remove or simplify decorative background elements */}
+      {/* Background effect */}
       <div className="absolute inset-0 bg-white opacity-0 
                     group-hover:opacity-100 transition-opacity duration-500" />
       
-      <div className="relative w-48 h-32 mb-8 z-10">
+      <div className="relative w-36 sm:w-48 h-24 sm:h-32 mb-6 sm:mb-8 z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-red-100/10 to-transparent 
                      rounded-full blur-2xl scale-150 opacity-0 group-hover:opacity-100 
                      transition-opacity duration-500" />
@@ -54,15 +55,15 @@ const TechnologyCard = ({
         />
       </div>
 
-      <h2 className="relative text-2xl font-bold mb-4 text-center z-10
+      <h2 className="relative text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-center z-10
                    text-black
                    transition-all duration-500">
         {title}
       </h2>
 
       {description && (
-        <p className="relative text-black text-center text-sm mb-8 max-w-[280px] 
-                    leading-relaxed transition-all duration-500 ease-out z-10
+        <p className="relative text-black text-center text-sm sm:text-base mb-6 sm:mb-8 
+                    max-w-[280px] leading-relaxed transition-all duration-500 ease-out z-10
                     group-hover:text-gray-900">
           {description}
         </p>
@@ -71,7 +72,7 @@ const TechnologyCard = ({
       {learnMoreUrl && (
         <a
           href={learnMoreUrl}
-          className="absolute bottom-0 left-0 right-0 py-5
+          className="absolute bottom-0 left-0 right-0 py-4 sm:py-5
                    bg-gradient-to-r from-red-600 to-red-700 
                    text-white text-center font-semibold text-sm
                    transform translate-y-full group-hover:translate-y-0 
@@ -122,14 +123,14 @@ const TechnologyGrid = () => {
   ];
 
   return (
-    <section className="py-32 bg-white">
-      <div className="container mx-auto px-6">
-        <h1 className="text-6xl font-bold text-center mb-6 leading-tight">
+    <section className="py-16 sm:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 leading-tight">
           <span className="text-black">Our Tech</span>
           <span className="text-red-600">nologies</span>
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 
-                      gap-8 xl:gap-12">
+                      gap-6 sm:gap-8 xl:gap-12">
           {technologies.map((tech: TechnologyCardProps) => (
             <TechnologyCard
               key={tech.title}

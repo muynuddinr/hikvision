@@ -93,42 +93,49 @@ export default function Banner() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(bannerSchema) }}
       />
 
-      <div className="relative bg-white h-[600px] flex items-center">
+      <div className="relative bg-white min-h-[85vh] sm:min-h-[600px] flex items-center">
         {/* Main Content */}
-        <div className="container mx-auto px-6 z-10">
-          <div className="max-w-2xl space-y-6">
-            <h1 className="text-5xl font-medium">
-              <span className="text-red-600">Profess</span><span className="text-gray-900">ional Security</span><br />
-              <span className="text-red-600">Solut</span><span className="text-gray-900">ions in UAE</span>
+        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-0 z-10">
+          <div className="max-w-2xl space-y-4 sm:space-y-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight">
+              <span className="text-red-600">Professional</span>
+              <span className="text-gray-900"> Security</span>
+              <br className="hidden sm:block" />
+              <span className="text-red-600">Solutions</span>
+              <span className="text-gray-900"> in UAE</span>
             </h1>
             
-            <p className="text-lg">
-              <span className="text-red-600">Providing cutting-edge surv</span><span className="text-gray-900">eillance systems and security</span><br />
-              <span className="text-red-600">equipment for your pe</span><span className="text-gray-900">ace of mind.</span>
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+              <span className="text-red-600">Providing cutting-edge surveillance</span>
+              <span className="text-gray-900"> systems and security</span>
+              <br className="hidden sm:block" />
+              <span className="text-red-600">equipment for your peace</span>
+              <span className="text-gray-900"> of mind.</span>
             </p>
 
-            <div className="pt-4">
+            <div className="pt-4 sm:pt-6">
               <Link 
                 href="/Contact"
-                className="inline-block px-8 py-4 border-2 border-red-600 bg-transparent hover:bg-red-600 transition-colors duration-300 rounded-md shadow-md hover:shadow-lg"
+                className="inline-block w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-red-600 bg-transparent hover:bg-red-600 transition-colors duration-300 rounded-md shadow-md hover:shadow-lg text-center"
               >
-                <span className="text-black hover:text-white transition-colors duration-300">Get Started</span>
+                <span className="text-black hover:text-white transition-colors duration-300 text-base sm:text-lg font-medium">Get Started</span>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Gradient overlay */}
+        {/* Gradient overlay - Enhanced for mobile */}
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent z-0" />
         
-        {/* Background image */}
+        {/* Background image - Optimized for mobile */}
         <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `url(${banner.src})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            opacity: '0.9'
           }}
         />
       </div>
