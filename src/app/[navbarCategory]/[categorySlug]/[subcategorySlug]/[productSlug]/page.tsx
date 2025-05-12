@@ -122,11 +122,11 @@ interface SchemaData {
     };
 }
 
-const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) => {
+const Breadcrumb = ({ navbarCategory, category, subcategory, productName }: BreadcrumbProps & { productName?: string }) => {
     return (
-        <nav className="bg-white shadow-sm">
-            <div className="container mx-auto px-4 py-3">
-                <ol className="flex items-center space-x-2 text-sm">
+        <nav className="bg-white shadow-sm overflow-x-auto">
+            <div className="container mx-auto px-2 py-2 sm:px-4 sm:py-3">
+                <ol className="flex items-center space-x-2 text-xs sm:text-sm whitespace-nowrap">
                     <li>
                         <Link href="/" className="text-gray-500 hover:text-red-600 transition-colors">
                             Home
@@ -162,9 +162,20 @@ const Breadcrumb = ({ navbarCategory, category, subcategory }: BreadcrumbProps) 
                         <>
                             <li><span className="text-gray-400 mx-2">›</span></li>
                             <li>
-                                <span className="text-red-600 font-medium">
+                                <Link
+                                    href={`/${navbarCategory?.slug}/${category?.slug}/${subcategory.slug}`}
+                                    className="text-gray-500 hover:text-red-600 transition-colors"
+                                >
                                     {subcategory.name}
-                                </span>
+                                </Link>
+                            </li>
+                        </>
+                    )}
+                    {productName && (
+                        <>
+                            <li><span className="text-gray-400 mx-2">›</span></li>
+                            <li>
+                                <span className="text-red-600 font-medium">{productName}</span>
                             </li>
                         </>
                     )}
@@ -739,22 +750,21 @@ export default function ProductDetailsPage() {
                 />
             )}
             <Navbar />
-            <Breadcrumb {...breadcrumbProps} />
-            <div className="py-8 px-4 sm:px-6 lg:px-8">
+            <Breadcrumb {...breadcrumbProps} productName={product.name} />
+            <div className="py-4 px-2 sm:py-8 sm:px-4 lg:px-8">
                 <div className="max-w-6xl mx-auto">
                     <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                             {/* Image Gallery Section - Enhanced */}
-                            <div className="p-6 bg-gray-50">
-                                <div className="relative h-[400px] rounded-xl overflow-hidden border border-gray-100 shadow-lg bg-white group">
+                            <div className="p-2 sm:p-6 bg-gray-50">
+                                <div className="relative h-56 sm:h-[400px] rounded-xl overflow-hidden border border-gray-100 shadow-lg bg-white group flex items-center justify-center">
                                     <img
                                         src={selectedImage}
                                         alt={product.name}
-                                        className="w-full h-full object-contain p-4 transition-all duration-500 transform hover:scale-110"
+                                        className="w-full h-full object-contain p-2 sm:p-4 transition-all duration-500 transform hover:scale-110"
                                     />
-                                    
-                                    {/* Slider Navigation Arrows */}
-                                    <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    {/* Slider Navigation Arrows - hidden on mobile */}
+                                    <div className="hidden sm:flex absolute inset-0 items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                         <button
                                             onClick={() => {
                                                 const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
@@ -768,7 +778,6 @@ export default function ProductDetailsPage() {
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                                             </svg>
                                         </button>
-                                        
                                         <button
                                             onClick={() => {
                                                 const images = [product.image1, product.image2, product.image3, product.image4].filter(Boolean);
@@ -784,15 +793,14 @@ export default function ProductDetailsPage() {
                                         </button>
                                     </div>
                                 </div>
-                                
-                                <div className="grid grid-cols-4 gap-4 mt-6">
+                                <div className="grid grid-cols-4 gap-2 sm:gap-4 mt-2 sm:mt-6">
                                     <button
                                         onClick={() => setSelectedImage(product.image1)}
-                                        className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                        className={`relative h-12 sm:h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                             ${selectedImage === product.image1
                                                 ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
                                                 : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
-                                            bg-white p-2`}
+                                            bg-white p-1 sm:p-2`}
                                     >
                                         <img
                                             src={product.image1}
@@ -803,11 +811,11 @@ export default function ProductDetailsPage() {
                                     {product.image2 && (
                                         <button
                                             onClick={() => setSelectedImage(product.image2)}
-                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                            className={`relative h-12 sm:h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                                 ${selectedImage === product.image2
                                                     ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
                                                     : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
-                                                bg-white p-2`}
+                                                bg-white p-1 sm:p-2`}
                                         >
                                             <img
                                                 src={product.image2}
@@ -819,11 +827,11 @@ export default function ProductDetailsPage() {
                                     {product.image3 && (
                                         <button
                                             onClick={() => setSelectedImage(product.image3)}
-                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                            className={`relative h-12 sm:h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                                 ${selectedImage === product.image3
                                                     ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
                                                     : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
-                                                bg-white p-2`}
+                                                bg-white p-1 sm:p-2`}
                                         >
                                             <img
                                                 src={product.image3}
@@ -835,11 +843,11 @@ export default function ProductDetailsPage() {
                                     {product.image4 && (
                                         <button
                                             onClick={() => setSelectedImage(product.image4)}
-                                            className={`relative h-24 rounded-lg overflow-hidden border transition-all duration-300 
+                                            className={`relative h-12 sm:h-24 rounded-lg overflow-hidden border transition-all duration-300 
                                                 ${selectedImage === product.image4
                                                     ? 'ring-2 ring-red-500 shadow-lg scale-105 border-red-500'
                                                     : 'hover:ring-2 hover:ring-red-300 hover:scale-105 border-gray-200 hover:border-red-300'} 
-                                                bg-white p-2`}
+                                                bg-white p-1 sm:p-2`}
                                         >
                                             <img
                                                 src={product.image4}
@@ -850,54 +858,49 @@ export default function ProductDetailsPage() {
                                     )}
                                 </div>
                             </div>
-
                             {/* Product Details Section */}
-                            <div className="p-6 lg:p-8">
-                                <div className="space-y-6">
+                            <div className="p-2 sm:p-6 lg:p-8">
+                                <div className="space-y-4 sm:space-y-6">
                                     <div>
-                                        <h1 className="text-3xl font-bold text-gray-900 mb-3">{product.name}</h1>
-                                        <p className="text-base text-gray-600 leading-relaxed">{product.description}</p>
+                                        <h1 className="text-lg sm:text-3xl font-bold text-gray-900 mb-2 sm:mb-3 break-words">{product.name}</h1>
+                                        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{product.description}</p>
                                     </div>
-
-                                    <div className="space-y-4 py-6 border-y border-gray-100">
-                                        <div className="flex items-center space-x-4">
-                                            <span className="text-sm font-medium text-gray-500 w-28">Navbar Category:</span>
+                                    <div className="space-y-2 sm:space-y-4 py-3 sm:py-6 border-y border-gray-100">
+                                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                                            <span className="text-xs sm:text-sm font-medium text-gray-500 w-28">Navbar Category:</span>
                                             <Link
                                                 href={`/${navbarCategory?.slug}`}
-                                                className="text-indigo-600 hover:text-indigo-700 transition-colors text-sm"
+                                                className="text-indigo-600 hover:text-indigo-700 transition-colors text-xs sm:text-sm"
                                             >
                                                 {navbarCategory?.name || 'Loading...'}
                                             </Link>
                                         </div>
-
-                                        <div className="flex items-center space-x-4">
-                                            <span className="text-sm font-medium text-gray-500 w-28">Category:</span>
+                                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                                            <span className="text-xs sm:text-sm font-medium text-gray-500 w-28">Category:</span>
                                             <Link
                                                 href={`/${navbarCategory?.slug}/${category?.slug}`}
-                                                className="text-emerald-600 hover:text-emerald-700 transition-colors text-sm"
+                                                className="text-emerald-600 hover:text-emerald-700 transition-colors text-xs sm:text-sm"
                                             >
                                                 {category?.name || 'Loading...'}
                                             </Link>
                                         </div>
-
-                                        <div className="flex items-center space-x-4">
-                                            <span className="text-sm font-medium text-gray-500 w-28">Sub Category:</span>
+                                        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                                            <span className="text-xs sm:text-sm font-medium text-gray-500 w-28">Sub Category:</span>
                                             <Link
                                                 href={`/${navbarCategory?.slug}/${category?.slug}/${subcategory?.slug}`}
-                                                className="text-amber-600 hover:text-amber-700 transition-colors text-sm"
+                                                className="text-amber-600 hover:text-amber-700 transition-colors text-xs sm:text-sm"
                                             >
                                                 {subcategory?.name || 'Loading...'}
                                             </Link>
                                         </div>
                                     </div>
-
-                                    <div className="pt-4">
+                                    <div className="pt-3 sm:pt-4">
                                         <Link
                                             href="/Contact"
-                                            className="group relative w-full inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white text-base font-medium rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg"
+                                            className="group relative w-full inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 bg-red-600 text-white text-sm sm:text-base font-medium rounded-lg hover:bg-red-700 transition-all duration-200 shadow-md hover:shadow-lg"
                                         >
                                             <svg
-                                                className="w-5 h-5 mr-2"
+                                                className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                                                 fill="none"
                                                 stroke="currentColor"
                                                 viewBox="0 0 24 24"
@@ -916,14 +919,13 @@ export default function ProductDetailsPage() {
                             </div>
                         </div>
                     </div>
-
                     {/* Key Features Card */}
                     {product.keyFeatures && product.keyFeatures.length > 0 && (
-                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden p-6">
-                            <h2 className="text-xl font-semibold mb-4">Key Features</h2>
-                            <ul className="list-disc pl-5 space-y-2">
+                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden p-3 sm:p-6">
+                            <h2 className="text-base sm:text-xl font-semibold mb-2 sm:mb-4">Key Features</h2>
+                            <ul className="list-disc pl-4 sm:pl-5 space-y-1 sm:space-y-2">
                                 {product.keyFeatures.map((feature, index) => (
-                                    <li key={index} className="text-gray-600">
+                                    <li key={index} className="text-gray-600 text-xs sm:text-base">
                                         {feature}
                                     </li>
                                 ))}

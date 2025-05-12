@@ -164,6 +164,85 @@ const Navbar = () => {
             </svg>
           </button>
 
+          {/* Mobile menu content */}
+          <div
+            className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transform transition-all duration-300 ease-in-out ${
+              isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+            }`}
+            id="mobile-menu"
+          >
+            <div className="px-4 py-3 space-y-4">
+              {/* Home Link */}
+              <Link
+                href="/"
+                className="block text-gray-800 hover:text-red-600 font-medium transition-all duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
+
+              {/* Products Section */}
+              <div className="space-y-2">
+                <div className="font-medium text-gray-800">Products</div>
+                <div className="pl-4 space-y-2">
+                  {navbarCategories.map((category) => (
+                    <Link
+                      key={category._id}
+                      href={`/${category.slug}`}
+                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technologies Section */}
+              <div className="space-y-2">
+                <div className="font-medium text-gray-800">Technologies</div>
+                <div className="pl-4 space-y-2">
+                  {dropdownMenus.technologies.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={`/${item.href}`}
+                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Solutions Section */}
+              <div className="space-y-2">
+                <div className="font-medium text-gray-800">Solutions</div>
+                <div className="pl-4 space-y-2">
+                  {dropdownMenus.solutions.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={`/${item.href}`}
+                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Link */}
+              <Link
+                href="/Contact"
+                className="block text-gray-800 hover:text-red-600 font-medium transition-all duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+
           {/* Desktop Navigation - Improved spacing and interactions */}
           <div className="hidden md:flex items-center space-x-8 lg:space-x-12 bg-white">
             {/* Home Link */}
@@ -354,178 +433,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        {/* Mobile Navigation - Enhanced version */}
-        {isOpen && (
-          <div className="md:hidden mt-4 bg-white rounded-lg shadow-lg overflow-hidden border-t border-gray-100">
-            <div className="animate-slideDown">
-              {/* Home Link */}
-              <Link
-                href="/"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center space-x-2 px-4 py-3 text-gray-800 hover:bg-red-50 
-                  hover:text-red-600 transition-all duration-300 border-b border-gray-100"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-                <span>Home</span>
-              </Link>
-
-              {/* Products Mobile Menu - Enhanced */}
-              <div className="border-b border-gray-100">
-                <button
-                  onClick={() => handleDropdown(activeDropdown === 'products' ? null : 'products')}
-                  className="flex items-center justify-between w-full px-4 py-3 
-                    text-gray-800 hover:bg-red-50 hover:text-red-600 
-                    transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                    <span>Products</span>
-                  </div>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 
-                      ${activeDropdown === 'products' ? 'rotate-180' : ''}`}
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {activeDropdown === 'products' && (
-                  <div className="bg-gray-50 max-h-[60vh] overflow-y-auto">
-                    {navbarCategories.map((category) => (
-                      <Link
-                        key={category._id}
-                        href={`/${category.slug}`}
-                        className="block px-6 py-2.5 text-sm text-gray-600 hover:bg-red-50 
-                          hover:text-red-600 transition-all duration-300 border-l-2 
-                          border-transparent hover:border-red-600 ml-4"
-                      >
-                        {category.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Technologies Mobile Menu - Enhanced */}
-              <div className="border-b border-gray-100">
-                <button
-                  onClick={() => handleDropdown(activeDropdown === 'technologies' ? null : 'technologies')}
-                  className="flex items-center justify-between w-full px-4 py-3 
-                    text-gray-800 hover:bg-red-50 hover:text-red-600 
-                    transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                    <span>Technologies</span>
-                  </div>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 
-                      ${activeDropdown === 'technologies' ? 'rotate-180' : ''}`}
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {activeDropdown === 'technologies' && (
-                  <div className="bg-gray-50">
-                    {dropdownMenus.technologies.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-6 py-2.5 text-sm text-gray-600 hover:bg-red-50 
-                          hover:text-red-600 transition-all duration-300 border-l-2 
-                          border-transparent hover:border-red-600 ml-4"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Solutions Mobile Menu - Enhanced */}
-              <div className="border-b border-gray-100">
-                <button
-                  onClick={() => handleDropdown(activeDropdown === 'solutions' ? null : 'solutions')}
-                  className="flex items-center justify-between w-full px-4 py-3 
-                    text-gray-800 hover:bg-red-50 hover:text-red-600 
-                    transition-all duration-300"
-                >
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <span>Solutions</span>
-                  </div>
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 
-                      ${activeDropdown === 'solutions' ? 'rotate-180' : ''}`}
-                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-
-                {activeDropdown === 'solutions' && (
-                  <div className="bg-gray-50">
-                    {dropdownMenus.solutions.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-6 py-2.5 text-sm text-gray-600 hover:bg-red-50 
-                          hover:text-red-600 transition-all duration-300 border-l-2 
-                          border-transparent hover:border-red-600 ml-4"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* About & Contact Links */}
-              <div className="space-y-1 p-2">
-                <Link
-                  href="/About"
-                  className="flex items-center space-x-2 w-full px-4 py-2.5 text-gray-800 hover:bg-red-50 
-                    hover:text-red-600 transition-all duration-300 rounded-lg"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>About Us</span>
-                </Link>
-
-                <Link
-                  href="/Contact"
-                  className="flex items-center space-x-2 w-full px-4 py-2.5 text-white bg-gradient-to-r 
-                    from-red-600 to-red-800 rounded-lg transition-all duration-300
-                    hover:from-red-700 hover:to-red-900"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span>Contact Us</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
       </nav>
     </header>
   )
