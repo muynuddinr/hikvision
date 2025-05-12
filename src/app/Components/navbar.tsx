@@ -189,115 +189,176 @@ const Navbar = () => {
           >
             {/* Overlay */}
             <div
-              className={`absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
               onClick={() => setIsOpen(false)}
             />
             {/* Menu Panel */}
             <div
-              className={`absolute top-0 right-0 w-11/12 max-w-xs h-full bg-white shadow-2xl transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+              className={`absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             >
-              {/* Logo and Close Button */}
-              <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100">
-                <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
-                  <Image src={hikvisionLogo.src} alt="Hikvision Dubai" width={120} height={36} className="object-contain h-9 w-auto" />
-                </Link>
+              {/* Header with Close Button Only */}
+              <div className="flex items-center justify-end px-6 py-5 bg-gradient-to-r from-red-900 to-black">
                 <button
-                  className="p-2 rounded-full border border-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  className="p-2 rounded-full hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close menu"
                 >
-                  <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
               {/* Menu Items */}
-              <nav className="flex flex-col gap-2 px-6 py-6 overflow-y-auto h-[calc(100%-64px)]">
-                <Link href="/" className={`font-bold text-lg py-2 ${pathname === '/' ? 'text-red-600' : ''}`} onClick={() => setIsOpen(false)}>Home</Link>
-                <div className="py-2 border-b border-gray-100">
+              <nav className="flex flex-col px-4 py-6 overflow-y-auto h-[calc(100%-80px)] bg-gray-50">
+                <Link 
+                  href="/" 
+                  className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl mb-2 font-medium text-base ${
+                    pathname === '/' ? 'bg-red-600 text-white shadow-lg shadow-red-600/30' : 'text-gray-700 hover:bg-white hover:shadow-md'
+                  } transition-all duration-300`} 
+                  onClick={() => setIsOpen(false)}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                  <span>Home</span>
+                </Link>
+
+                <div className="relative mb-2">
                   <button
-                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
-                    onClick={() => setProductsOpen((open) => !open)}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium ${
+                      productsOpen ? 'bg-white shadow-md' : 'hover:bg-white hover:shadow-sm'
+                    } transition-all duration-300`}
+                    onClick={() => setProductsOpen(!productsOpen)}
                     aria-expanded={productsOpen}
                     aria-controls="products-dropdown"
                   >
-                    Products
-                    <svg className={`w-5 h-5 ml-2 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  {productsOpen && (
-                    <div id="products-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
-                      {navbarCategories.map((category) => (
-                        <Link
-                          key={category._id}
-                          href={`/${category.slug}`}
-                          className={`text-gray-700 text-base py-1 hover:text-red-600 ${pathname === '/' + category.slug ? 'text-red-600' : ''}`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {category.name}
-                        </Link>
-                      ))}
+                    <div className="flex items-center space-x-3">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8 4-8-4m16 0l-8 4m8 4l-8 4m8-4l-8 4m8-4v10M4 7v10l8 4" />
+                      </svg>
+                      <span className="text-gray-700">Products</span>
                     </div>
-                  )}
+                    <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${productsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className={`mt-2 space-y-1 transition-all duration-300 ${productsOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                    {navbarCategories.map((category) => (
+                      <Link
+                        key={category._id}
+                        href={`/${category.slug}`}
+                        className={`flex items-center pl-12 pr-4 py-3 rounded-xl text-base ${
+                          pathname === '/' + category.slug 
+                            ? 'bg-red-50 text-red-600 font-medium' 
+                            : 'text-gray-600 hover:bg-white hover:text-gray-900'
+                        } transition-all duration-300`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {category.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <div className="py-2 border-b border-gray-100">
+
+                <div className="relative mb-2">
                   <button
-                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
-                    onClick={() => setTechnologiesOpen((open) => !open)}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium ${
+                      technologiesOpen ? 'bg-white shadow-md' : 'hover:bg-white hover:shadow-sm'
+                    } transition-all duration-300`}
+                    onClick={() => setTechnologiesOpen(!technologiesOpen)}
                     aria-expanded={technologiesOpen}
                     aria-controls="technologies-dropdown"
                   >
-                    Technologies
-                    <svg className={`w-5 h-5 ml-2 transition-transform ${technologiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  {technologiesOpen && (
-                    <div id="technologies-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
-                      {dropdownMenus.technologies.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={`/${item.href}`}
-                          className={`text-gray-700 text-base py-1 hover:text-red-600 ${pathname === '/' + item.href ? 'text-red-600' : ''}`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.title}
-                        </Link>
-                      ))}
+                    <div className="flex items-center space-x-3">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                      </svg>
+                      <span className="text-gray-700">Technologies</span>
                     </div>
-                  )}
+                    <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${technologiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className={`mt-2 space-y-1 transition-all duration-300 ${technologiesOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                    {dropdownMenus.technologies.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={`/${item.href}`}
+                        className={`flex items-center pl-12 pr-4 py-3 rounded-xl text-base ${
+                          pathname === '/' + item.href 
+                            ? 'bg-red-50 text-red-600 font-medium' 
+                            : 'text-gray-600 hover:bg-white hover:text-gray-900'
+                        } transition-all duration-300`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <div className="py-2 border-b border-gray-100">
+
+                <div className="relative mb-2">
                   <button
-                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
-                    onClick={() => setSolutionsOpen((open) => !open)}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium ${
+                      solutionsOpen ? 'bg-white shadow-md' : 'hover:bg-white hover:shadow-sm'
+                    } transition-all duration-300`}
+                    onClick={() => setSolutionsOpen(!solutionsOpen)}
                     aria-expanded={solutionsOpen}
                     aria-controls="solutions-dropdown"
                   >
-                    Solutions
-                    <svg className={`w-5 h-5 ml-2 transition-transform ${solutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                  </button>
-                  <div className={`transition-all duration-300 overflow-hidden ${solutionsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div id="solutions-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
-                      {dropdownMenus.solutions.map((item) => (
-                        <Link
-                          key={item.href}
-                          href={`/${item.href}`}
-                          className={`text-gray-700 text-base py-1 rounded hover:text-red-600 hover:bg-gray-100 transition ${pathname === '/' + item.href ? 'text-red-600 font-semibold' : ''}`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.title}
-                        </Link>
-                      ))}
+                    <div className="flex items-center space-x-3">
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-gray-700">Solutions</span>
                     </div>
+                    <svg className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${solutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className={`mt-2 space-y-1 transition-all duration-300 ${solutionsOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                    {dropdownMenus.solutions.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={`/${item.href}`}
+                        className={`flex items-center pl-12 pr-4 py-3 rounded-xl text-base ${
+                          pathname === '/' + item.href 
+                            ? 'bg-red-50 text-red-600 font-medium' 
+                            : 'text-gray-600 hover:bg-white hover:text-gray-900'
+                        } transition-all duration-300`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
                   </div>
                 </div>
-                <div className="py-2">
-                  <Link
-                    href="/Contact"
-                    className={`font-semibold text-gray-800 text-base py-2 rounded-lg hover:text-red-600 hover:bg-gray-50 transition ${pathname === '/Contact' ? 'text-red-600 bg-red-50' : ''}`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Contact
-                  </Link>
-                </div>
+
+                <Link
+                  href="/About"
+                  className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl mb-2 font-medium text-base ${
+                    pathname === '/About' ? 'bg-red-600 text-white shadow-lg shadow-red-600/30' : 'text-gray-700 hover:bg-white hover:shadow-md'
+                  } transition-all duration-300`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>About Us</span>
+                </Link>
+
+                <Link
+                  href="/Contact"
+                  className={`flex items-center space-x-3 px-4 py-3.5 rounded-xl font-medium text-base ${
+                    pathname === '/Contact' ? 'bg-red-600 text-white shadow-lg shadow-red-600/30' : 'bg-red-600 text-white shadow-lg shadow-red-600/30 hover:bg-red-700'
+                  } transition-all duration-300 mt-4`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>Contact Us</span>
+                </Link>
               </nav>
             </div>
           </div>
