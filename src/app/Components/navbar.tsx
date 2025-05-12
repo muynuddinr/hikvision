@@ -4,6 +4,8 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import hikvisionLogo from '../../../public/hikvision logo.jpg'
+import { useEffect as useLayoutEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const dropdownMenus = {
   technologies: [
@@ -35,6 +37,22 @@ const Navbar = () => {
   const [isLoading, setIsLoading] = useState(true)
   const navRef = useRef<HTMLDivElement>(null)
   const [navbarCategories, setNavbarCategories] = useState<NavbarCategory[]>([])
+  const [productsOpen, setProductsOpen] = useState(false)
+  const [technologiesOpen, setTechnologiesOpen] = useState(false)
+  const [solutionsOpen, setSolutionsOpen] = useState(false)
+  const pathname = usePathname();
+
+  // Prevent background scroll when mobile menu is open
+  useLayoutEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const fetchNavbarCategories = async () => {
@@ -166,80 +184,121 @@ const Navbar = () => {
 
           {/* Mobile menu content */}
           <div
-            className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transform transition-all duration-300 ease-in-out ${
-              isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-            }`}
-            id="mobile-menu"
+            className={`md:hidden fixed inset-0 z-[9999] transition-all duration-300 ${isOpen ? 'visible' : 'invisible'}`}
+            style={{ pointerEvents: isOpen ? 'auto' : 'none' }}
           >
-            <div className="px-4 py-3 space-y-4">
-              {/* Home Link */}
-              <Link
-                href="/"
-                className="block text-gray-800 hover:text-red-600 font-medium transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-
-              {/* Products Section */}
-              <div className="space-y-2">
-                <div className="font-medium text-gray-800">Products</div>
-                <div className="pl-4 space-y-2">
-                  {navbarCategories.map((category) => (
-                    <Link
-                      key={category._id}
-                      href={`/${category.slug}`}
-                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {category.name}
-                    </Link>
-                  ))}
-                </div>
+            {/* Overlay */}
+            <div
+              className={`absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+              onClick={() => setIsOpen(false)}
+            />
+            {/* Menu Panel */}
+            <div
+              className={`absolute top-0 right-0 w-11/12 max-w-xs h-full bg-white shadow-2xl transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            >
+              {/* Logo and Close Button */}
+              <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100">
+                <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center">
+                  <Image src={hikvisionLogo.src} alt="Hikvision Dubai" width={120} height={36} className="object-contain h-9 w-auto" />
+                </Link>
+                <button
+                  className="p-2 rounded-full border border-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-
-              {/* Technologies Section */}
-              <div className="space-y-2">
-                <div className="font-medium text-gray-800">Technologies</div>
-                <div className="pl-4 space-y-2">
-                  {dropdownMenus.technologies.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={`/${item.href}`}
-                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
+              {/* Menu Items */}
+              <nav className="flex flex-col gap-2 px-6 py-6 overflow-y-auto h-[calc(100%-64px)]">
+                <Link href="/" className={`font-bold text-lg py-2 ${pathname === '/' ? 'text-red-600' : ''}`} onClick={() => setIsOpen(false)}>Home</Link>
+                <div className="py-2 border-b border-gray-100">
+                  <button
+                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
+                    onClick={() => setProductsOpen((open) => !open)}
+                    aria-expanded={productsOpen}
+                    aria-controls="products-dropdown"
+                  >
+                    Products
+                    <svg className={`w-5 h-5 ml-2 transition-transform ${productsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {productsOpen && (
+                    <div id="products-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
+                      {navbarCategories.map((category) => (
+                        <Link
+                          key={category._id}
+                          href={`/${category.slug}`}
+                          className={`text-gray-700 text-base py-1 hover:text-red-600 ${pathname === '/' + category.slug ? 'text-red-600' : ''}`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              {/* Solutions Section */}
-              <div className="space-y-2">
-                <div className="font-medium text-gray-800">Solutions</div>
-                <div className="pl-4 space-y-2">
-                  {dropdownMenus.solutions.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={`/${item.href}`}
-                      className="block text-gray-600 hover:text-red-600 transition-all duration-300"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
+                <div className="py-2 border-b border-gray-100">
+                  <button
+                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
+                    onClick={() => setTechnologiesOpen((open) => !open)}
+                    aria-expanded={technologiesOpen}
+                    aria-controls="technologies-dropdown"
+                  >
+                    Technologies
+                    <svg className={`w-5 h-5 ml-2 transition-transform ${technologiesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  {technologiesOpen && (
+                    <div id="technologies-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
+                      {dropdownMenus.technologies.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={`/${item.href}`}
+                          className={`text-gray-700 text-base py-1 hover:text-red-600 ${pathname === '/' + item.href ? 'text-red-600' : ''}`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-
-              {/* Contact Link */}
-              <Link
-                href="/Contact"
-                className="block text-gray-800 hover:text-red-600 font-medium transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Link>
+                <div className="py-2 border-b border-gray-100">
+                  <button
+                    className="w-full flex items-center justify-between font-semibold text-gray-800 mb-1 text-left focus:outline-none"
+                    onClick={() => setSolutionsOpen((open) => !open)}
+                    aria-expanded={solutionsOpen}
+                    aria-controls="solutions-dropdown"
+                  >
+                    Solutions
+                    <svg className={`w-5 h-5 ml-2 transition-transform ${solutionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                  </button>
+                  <div className={`transition-all duration-300 overflow-hidden ${solutionsOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div id="solutions-dropdown" className="flex flex-col gap-1 pl-4 mt-2">
+                      {dropdownMenus.solutions.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={`/${item.href}`}
+                          className={`text-gray-700 text-base py-1 rounded hover:text-red-600 hover:bg-gray-100 transition ${pathname === '/' + item.href ? 'text-red-600 font-semibold' : ''}`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="py-2">
+                  <Link
+                    href="/Contact"
+                    className={`font-semibold text-gray-800 text-base py-2 rounded-lg hover:text-red-600 hover:bg-gray-50 transition ${pathname === '/Contact' ? 'text-red-600 bg-red-50' : ''}`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </div>
+              </nav>
             </div>
           </div>
 
@@ -249,9 +308,9 @@ const Navbar = () => {
             <div className="relative group">
               <Link
                 href="/"
-                className="text-gray-800 hover:text-red-600 font-medium transition-all duration-300 
+                className={`text-gray-800 hover:text-red-600 font-medium transition-all duration-300 
                   hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 
-                  after:w-0 group-hover:after:w-full after:bg-red-600 after:transition-all after:duration-300"
+                  after:w-0 group-hover:after:w-full after:bg-red-600 after:transition-all after:duration-300 ${pathname === '/' ? 'text-red-600' : ''}`}
               >
                 Home
               </Link>
@@ -288,8 +347,8 @@ const Navbar = () => {
                   <Link
                     key={category._id}
                     href={`/${category.slug}`}
-                    className="block px-6 py-3 text-gray-800 hover:bg-red-50 
-                      hover:text-red-600 transition-all duration-300"
+                    className={`block px-6 py-3 text-gray-800 hover:bg-red-50 
+                      hover:text-red-600 transition-all duration-300 ${pathname === '/' + category.slug ? 'text-red-600' : ''}`}
                   >
                     {category.name}
                   </Link>
@@ -329,9 +388,9 @@ const Navbar = () => {
                 {dropdownMenus.technologies.map((item) => (
                   <Link
                     key={item.href}
-                    href={item.href}
-                    className="block px-6 py-3 text-gray-800 hover:bg-red-50 
-                      hover:text-red-600 transition-all duration-300"
+                    href={`/${item.href}`}
+                    className={`block px-6 py-3 text-gray-800 hover:bg-red-50 
+                      hover:text-red-600 transition-all duration-300 ${pathname === '/' + item.href ? 'text-red-600' : ''}`}
                   >
                     {item.title}
                   </Link>
@@ -371,9 +430,9 @@ const Navbar = () => {
                 {dropdownMenus.solutions.map((item) => (
                   <Link
                     key={item.href}
-                    href={item.href}
-                    className="block px-6 py-3 text-gray-800 hover:bg-red-50 
-                      hover:text-red-600 transition-all duration-300"
+                    href={`/${item.href}`}
+                    className={`block px-6 py-3 text-gray-800 hover:bg-red-50 
+                      hover:text-red-600 transition-all duration-300 ${pathname === '/' + item.href ? 'text-red-600' : ''}`}
                   >
                     {item.title}
                   </Link>
@@ -385,8 +444,8 @@ const Navbar = () => {
             <div className="relative group">
               <Link
                 href="/About"
-                className="flex items-center space-x-2 w-full px-4 py-2.5 text-gray-800 hover:bg-red-50 
-                  hover:text-red-600 transition-all duration-300 rounded-lg"
+                className={`flex items-center space-x-2 w-full px-4 py-2.5 text-gray-800 hover:bg-red-50 
+                  hover:text-red-600 transition-all duration-300 rounded-lg ${pathname === '/About' ? 'text-red-600' : ''}`}
               >
                 About Us
               </Link>
@@ -396,8 +455,8 @@ const Navbar = () => {
             <div className="relative group">
               <Link
                 href="/Contact"
-                className="relative inline-flex items-center px-6 py-3 text-white font-medium 
-                  rounded-lg overflow-hidden transition-all duration-300"
+                className={`relative inline-flex items-center px-6 py-3 text-white font-medium 
+                  rounded-lg overflow-hidden transition-all duration-300 ${pathname === '/Contact' ? 'bg-red-700' : ''}`}
               >
                 {/* Background layers */}
                 <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800" />
